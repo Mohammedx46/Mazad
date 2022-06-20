@@ -15,16 +15,15 @@
                 <div class="col-12">
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
-                            <!-- First Category  -->
-                            <!-- ---------------------------------------- -->
-                            <x-categoryItem/>
-
-                            
+                            {{-- @foreach ($categories as $category) --}}
+                            <x-categoryItem categoryName="why1" categoryImage="images/auction/act2.png" />
+                            {{-- @endforeach --}}
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Right And Left Arrow  -->
             <!-- Right And Left Arrow  -->
             <!-- ---------------------------------------- -->
             <div class="slider-arrows text-center d-lg-flex d-none  justify-content-end">

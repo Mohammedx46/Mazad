@@ -11,9 +11,15 @@ class categoryItem extends Component
      *
      * @return void
      */
-    public function __construct()
+
+    public $categoryName;
+    public $categoryImage;
+
+    public function __construct($categoryName ,  $categoryImage)
     {
         //
+        $this->categoryName = $categoryName;
+        $this->categoryImage = $categoryImage;
     }
 
     /**
@@ -23,6 +29,6 @@ class categoryItem extends Component
      */
     public function render()
     {
-        return view('components.category-item');
+        return view('components.categoryItem');
     }
 }

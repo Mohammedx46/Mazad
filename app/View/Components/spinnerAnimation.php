@@ -4,23 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class headingTitle extends Component
+class spinnerAnimation extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $title;
-    public $description;
-
-    public function __construct($title , $description)
+    public function __construct()
     {
         //
-        // $this->headingData = [ 'title' => $data->title , 'description' => $data->description];
-        $this->title = $title;
-        $this->description = $description;
-        
     }
 
     /**
@@ -30,6 +23,6 @@ class headingTitle extends Component
      */
     public function render()
     {
-        return view('components.headingTitle');
+        return view('components.spinner-animation');
     }
 }

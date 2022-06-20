@@ -2,7 +2,6 @@
 <html lang="en">
 
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,17 +29,7 @@
 </head>
 
 <body dir="rtl">
-    <!-- ---------------------------------------- -->
-    <!-- spinner Animation -->
-    <!-- ---------------------------------------- -->
-    <!-- <div class="preloader">
-        <div class="loader">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div> -->
+    {{-- <x-spinnerAnimation/> --}}
 
     <div class="scroll-btn">
         <i class='bx bxs-up-arrow-circle'></i>
@@ -49,28 +38,13 @@
     <!-- ---------------------------------------- -->
     <!-- ٍSearch -->
     <!-- ---------------------------------------- -->
-    <div class="mobile-search">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-11">
-                    <label>عن ماذا تبحث ؟</label>
-                    <input type="text" placeholder="بحث عن   منتج, تصنيف">
-                </div>
-                <div class="col-1 d-flex justify-content-end align-items-center">
-                    <div class="search-cross-btn">
-
-                        <i class="bi bi-x"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-search/>
 
 
     <!-- ---------------------------------------- -->
     <!-- Side Contact  -->
     <!-- ---------------------------------------- -->
-    <!-- <div class="menu-toggle-btn-full-shape">
+    <div class="menu-toggle-btn-full-shape">
         <div class="menu-toggle-wrap bg-white">
             <div class="sidebar-top-area d-flex justify-content-between align-items-center">
                 <div class="sidebar-logo">
@@ -104,7 +78,7 @@
             </g>
             </svg>
         </div> 
-    </div> -->
+    </div> 
 
 
     <header id="navbar">
@@ -112,26 +86,28 @@
             <div class="header-area">
 
                 <div class="header-icons d-flex align-items-center">
+                    <div class="sidebar-menu-icon d-lg-block d-none">
+                        <i class='bx bx-menu'></i>
+                    </div> 
                     <div class="search-icon search-btn d-lg-block d-none">
                         <i class='bx bx-search-alt-2'></i>
                     </div>
-                    <!-- <div class="sidebar-menu-icon d-lg-block d-none">
+                    {{-- <div class="mobile-menu-btn d-lg-none d-block">
                         <i class='bx bx-menu'></i>
-                    </div> -->
-                    <!-- <div class="mobile-menu-btn d-lg-none d-block">
-                        <i class='bx bx-menu'></i>
-                    </div> -->
+                    </div>  --}}
                 </div>
 
                 <div class="main-menu">
-                    <div class="mobile-logo-area d-lg-none d-block">
+                    
+                    {{-- <div class="mobile-logo-area d-lg-none d-block">
                         <div class="mobile-logo-wrap d-flex justify-content-between align-items-center">
+                            <img src="{{asset('images/auction/act1.png')}}" alt="">
                             <img src="{{asset('images/bg/h-logo.png')}}" alt="">
                             <div class="menu-close-btn">
                                 <i class="bi bi-x-lg"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- ---------------------------------------- -->
                     <!-- Navigation Animation -->
@@ -175,6 +151,7 @@
                             <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
                         </ul>
                     </div>
+                    
                 </div>
 
                 <!-- <div class="header-btn d-xl-block d-none">
