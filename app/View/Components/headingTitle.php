@@ -4,23 +4,22 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class heading_title extends Component
+class headingTitle extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
+    public $title;
+    public $description;
 
-    public $headingData ;
-
-    public function __construct($data)
+    public function __construct($title , $description)
     {
         //
         // $this->headingData = [ 'title' => $data->title , 'description' => $data->description];
-        echo '<h1> ' . $data->title . '</h1>';
-        $this->headingData = [ 'title' => "ldskjf", 'description' => "lsdkjf"];
-    
+        $this->title = $title;
+        $this->description = $description;
         
     }
 
@@ -31,6 +30,6 @@ class heading_title extends Component
      */
     public function render()
     {
-        return view('components.heading_title');
+        return view('components.heading-title');
     }
 }

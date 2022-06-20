@@ -438,7 +438,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    {{-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
     <script src="{{url('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url('js/fontawesome.min.js')}}"></script>
