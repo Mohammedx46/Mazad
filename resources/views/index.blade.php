@@ -24,7 +24,6 @@
             </div>
 
             <!-- Right And Left Arrow  -->
-            <!-- Right And Left Arrow  -->
             <!-- ---------------------------------------- -->
             <div class="slider-arrows text-center d-lg-flex d-none  justify-content-end">
                 <div class="category-prev1 swiper-prev-arrow" tabindex="0" role="button" aria-label="Previous slide"> <i class='bx bx-chevron-left'></i> </div>
@@ -57,9 +56,22 @@
                     <div data-wow-duration="0.5s" data-wow-delay="0.2s" class="eg-card auction-card1 hover-shine wow fadeInDown">
                         <div class="auction-img">
                             <img src="{{url('images/auction/act1.png')}}" alt="">
-                            <div class="auction-timer">
-                                <div class="countdown" id="timer1">
-                                    <h4><span id="hours1">05</span>س : <span id="minutes1">52</span>د : <span id="seconds1">32</span>ث</h4>
+                            <div class="auction-timer2 gap-3" id="timer7">
+                                <div class="countdown-single">
+                                    <h5 id="days7">7</h5>
+                                    <span>أيام</span>
+                                </div>
+                                <div class="countdown-single">
+                                    <h5 id="hours7">05</h5>
+                                    <span>ساعات</span>
+                                </div>
+                                <div class="countdown-single">
+                                    <h5 id="minutes7">56</h5>
+                                    <span>دقائق</span>
+                                </div>
+                                <div class="countdown-single">
+                                    <h5 id="seconds7">08</h5>
+                                    <span>ثواني</span>
                                 </div>
                             </div>
 
