@@ -16,7 +16,7 @@
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
                             {{-- @foreach ($categories as $category) --}}
-                            <x-categoryItem categoryName="why1" categoryImage="images/auction/act2.png" />
+                            <x-categoryItem  categoryName="why1" categoryImage="images/auction/act2.png" />
                             {{-- @endforeach --}}
                         </div>
                     </div>
@@ -44,7 +44,7 @@
             <!-- Introduction Section  -->
             {{-- <x-heading-title :title ="المزادات الجارية" :description ="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك"/> --}}
             
-            <x-headingTitle title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
+            <x-headingTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
 
 
             <!-- ---------------------------------------- -->
