@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="{{url('css/animate.css')}}">
 
     <link rel="stylesheet" href="{{url('css/style.css')}}">
+
+    
 </head>
 
 <body dir="rtl">
@@ -429,3 +431,4 @@
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->
 
 </html>
+

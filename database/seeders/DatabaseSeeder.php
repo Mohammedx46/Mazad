@@ -2,8 +2,15 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Auctions;
+use App\Models\Products;
+use App\Models\AuctionUsers;
+use App\Models\ProductImages;
 use Illuminate\Database\Seeder;
+use App\Models\ProductDocuments;
+use App\Models\ProductCategories;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +22,35 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
+        $user = User::factory(2)->create();
+        
+        $category = ProductCategories::factory(4)->create([
+        'category_name'=>'cars',
+        'category_description'=>'cars are the best'
+        ]);
+        
+        $product = Products::factory(8)->create([
+            'productcategory_id' => $category[2]->id
+        ]);
+
+        ProductDocuments::factory(8)->create([
+            'products_id' => $product[2]->id
+        ]);
+
+        ProductImages::factory(8)->create([
+            'products_id' => $product[2]->id
+        ]);
+
+        $auction = Auctions::factory(8)->create([
+            'products_id' => $product[2]->id
+        ]);
+
+        AuctionUsers::factory(8)->create([
+            'auctions_id' => $auction[2]->id,
+            'user_id' => $user[0]->id
+        ]);
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
