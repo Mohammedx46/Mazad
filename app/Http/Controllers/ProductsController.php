@@ -13,7 +13,7 @@ class ProductsController extends Controller
     // Show all Products
     public function index(Request $request)
     {
-        dd($request);
+        // dd($request);
         return view('index', [
             "heading" => "All Auctions",
             "products" => Products::all(),
