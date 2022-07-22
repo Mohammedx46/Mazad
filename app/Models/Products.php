@@ -18,6 +18,10 @@ class Products extends Model
         'product_main_image_location'
     ];
 
+
+
+
+    //------------------ Relationships ------------------
     // Relationship To User
     public function category()
     {

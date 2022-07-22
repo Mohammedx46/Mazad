@@ -49,121 +49,68 @@
             <!-- ---------------------------------------- -->
             <!-- Auctions  -->
             <div class="row gy-4 mb-50 d-flex justify-content-center">
+
                 <!-- First Live Auction Item  -->
                 <!-- ---------------------------------------- -->
-                <div class="col-lg-4 col-md-6 col-sm-10 ">
-                    <div data-wow-duration="0.5s" data-wow-delay="0.2s" class="eg-card auction-card1 hover-shine wow fadeInDown">
-                        <div class="auction-img">
-                            <img src="{{url('images/auction/act1.png')}}" alt="">
-                            <div class="auction-timer2 gap-3" id="timer7">
-                                <div class="countdown-single">
-                                    <h5 id="days7">7</h5>
-                                    <span>أيام</span>
-                                </div>
-                                <div class="countdown-single">
-                                    <h5 id="hours7">05</h5>
-                                    <span>ساعات</span>
-                                </div>
-                                <div class="countdown-single">
-                                    <h5 id="minutes7">56</h5>
-                                    <span>دقائق</span>
-                                </div>
-                                <div class="countdown-single">
-                                    <h5 id="seconds7">08</h5>
-                                    <span>ثواني</span>
-                                </div>
-                            </div>
+                @unless (false)
 
-                        </div>
-                        <div class="auction-content">
-                            <h5><a href="auction-details.html"> نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل</a></h5>
-                            <p>السعر الحالي : 1.569 ETH</p>
-                            <div class="السعر">$ 3,459.32</div>
-                            <div class="auction-card-bttm">
-                                <a href="auction-details.html" class="eg-btn btn--outline">زايد</a>
-                                <div class="share-area">
-                                    <ul class="social-icons d-flex">
-                                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                                    </ul>
-                                    <div>
-                                        <a href="#" class="share-btn"><i class='bx bxs-share-alt'></i></a>
+                    @foreach ($products as $product)
+            
+                        <div class="col-lg-4 col-md-6 col-sm-10 ">
+                            <div data-wow-duration="0.5s" data-wow-delay="0.2s" class="eg-card auction-card1 hover-shine wow fadeInDown">
+                                <div class="auction-img">
+                                    {{-- {{dd($product->product_main_image_location)}} --}}
+                                    <img src="{{url('images/auction/'.$product->product_main_image_location)}}" alt="">
+                                    <div class="auction-timer2 gap-3" id="timer7">
+                                        <div class="countdown-single">
+                                            <h5 id="days7">7</h5>
+                                            <span>أيام</span>
+                                        </div>
+                                        <div class="countdown-single">
+                                            <h5 id="hours7">05</h5>
+                                            <span>ساعات</span>
+                                        </div>
+                                        <div class="countdown-single">
+                                            <h5 id="minutes7">56</h5>
+                                            <span>دقائق</span>
+                                        </div>
+                                        <div class="countdown-single">
+                                            <h5 id="seconds7">08</h5>
+                                            <span>ثواني</span>
+                                        </div>
+                                    </div>
+        
+                                </div>
+
+                                {{-- Second Part --}}
+                                <div class="auction-content">
+                                    <div class="c-feature-category">{{$product->product_title}}</div>
+
+                                    <h5><a href="auction-details.html"> {{$product->product_description}}</a></h5>
+                                    <p>السعر الحالي : {{$product->product_start_price}} </p>
+                                    <div class="السعر">السعر الإبتدائي  {{$product->product_start_price}}</div>
+                                    <div class="auction-card-bttm">
+                                        <a href="auction-details.html" class="eg-btn btn--outline">زايد</a>
+                                        <div class="share-area">
+                                            <ul class="social-icons d-flex">
+                                                <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
+                                                <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
+                                                <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
+                                                <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
+                                            </ul>
+                                            <div>
+                                                <a href="#" class="share-btn"><i class='bx bxs-share-alt'></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    
+                        @endforeach
+                    
+                @endunless
 
-                <!-- Second Live Auction Item  -->
-                <!-- ---------------------------------------- -->
-                <div class="col-lg-4 col-md-6 col-sm-10 ">
-                    <div data-wow-duration="0.5s" data-wow-delay="0.4s" class="eg-card auction-card1 hover-shine wow fadeInDown">
-                        <div class="auction-img">
-                            <img src="assets/images/auction/act2.png" alt="">
-                            <div class="auction-timer">
-                                <div class="countdown" id="timer2">
-                                    <h4><span id="hours2">05</span>س : <span id="minutes2">52</span>د : <span id="seconds2">32</span>ث</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="auction-content">
-                            <h5><a href="auction-details.html">نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل</a></h5>
-                            <p>السعر الحالي : 1.569 ETH</p>
-                            <div class="السعر">$ 3,459.32</div>
-                            <div class="auction-card-bttm">
-                                <a href="auction-details.html" class="eg-btn btn--outline">زايد</a>
-                                <div class="share-area">
-                                    <ul class="social-icons d-flex">
-                                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                                    </ul>
-                                    <div>
-                                        <a href="#" class="share-btn"><i class='bx bxs-share-alt'></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Third Live Auction Item  -->
-                <!-- ---------------------------------------- -->
-                <div class="col-lg-4 col-md-6 col-sm-10 ">
-                    <div data-wow-duration="0.5s" data-wow-delay="1.2s" class="eg-card auction-card1 hover-shine wow fadeInDown">
-                        <div class="auction-img">
-                            <img src="{{url('images/auction/act6.png')}}" alt="">
-                            <div class="auction-timer">
-                                <div class="countdown" id="timer6">
-                                    <h4><span id="hours6">05</span>س : <span id="minutes6">52</span>د : <span id="seconds6">32</span>ث</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="auction-content">
-                            <h5><a href="auction-details.html">نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل نعم هو هكذا تفاصيل</a></h5>
-                            <p>السعر الحالي : 1.569 ETH</p>
-                            <div class="السعر">$ 3,459.32</div>
-                            <div class="auction-card-bttm">
-                                <a href="auction-details.html" class="eg-btn btn--outline">زايد</a>
-                                <div class="share-area">
-                                    <ul class="social-icons d-flex">
-                                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                                    </ul>
-                                    <div>
-                                        <a href="#" class="share-btn"><i class='bx bxs-share-alt'></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

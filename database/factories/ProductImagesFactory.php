@@ -17,7 +17,7 @@ class ProductImagesFactory extends Factory
     public function definition()
     {
         return [
-            'product_image_location'=> 'images/auction/cat1.png',
+            'product_image_location'=> 'cat1.png',
         ];
     }
 }

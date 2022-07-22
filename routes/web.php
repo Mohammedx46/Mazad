@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    // $product = Products::all();
+    // dd($product[1]->product_main_image_location);
+    return view('index', [
+        'products' => Products::all()
+    ]);
 });
-
 
