@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         'category_description'=>'cars are the best'
         ]);
         
-        $product = Products::factory(5)->create([
+        $product = Products::factory(8)->create([
             'productcategory_id' => $category[2]->id
         ]);
 

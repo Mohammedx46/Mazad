@@ -16,7 +16,7 @@
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
                             {{-- @foreach ($categories as $category) --}}
-                            <x-category.items  categoryName="why1" categoryImage="images/auction/act2.png" />
+                            <x-category.items  :categories="$categories" />
                             {{-- @endforeach --}}
                         </div>
                     </div>
@@ -47,6 +47,7 @@
 
             {{-- Show All Button --}}
             <x-show-all class="btn--fill-primary" />
+            
     </x-container.section>
 
     <!-- End Third Section Live Auction  -->

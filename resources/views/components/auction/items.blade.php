@@ -13,6 +13,5 @@
                 </div>
             </div>
         @endforeach
-        
     @endunless
 </x-container.items-container>

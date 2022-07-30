@@ -18,6 +18,7 @@ class ProductcategoriesFactory extends Factory
     {
         return [
             'category_name'=> 'cars,materials,properties',
+            'category_image_location'=> 'cat1.png',
             'category_description'=>$this->faker->paragraph(),
         ];
     }

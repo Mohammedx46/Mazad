@@ -9,7 +9,8 @@ class Productcategories extends Model
 {
     protected $fillable =[
         'category_name',
-        'category_description'
+        'category_description',
+        'category_image_location',
     ];
 
     // Relationship To Products
