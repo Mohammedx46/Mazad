@@ -25,9 +25,11 @@ class ProductsFactory extends Factory
             'product_short_description' => $this->faker->sentence(),
             'product_description' => $this->faker->paragraph(),
             'product_start_price' => '200',
+            'product_sell_now_price'=> '400',
             'bid_start_date'=> $start_date,
             'bid_end_date'=> $end_date,
             'product_main_image_location' => 'act1.png',
+            'is_product_sold' => 0
         ];
     }
 }

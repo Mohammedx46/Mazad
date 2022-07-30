@@ -426,6 +426,7 @@
     <script src="{{url('js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{url('js/wow.js')}}"></script>
     <script src="{{url('js/main.js')}}"></script>
+    <script src="{{url('js/timer.js')}}"></script>
 </body>
 
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->

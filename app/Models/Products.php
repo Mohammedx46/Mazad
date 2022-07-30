@@ -13,9 +13,11 @@ class Products extends Model
         'product_short_description',
         'product_description',
         'product_start_price',
+        'product_sell_now_price',
         'product_start_date',
         'product_end_date',
-        'product_main_image_location'
+        'product_main_image_location',
+        'is_product_sold',
     ];
 
 
