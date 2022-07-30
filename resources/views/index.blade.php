@@ -11,13 +11,12 @@
             
             <x-sectionTitle title='إستعراض حسب التصنيف' description="" />
 
-            
             <div class="row">
                 <div class="col-12">
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
                             {{-- @foreach ($categories as $category) --}}
-                            <x-categoryItem  categoryName="why1" categoryImage="images/auction/act2.png" />
+                            <x-category.items  categoryName="why1" categoryImage="images/auction/act2.png" />
                             {{-- @endforeach --}}
                         </div>
                     </div>
@@ -39,7 +38,7 @@
     <!-- ---------------------------------------- -->
     <!-- Third Section Live Auction  -->
     <!-- ---------------------------------------- -->
-    <x-containers.section class="live-auction">
+    <x-container.section class="live-auction">
             <!-- Introduction Section  -->           
             <x-sectionTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
 
@@ -48,7 +47,7 @@
 
             {{-- Show All Button --}}
             <x-show-all class="btn--fill-primary" />
-    </x-containers.section>
+    </x-container.section>
 
     <!-- End Third Section Live Auction  -->
     <!-- ---------------------------------------- -->
@@ -57,7 +56,7 @@
     <!-- ---------------------------------------- -->
     <!-- Fourth Section Coming Featured Assets  -->
     <!-- ---------------------------------------- -->
-    <x-containers.section class="pb-110 coming-feature pt-110">
+    <x-container.section class="pb-110 coming-feature pt-110">
         <!-- Introduction Section  -->           
         <x-sectionTitle  title='مزادات قادمة'
             description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" 
@@ -68,7 +67,7 @@
 
         {{-- Show All Button --}}
         <x-show-all class="btn--fill-white" />
-    </x-containers.section>
+    </x-container.section>
     <!-- End Fourth Section Coming Featured Assets  -->
     <!-- ---------------------------------------- -->
 
@@ -77,17 +76,17 @@
     <!-- ---------------------------------------- -->
     <!-- Fifth Section Hot Collection  -->
     <!-- ---------------------------------------- -->
-    <x-containers.section class="top-author-section pt-110 pb-110">
+    <x-container.section class="top-author-section pt-110 pb-110">
         <!-- ---------------------------------------- -->
         <!-- Introduction Section  -->
         <x-sectionTitle title='مقدمي العروض' 
             description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" 
         />
 
-        <x-authors/>
+        <x-author.authors/>
 
         <x-show-all class="btn--fill-primary" />
-    </x-containers.section>
+    </x-container.section>
     <!--  End Fifth Section Hot Collection  -->
     <!-- ---------------------------------------- -->
     

@@ -15,7 +15,7 @@
             </svg> --}}
             <img src="{{asset($categoryImage)}}" width="60" height="60"/>
         </div>
-        <a href="live-auction.html">
+        <a href="auction-category">
             <h5>{{$categoryName}}</h5>
         </a>
     </div>

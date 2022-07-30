@@ -1,6 +1,7 @@
 @props(['product'])
 
 <div class="auction-content">
+    
     <div class="c-feature-category">{{$product->product_title}}</div>
 
     <h5><a href="auction-details.html"> {{$product->product_description}}</a></h5>

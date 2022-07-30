@@ -1,6 +1,6 @@
 
 
-<x-containers.items-container>
+<x-container.items-container>
     <!-- First Section Hot Collection  -->
     <!-- ---------------------------------------- -->
     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 ">
@@ -25,4 +25,4 @@
             </div>
         </div>
     </div>
-</x-containers.items-container>
+</x-container.items-container>
