@@ -25,26 +25,18 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory(2)->create();
         
-        $category = ProductCategories::factory(4)->create([
-        'category_name'=>'cars',
-        'category_description'=>'cars are the best'
-        ]);
+        $category = ProductCategories::factory(4)->create();
         
-        $product = Products::factory(8)->create([
-            'productcategory_id' => $category[2]->id
-        ]);
+        
+        $product = Products::factory(8)->create();
 
-        ProductDocuments::factory(5)->create([
-            'products_id' => $product[2]->id
-        ]);
+        ProductDocuments::factory(5)->create();
 
         ProductImages::factory(5)->create([
             'products_id' => $product[2]->id
         ]);
 
-        $auction = Auctions::factory(5)->create([
-            'products_id' => $product[2]->id
-        ]);
+        $auction = Auctions::factory(5)->create();
 
         AuctionUsers::factory(5)->create([
             'auctions_id' => $auction[2]->id,

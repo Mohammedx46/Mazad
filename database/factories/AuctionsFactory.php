@@ -17,6 +17,7 @@ class AuctionsFactory extends Factory
     public function definition()
     {
         return [
+            'products_id' => random_int(1,7),
             'auction_current_price' => '250',
             'auction_status'=> 1,
         ];

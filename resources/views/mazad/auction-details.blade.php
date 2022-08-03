@@ -1,9 +1,9 @@
 <x-layout>
-
     <!-- ---------------------------------------- -->
     <!-- Second Section ِAuction  -->
     <!-- ---------------------------------------- -->
-    <x-container.section class="auction-details-section pt-110">
+    <div class="auction-details-section pt-110">
+        <div class="container">
             <!-- First Section ِAuction and Bidding -->
             <!-- ---------------------------------------- -->
             <div class="row gy-5 mb-50">
@@ -13,56 +13,53 @@
                         <div class="tab-pane big-image fade show active" id="gallery-img1">
                             <div class="auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
                                 <h5> الوقت المتبقي </h5>
-                                <h3 id="countdown-timer-1"></h3>
                             </div>
-                            <img src="assets/images/bg/auction-big1.png" class="img-fluid" alt="">
+                            <img src="{{url('images/bg/auction-big1.png')}}" class="img-fluid" alt="">
                         </div>
                         <div class="tab-pane big-image fade" id="gallery-img2">
                             <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
                                 <h5> الوقت المتبقي </h5>
-                                <h3 id="countdown-timer-2"></h3>
                             </div>
-                            <img src="assets/images/bg/auction-big2.png" class="img-fluid" alt="">
+                            <img src="{{url('images/bg/auction-big2.png')}}" class="img-fluid" alt="">
                         </div>
                         <div class="tab-pane big-image fade" id="gallery-img3">
                             <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
-                                <h5> الوقت المتبقي </h5>
-                                <h3 id="countdown-timer-3"></h3>
+                                <h5> الوقت المتبقي   </h5>
                             </div>
-                            <img src="assets/images/bg/auction-big3.png" class="img-fluid" alt="">
+                            <img src="{{url('images/bg/auction-big3.png')}}" class="img-fluid" alt="">
                         </div>
                         <div class="tab-pane big-image fade show" id="gallery-img4">
                             <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
                                 <h5> الوقت المتبقي </h5>
-                                <h3 id="countdown-timer-4"></h3>
                             </div>
-                            <img src="assets/images/bg/auction-big4.png" class="img-fluid" alt="">
+                            <img src="{{url('images/bg/auction-big4.png')}}" class="img-fluid" alt="">
                         </div>
                     </div>
-
+                    
                     <ul class="nav small-image-list d-flex justify-content-lg-start justify-content-center gap-4">
                         <li class="nav-item">
                             <div id="details-img1" data-bs-toggle="pill" data-bs-target="#gallery-img1" aria-controls="gallery-img1">
-                                <img src="assets/images/bg/auction-sm1.png" class="img-fluid" alt="">
+                                <img src="{{url('images/bg/auction-sm1.png')}} " class="img-fluid" alt="">
                             </div>
                         </li>
                         <li class="nav-item">
                             <div id="details-img2" data-bs-toggle="pill" data-bs-target="#gallery-img2" aria-controls="gallery-img2">
-                                <img src="assets/images/bg/auction-sm2.png" class="img-fluid" alt="">
+                                <img src="{{url('images/bg/auction-sm2.png')}}" class="img-fluid" alt="">
                             </div>
                         </li>
                         <li class="nav-item">
                             <div id="details-img3" data-bs-toggle="pill" data-bs-target="#gallery-img3" aria-controls="gallery-img3">
-                                <img src="assets/images/bg/auction-sm3.png" class="img-fluid" alt="">
+                                <img src="{{url('images/bg/auction-sm3.png')}}" class="img-fluid" alt="">
                             </div>
                         </li>
                         <li class="nav-item">
                             <div id="details-img4" data-bs-toggle="pill" data-bs-target="#gallery-img4" aria-controls="gallery-img4">
-                                <img src="assets/images/bg/auction-sm4.png" class="img-fluid" alt="">
+                                <img src="{{url('images/bg/auction-sm4.png')}}" class="img-fluid" alt="">
                             </div>
                         </li>
                     </ul>
                 </div>
+
                 <div class="col-lg-6">
                     <div class="auction-details-content-area">
                         <!-- Stars Rating  -->
@@ -277,7 +274,8 @@
                 </div>
             </div>
 
-        </x-container.section>
+        </div>
+    </div>
     <!--  End ُSecond Section ِAuction  -->
     <!-- ---------------------------------------- -->
 

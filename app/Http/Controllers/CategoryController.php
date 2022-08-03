@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
     public function auctionCategory()
     {
-        return view('mazad.auction-details', [
+        return view('mazad.auction-category', [
             "heading" => "All Auctions",
             "categories" => ProductCategories::all(),
             "products" => Products::latest()->paginate(2),

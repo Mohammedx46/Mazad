@@ -12,6 +12,7 @@
             {{-- <!-- Third Pagination Live Auctions  --> --}}
             {{ $products->links('pagination') }}
             
+            
         </x-container.section>
 
     <!-- End Second Section Live Auctions  -->

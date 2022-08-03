@@ -17,7 +17,8 @@ class ProductDocumentsFactory extends Factory
     public function definition()
     {
         return [
-            'product_document_location'=> 'cat1.png',
+            'products_id' => random_int(1,7),
+            'product_document_location'=> 'cat'.random_int(1,5).'png',
         ];
     }
 }

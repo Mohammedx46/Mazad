@@ -9,11 +9,12 @@ class Products extends Model
 {
     protected $fillable= [
         'category_id',
-        'product_title',
+        'product_name',
         'product_short_description',
         'product_description',
         'product_start_price',
         'product_sell_now_price',
+        'product_quantity',
         'product_start_date',
         'product_end_date',
         'product_main_image_location',

@@ -30,9 +30,10 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'mobile',
+        'phone_number',
         'password',
-        'user_status'
+        'user_status',
+        'subscription_type',
     ];
 
     /**

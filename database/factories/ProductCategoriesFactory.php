@@ -17,8 +17,8 @@ class ProductcategoriesFactory extends Factory
     public function definition()
     {
         return [
-            'category_name'=> 'cars,materials,properties',
-            'category_image_location'=> 'cat1.png',
+            'category_name'=> 'cars'. random_int(1,4),
+            'category_image_location'=> 'cat'.random_int(1,5).'.png',
             'category_description'=>$this->faker->paragraph(),
         ];
     }

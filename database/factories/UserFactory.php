@@ -22,10 +22,11 @@ class UserFactory extends Factory
             'last_name'=> $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'mobile'=> $this->faker->phoneNumber(),
+            'phone_number'=> $this->faker->phoneNumber(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'user_status' => $this->faker->boolean(),
             'remember_token' => Str::random(10),
+            'subscription_type' => random_int(1,4),
         ];
     }
 
