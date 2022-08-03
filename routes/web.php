@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
@@ -22,3 +23,5 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/auction-category', [CategoryController::class, 'auctionCategory']);
 
 Route::get('/auction-details', [AuctionController::class, 'auction']);
+
+Route::get('/admin', [AdminController::class, 'admin']);
