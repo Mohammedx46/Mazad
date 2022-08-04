@@ -1,47 +1,4 @@
-<?php require("../../dbconnect.php"); ?>
-<?php require("../../sidebar.php");?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ADMIN DASHBOARD | Rakhees</title>
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/menu.css">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <style>
-    body {
-        font-size: 1.8em;
-    }
-    </style>
-</head>
-
-<body>
-
-    <!------------------------------------------------>
-    <!--------------- The left SideBar  -------------->
-    <!------------------------------------------------>
-
-    <?php 
-        $links = array(
-            "index"=> "../../index.php",
-            "allentities"=>"allentities.php",
-            "addentity"=>"#",
-            // --------------------
-            // Entity Category
-            // --------------------
-            "allcategories"=>"entitycategory/allcategories.php",
-            "addcategory"=>"entitycategory/addcategory.php",
-        );
-        
-        sideBar($links);
-    ?>
-    <!------------------------------------------------>
-    <!-------------- The Main Content  --------------->
-    <!------------------------------------------------>
-
+<x-admin-layout>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 title">
@@ -146,36 +103,4 @@
             </div>
         </div>
     </div>
-
-
-    <!------------------------------------------------>
-    <!----------------- The Footer  ------------------>
-    <!------------------------------------------------>
-
-    <?php require("../../footer.php"); ?>
-
-    <script type="text/javascript" src="../../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../js/app.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('.fa-bars').click(function() {
-            $('.sidebar').toggle();
-        })
-    });
-    </script>
-
-    <script src="../ckeditor/ckeditor.js"></script>
-    <script>
-    CKEDITOR.replace('description', {
-        "filebrowserBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html",
-        "filebrowserImageBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html?type=Images",
-        "filebrowserFlashBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html?type=Flash",
-        "filebrowserUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files",
-        "filebrowserImageUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images",
-        "filebrowserFlashUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash"
-    });
-    </script>
-</body>
-
-</html>
+</x-admin-layout>

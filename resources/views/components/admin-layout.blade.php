@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ADMIN DASHBOARD | Market Rakhees</title>
@@ -9,11 +9,11 @@
         <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/menu.css')}}">
         <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/style.css')}}">	
     </head>
-    <body >
+
+    <body>
         <!------------------------------------------------>
         <!--------------- The left SideBar  -------------->
         <!------------------------------------------------>
-
         <div class="sidebar" >
             <ul class="sidebar-menu">
                 <!---------------- The Dashboard  ---------------->
@@ -109,9 +109,6 @@
             <!------------------------------------------------>
             <!----------------- The Footer  ------------------>
             <!------------------------------------------------>
-
-
-
 
             <footer>
                 <div class="col-sm-6">

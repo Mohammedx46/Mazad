@@ -5,6 +5,7 @@ use App\Http\Controllers\AuctionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,10 @@ Route::get('/auction-category', [CategoryController::class, 'auctionCategory']);
 Route::get('/auction-details', [AuctionController::class, 'auction']);
 
 Route::get('/admin', [AdminController::class, 'admin']);
+
+Route::get('/user/create', [AdminController::class, 'userCreate']);
+
+// Show Create Product Form
+Route::get('/products/create', [ProductsController::class, 'create']);
+
+Route::post('/products', [ProductsController::class, 'store']);

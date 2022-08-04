@@ -22,8 +22,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_start_price');
             $table->unsignedBigInteger('product_sell_now_price');
             $table->integer('product_quantity');
-            $table->date('bid_start_date');
-            $table->date('bid_end_date');
+            $table->dateTime('bid_start_date');
+            $table->dateTime('bid_end_date');
             $table->string('product_main_image_location');
             $table->boolean('is_product_sold');
             $table->timestamps();
