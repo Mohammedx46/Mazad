@@ -20,10 +20,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                        <form role="form" method="POST" action="/products"
-                                            enctype="multipart/form-data">
+                                        <form role="form" method="POST" action="/products" enctype="multipart/form-data">
                                             @csrf
-                                            
                                             <div class="col-md-12 form-group">
                                                 <!-------------- Product Name Field --------------->
                                                 
@@ -35,7 +33,6 @@
                                                                 <div class="error-alert" role="alert"> {{$message}}</div>
                                                             @enderror
                                                     </label>
-                                              
 
                                                 <!------------ Product Short Description Field -------------->
                                                 
@@ -99,9 +96,9 @@
                                                 <!------------ Product Start Date Field -------------->
                                                 <label  class="labelAdd col-md-6">تاريخ بدء المزاد
                                                 <input type="datetime-local" class="form-control"
-                                                    placeholder="تاريخ بدء العد التنازلي لإنتهاء المزاد" name="product_start_date"  required
-                                                    value="{{ old('product_start_date') }}"/>
-                                                    @error('product_start_date')
+                                                    placeholder="تاريخ بدء العد التنازلي لإنتهاء المزاد" name="auction_start_date"  required
+                                                    value="{{ old('auction_start_date') }}"/>
+                                                    @error('auction_start_date')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror 
                                                 </label>
@@ -111,9 +108,9 @@
                                                 
                                                 <label  class="labelAdd col-md-6">تاريخ نهاية المزاد
                                                 <input type="datetime-local" class="form-control"
-                                                    placeholder="تاريخ ناية المزاد" name="product_end_date" required
-                                                    value="{{ old('product_end_date') }}"/> 
-                                                    @error('product_end_date')
+                                                    placeholder="تاريخ ناية المزاد" name="auction_end_date" required
+                                                    value="{{ old('auction_end_date') }}"/> 
+                                                    @error('auction_end_date')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>
@@ -122,24 +119,29 @@
                                             
                                             <div class="col-md-12 form-group">
                                                 <!------- Product Main Image Location Field --------------->
-                                                {{-- <label class="labelAdd col-md-3">الصورة الرئسية للمنتج
+                                                <label class="labelAdd col-md-3">الصورة الرئسية للمنتج
+
                                                     <input type="file" class="form-control"
                                                         name="product_main_image_location" required
-                                                        value="{{ old('product_main_image_location') }}"/>
+                                                        value="{{ old('product_main_image_location') }}"
+                                                    />
+
                                                         @error('product_main_image_location')
                                                             <div class="error-alert" role="alert"> {{$message}} </div>
                                                         @enderror
-                                                </label> --}}
+
+                                                </label> 
                                                 
                                                 <!----------- Product Category Field ------------>
                                                 <label class="labelAdd col-md-3">تصنيف المنتج
-                                                    <select class="form-control" name="category_id" required>
+                                                    <select class="form-control" name="productcategories_id" required>
+                                                        
                                                         @foreach ($categories as $category)
                                                             <option value="{{$category->id}}">{{$category->category_name}} </option>
                                                         @endforeach
                                                         
                                                     </select>
-                                                    @error('category_id')
+                                                    @error('productcategories_id')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>

@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
 
         $user = User::factory(2)->create();
         
-        $category = ProductCategories::factory(4)->create();
+        ProductCategories::factory(4)->create();
         
         
         $product = Products::factory(8)->create();

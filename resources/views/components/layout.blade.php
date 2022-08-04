@@ -316,7 +316,7 @@
     <!-- End First Section Header  -->
     <!-- ---------------------------------------- -->
 
-
+    <x-flash-message/>  
 
     <main>
         {{$slot}}
@@ -427,7 +427,6 @@
             </div>
         </div>
     </footer>
-
     
 </body>
 

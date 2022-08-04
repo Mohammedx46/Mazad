@@ -23,5 +23,28 @@ class CategoryController extends Controller
     }
 
 
+    // Show Create Form
+    public function create()
+    {
+        return view('mazad_admin.screens.products.product_category.add_category');
+    }
+
+    // Store Product Data
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        $formFields = $request->validate([
+        	'category_name'=> ['required', 'alpha'],
+        	'category_description'=> ['required'],
+        ]);
+
+        $formFields['category_image_location'] = 'act1.png';
+        
+        Productcategories::create($formFields);
+        
+        return redirect('/')->with('success', 'تم إضافة تصنيف بنجاح');
+    }
+
+
 
 }

@@ -27,10 +27,10 @@ class ProductsFactory extends Factory
             'product_start_price' => random_int(100,400),
             'product_sell_now_price'=> random_int(150,450),
             'product_quantity' => random_int(1,5),
-            'bid_start_date'=> $start_date,
-            'bid_end_date'=> $end_date,
+            'auction_start_date'=> $start_date,
+            'auction_end_date'=> $end_date,
             'product_main_image_location' => 'act'. random_int(1,5) .'.png',
-            'productcategory_id' => random_int(1,4),
+            'productcategories_id' => random_int(1,4),
             'is_product_sold' => 0,
         ];
     }

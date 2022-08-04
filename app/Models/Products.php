@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     protected $fillable= [
-        'category_id',
+        'productcategories_id',
         'product_name',
         'product_short_description',
         'product_description',
         'product_start_price',
         'product_sell_now_price',
         'product_quantity',
-        'product_start_date',
-        'product_end_date',
+        'auction_start_date',
+        'auction_end_date',
         'product_main_image_location',
         'is_product_sold',
     ];
@@ -41,7 +41,7 @@ class Products extends Model
     // Relationship To User
     public function category()
     {
-        return $this->belongsTo(ProductCategories::class, 'category_id');
+        return $this->belongsTo(ProductCategories::class, 'productcategories_id');
     }
 
     // Relationship To auction

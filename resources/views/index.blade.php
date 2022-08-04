@@ -46,7 +46,7 @@
             <x-auction.items :products="$products" />
 
             {{-- Show All Button --}}
-            <x-show-all class="btn--fill-primary" />
+            <x-show-all  class="btn--fill-primary" />
             
     </x-container.section>
 
@@ -67,10 +67,10 @@
         <x-auction.items :products="$products" />
 
         {{-- Show All Button --}}
-        <x-show-all class="btn--fill-white" />
+        <x-show-all  class="btn--fill-white" />
     </x-container.section>
-    <!-- End Fourth Section Coming Featured Assets  -->
-    <!-- ---------------------------------------- -->
+    <!-- End Fourth Section Coming Featured Assets -->
+    <!-- ----------------------------------------- -->
 
 
 
@@ -86,7 +86,7 @@
 
         <x-author.authors/>
 
-        <x-show-all class="btn--fill-primary" />
+        <x-show-all  class="btn--fill-primary" />
     </x-container.section>
     <!--  End Fifth Section Hot Collection  -->
     <!-- ---------------------------------------- -->

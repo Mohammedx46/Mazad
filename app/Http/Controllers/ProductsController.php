@@ -17,9 +17,9 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         // dd($request);
-        return view('index', [
-            "heading" => "All Auctions",
-            "products" => Products::latest()->paginate(),
+        return view('mazad_admin.screens.products.products', [
+            "heading" => "All Products",
+            "products" => Products::latest()->paginate(6),
         ]);
     }
 
@@ -37,25 +37,35 @@ class ProductsController extends Controller
     // Store Product Data
     public function store(Request $request)
     {
-        $date = Carbon::parse($request->bid_start_date);
-        $threeDays = $date->addDays(3);
+        $date = Carbon::parse($request->auction_start_date);
+        $fourDays = $date->addDays(4);
+        
+        
         $formFields = $request->validate([
-            'category_id'=>'required',
-        	'product_name'=> ['required', 'alpha'],
+            'productcategories_id'=>['required'],
+            'product_name'=> ['required', 'alpha'],
         	'product_short_description'=> ['required', 'alpha', 'max:255'],
         	'product_description'=> ['required'],
         	'product_start_price'=> ['required','numeric'],
         	'product_sell_now_price'=> ['required','numeric'],
 		    'product_quantity'=> ['required', 'numeric'],
-        	'product_start_date'=> ['required','date', 'after_or_equal:today'],
-        	'product_end_date'=> ['required', 'required' , 'date' , 'before_or_equal:'. $threeDays ],
-        	'product_main_image_location'=> 'required',
-        	'is_product_sold'=> ['required', 'boolean'],
+        	'auction_start_date'=> ['required','date', 'after:today'],
+        	'auction_end_date'=> ['required', 'required' , 'date' , 'before_or_equal:'. $fourDays ],
         ]);
-        dd($formFields);
-        Products::create($formFields);
+        
+        $formFields['is_product_sold'] = 0 ;
 
+        // Store Image
+        if ($request->hasFile('product_main_image_location')) {
+
+            $formFields['product_main_image_location'] = $request->file('product_main_image_location')->store('product_main_image_locations', 'public');
+        }
+
+        Products::create($formFields);
+        
         return redirect('/')->with('success', 'تم إضافة المنتج بنجاح');
     }
+
+    // Show Edit Form
 
 }

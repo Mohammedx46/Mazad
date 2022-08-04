@@ -29,7 +29,19 @@ Route::get('/admin', [AdminController::class, 'admin']);
 
 Route::get('/user/create', [AdminController::class, 'userCreate']);
 
-// Show Create Product Form
+// Create Product 
+Route::get('/productsShow', [ProductsController::class, 'index']);
+
 Route::get('/products/create', [ProductsController::class, 'create']);
 
 Route::post('/products', [ProductsController::class, 'store']);
+
+// Edit Product 
+Route::post('/products/{product}/edit', [ProductsController::class, 'edit']);
+
+// -------------- Categories --------------
+// ----------------------------------------
+
+Route::get('/categories/create', [CategoryController::class, 'create']);
+
+Route::post('/categories', [CategoryController::class, 'store']);

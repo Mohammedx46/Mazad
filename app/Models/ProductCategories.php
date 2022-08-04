@@ -16,7 +16,7 @@ class Productcategories extends Model
     // Relationship To Products
     public function products()
     {
-        return $this->hasMany(Products::class, 'category_id');
+        return $this->hasMany(Products::class, 'productcategories_id');
     }
     
     use HasFactory;
