@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ProductCategories>
  */
-class ProductcategoriesFactory extends Factory
+class ProductCategoriesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,7 +18,7 @@ class ProductcategoriesFactory extends Factory
     {
         return [
             'category_name'=> 'cars'. random_int(1,4),
-            'category_image_location'=> 'cat'.random_int(1,5).'.png',
+            'category_image_location'=> 'images/auction/act'. random_int(1,5) .'.png',
             'category_description'=>$this->faker->paragraph(),
         ];
     }

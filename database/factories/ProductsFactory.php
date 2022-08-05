@@ -29,7 +29,7 @@ class ProductsFactory extends Factory
             'product_quantity' => random_int(1,5),
             'auction_start_date'=> $start_date,
             'auction_end_date'=> $end_date,
-            'product_main_image_location' => 'act'. random_int(1,5) .'.png',
+            'product_main_image_location' => 'images/auction/act'. random_int(1,5) .'.png',
             'productcategories_id' => random_int(1,4),
             'is_product_sold' => 0,
         ];

@@ -19,17 +19,19 @@ use App\Http\Controllers\ProductsController;
 */
 
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [AuctionController::class, 'index']);
 
-Route::get('/auction-category', [CategoryController::class, 'auctionCategory']);
+// Route::get('/auction-category', [CategoryController::class, 'auctionCategory']);
 
-Route::get('/auction-details', [AuctionController::class, 'auction']);
+// Route::get('/auction-details', [AuctionController::class, 'auction']);
 
 Route::get('/admin', [AdminController::class, 'admin']);
 
 Route::get('/user/create', [AdminController::class, 'userCreate']);
 
-// Create Product 
+
+// ------------ Products ------------------
+// ----------------------------------------
 Route::get('/productsShow', [ProductsController::class, 'index']);
 
 Route::get('/products/create', [ProductsController::class, 'create']);
@@ -37,11 +39,26 @@ Route::get('/products/create', [ProductsController::class, 'create']);
 Route::post('/products', [ProductsController::class, 'store']);
 
 // Edit Product 
-Route::post('/products/{product}/edit', [ProductsController::class, 'edit']);
+Route::get('/products/{product}/edit', [ProductsController::class, 'edit']);
 
-// -------------- Categories --------------
+Route::put('/products/{product}', [ProductsController::class, 'update']);
+
+// Delete category
+Route::delete('/products/{product}', [ProductsController::class, 'delete']);
+
+// ------------ Categories ----------------
 // ----------------------------------------
+
+Route::get('/categoriesShow', [CategoryController::class, 'index']);
 
 Route::get('/categories/create', [CategoryController::class, 'create']);
 
 Route::post('/categories', [CategoryController::class, 'store']);
+
+// Edit category 
+Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
+
+Route::put('/categories/{category}', [CategoryController::class, 'update']);
+
+// Delete category 
+Route::delete('/categories/{category}', [CategoryController::class, 'delete']);

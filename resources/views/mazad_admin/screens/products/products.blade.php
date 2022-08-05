@@ -7,7 +7,9 @@
 
             <div class="col-sm-12">
                 <div class="col-sm-9 search-div">
-                    الكل( 5 )</a>
+                    الكل( 
+                        {{$allProductsCount}}
+                    )</a>
                 </div>
 
                 <div class="col-sm-3">
@@ -43,7 +45,7 @@
 
                         <!----------------- Body of Table ----------------->
                         <tbody>
-
+                            
                             @foreach ($products as $product)
                                 <tr>
                                 
@@ -56,13 +58,24 @@
                                     <td>{{$product->product_quantity}} </td>
                                     <td>{{$product->auction_start_date}} </td>
                                     <td>{{$product->auction_end_date}} </td>
-                                    <td>{{$product->product_main_image_location}} </td>
+                                    <td>
+                                        <img 
+                                            src="{{$product->product_main_image_location ? 
+                                            asset('storage/'.$product->product_main_image_location) :
+                                            asset('/images/auction/cate1.png')}}"
+
+                                            alt="image of {{$product->product_name}} Product" width="200" /> 
+                                    </td>
                                     <td>{{$product->is_product_sold}} </td>
                                     <td>
                                         <a href="/products/{{$product->id}}/edit"
                                             class='btn btn-success'>تعديل</a>
-                                        <a href="" class='btn btn-danger'
-                                            id="delet">حذف</a>
+
+                                        <form method="POST" action="/products/{{$product->id}}" style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button href="" class="btn btn-danger" >حذف</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -70,6 +83,7 @@
                         <!--------------- End Body of Table --------------->
                     </table>
                 </div>
+                {{ $products->links('adminPagination') }}
             </div>
 
             <div class="clearfix"></div>

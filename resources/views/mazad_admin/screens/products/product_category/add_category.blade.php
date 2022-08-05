@@ -4,7 +4,11 @@
             <div class="panel-heading">
                 <i class="fa fa-plus-circle"></i>  إضافة تصنيف جديد
             </div>
-            <div class="search-div">الكل ( 5 ) </div>  
+            <div class="col-sm-9 search-div">
+                الكل( 
+                    {{$allCategoriesCount}}
+                )</a>
+            </div> 
         </div>
 
 		<!-------------- Left Side Content --------------->
@@ -40,17 +44,16 @@
                                 </div>
 
                                 <!----------- Category Image Field ------------>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <label class="">صورة التصنيف
                                         <input type="file" class="form-control"
-                                            name="category_image_location"
-                                            value="{{ old('category_image_location') }}"/>
+                                            name="category_image_location"/>
                                     </label>
+
                                     @error('category_image_location')
                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                     @enderror
-                                    <div class="col-md-6 form-group"><img src="h.png" alt="" /></div>
-                                </div> --}}
+                                </div>
 
                                 <div class="col-md-12 form-group">
                                     <button class="btn btn-primary" name="submit_category">إضافة التصنيف</button>
@@ -83,31 +86,34 @@
                     <!------------- Head of Table -------------->
                     <thead>
                         <tr>
-                            <th width="5%"><input type="checkbox" id="select-all"></th>
-                            <th width="15%">اسم التصنيف</th>
-                            <th width="60%">وصف التصنيف</th>
-                            <td width="20%">العملية</td>
+                            {{-- <th width="5%"><input type="checkbox" id="select-all"></th> --}}
+                            <th width="10%">اسم التصنيف</th>
+                            <th width="35%">وصف التصنيف</th>
+                            <th width="40%">صورة التصنيف</th>
                         </tr>
                     </thead>
                     <!------------- Body of Table -------------->
                     <tbody>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name="select-cat"> 
-                            </td>
-                            <td></td>
-                            <td></td>	
-                            <td>
-                                <a href=""
-                                    class='btn btn-success'>تعديل</a>
-                                <a href="" class='btn btn-danger'
-                                    id="delet">حذف</a>
-                            </td>														
-                        </tr>
+                        @foreach ($categories as $category)
+                            <tr>
+                                {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
+                                <td>{{$category->category_name}}</td>
+                                <td>{{$category->category_description}}</td>
+                                <td>
+                                    <img 
+                                        src="{{$category->category_image_location ? 
+                                        asset('storage/'.$category->category_image_location) :
+                                        asset('/images/auction/cate1.png')}}"
+
+                                        alt="image of {{$category->category_name}} category" width="200" />
+                                </td>														
+                            </tr>
+                        @endforeach
                         
                     </tbody>
                 </table>
-            </div> 						
+            </div> 	
+            {{ $categories->links('adminPagination') }}						
             </div>
         </div>
     </div>

@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')
+                ->constrained("products")
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->unsignedBigInteger('auction_current_price');
             $table->boolean('auction_status');
             $table->timestamps();

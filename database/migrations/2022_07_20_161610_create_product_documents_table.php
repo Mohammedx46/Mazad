@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('product_documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('products_id')->constrained()->onDelete('cascade');
+            $table->foreignId('products_id')
+                ->constrained("products")
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->string('product_document_location');
             $table->timestamps();
         });

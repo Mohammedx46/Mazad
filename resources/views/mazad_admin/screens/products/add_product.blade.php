@@ -25,26 +25,25 @@
                                             <div class="col-md-12 form-group">
                                                 <!-------------- Product Name Field --------------->
                                                 
-                                                    <label class="labelAdd  col-md-6">اسم المنتج
-                                                        <input type="text" placeholder="اسم المنتج أو الخدمة المقدمة"
-                                                            class="form-control" name="product_name" required 
-                                                            value="{{ old('product_name') }}"/>
-                                                            @error('product_name')
-                                                                <div class="error-alert" role="alert"> {{$message}}</div>
-                                                            @enderror
-                                                    </label>
+                                                <label class="labelAdd  col-md-6">اسم المنتج
+                                                    <input type="text" placeholder="اسم المنتج أو الخدمة المقدمة"
+                                                        class="form-control" name="product_name" required 
+                                                        value="{{ old('product_name') }}"/>
+                                                        @error('product_name')
+                                                            <div class="error-alert" role="alert"> {{$message}}</div>
+                                                        @enderror
+                                                </label>
 
                                                 <!------------ Product Short Description Field -------------->
                                                 
-                                                    <label class="labelAdd col-md-6"> وصف مختصر
-                                                        <input type="text" class="form-control"
-                                                            name="product_short_description" placeholder="وصف مختصر عن المنتج أو الخدمة" required 
-                                                            value="{{ old('product_short_description') }}"/>
-                                                            @error('product_short_description')
-                                                                <div class="error-alert" role="alert"> {{$message}} </div>
-                                                            @enderror
-                                                    </label>
-                                                
+                                                <label class="labelAdd col-md-6"> وصف مختصر
+                                                    <input type="text" class="form-control"
+                                                        name="product_short_description" placeholder="وصف مختصر عن المنتج أو الخدمة" required 
+                                                        value="{{ old('product_short_description') }}"/>
+                                                        @error('product_short_description')
+                                                            <div class="error-alert" role="alert"> {{$message}} </div>
+                                                        @enderror
+                                                </label>
                                             </div>
 
                                             <!------------ Product Description Field -------------->
@@ -126,9 +125,9 @@
                                                         value="{{ old('product_main_image_location') }}"
                                                     />
 
-                                                        @error('product_main_image_location')
-                                                            <div class="error-alert" role="alert"> {{$message}} </div>
-                                                        @enderror
+                                                    @error('product_main_image_location')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
 
                                                 </label> 
                                                 
@@ -146,7 +145,7 @@
                                                     @enderror
                                                 </label>
                                             
-
+                                            </div>
                                             <div class="form-group col-md-12"></div>
 
                                             <div style="float:right;">
@@ -166,4 +165,5 @@
             </div>
         </div>
     </div>
+    
 </x-admin-layout>

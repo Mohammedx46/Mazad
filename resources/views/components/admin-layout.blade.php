@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/style.css')}}">	
     </head>
 
-    <body>
+    <body >
         <!------------------------------------------------>
         <!--------------- The left SideBar  -------------->
         <!------------------------------------------------>
@@ -104,24 +104,25 @@
             <!-------------- The Main Content  --------------->
             <!------------------------------------------------>
 
-                {{$slot}}
+        {{$slot}}
 
             <!------------------------------------------------>
             <!----------------- The Footer  ------------------>
             <!------------------------------------------------>
+        <x-flash-message/>
+        
+        <footer>
+            <div class="col-sm-6">
+                Copyright &copy; 2018 <a href="http://www.webtrickshome.com">Webtrickshome.com</a> All rights reserved. 
+            </div>
+            <div class="col-sm-6">
+                <span class="pull-right">Version 1.1</span>
+            </div>
+        </footer>
 
-            <footer>
-                <div class="col-sm-6">
-                    Copyright &copy; 2018 <a href="http://www.webtrickshome.com">Webtrickshome.com</a> All rights reserved. 
-                </div>
-                <div class="col-sm-6">
-                    <span class="pull-right">Version 1.1</span>
-                </div>
-            </footer>
-
-            <script type="text/javascript" src="{{url('js/admin_js/jquery.min.js')}}"></script>
-            <!-- <script type="text/javascript" src="{{url('js/admin_js/bootstrap.min.js')}}"></script> -->
-            <script type="text/javascript" src="{{url('js/admin_js/app.min.js')}}"></script>
-            <!-- <script type="text/javascript" src="{{url('js/admin_js/script.js')}}"></script> -->
+        <script type="text/javascript" src="{{url('js/admin_js/jquery.min.js')}}"></script>
+        <!-- <script type="text/javascript" src="{{url('js/admin_js/bootstrap.min.js')}}"></script> -->
+        <script type="text/javascript" src="{{url('js/admin_js/app.min.js')}}"></script>
+        <!-- <script type="text/javascript" src="{{url('js/admin_js/script.js')}}"></script> -->
     </body>
 </html>

@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         $auction = Auctions::factory(5)->create();
 
         AuctionUsers::factory(5)->create([
-            'auctions_id' => $auction[2]->id,
+            'auction_id' => $auction[2]->id,
             'user_id' => $user[0]->id
         ]);
 

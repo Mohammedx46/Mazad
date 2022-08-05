@@ -516,10 +516,21 @@ input[type=checkbox] {
     margin: .1em;
 }
 
-th{
+th {
     text-align: center;
 }
 
-td{
+td {
     text-align: center;
+}
+
+.processMessage {
+    position: fixed;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
+    width: 30%;
+    text-align: center;
+    font-size: 1em;
 }
