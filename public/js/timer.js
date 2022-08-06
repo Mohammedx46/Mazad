@@ -21,29 +21,36 @@ const timer = {
         return this.sec.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false });
     },
 
-
-
     countDown(endDate, id) {
-
         let endTime = Math.floor(new Date(endDate).getTime() / 1000)
+        const days = document.querySelector(`#days-${id}`)
+        const hours = document.querySelector(`#hours-${id}`)
+        const minutes = document.querySelector(`#minutes-${id}`)
+        const seconds = document.querySelector(`#seconds-${id}`)
+
         setInterval(() => {
+
             if (endTime < Math.floor(Date.now() / 1000)) {
                 return
             }
             let elapsedTime = endTime - Math.floor(Date.now() / 1000)
 
             this.day = Math.floor(elapsedTime / 60 / 60 / 24)
-            $(`#days-${id}`).text(this.days)
-
+            days.innerText = this.days
             this.hr = Math.floor(elapsedTime / 60 / 60 % 24)
-            $(`#hours-${id}`).text(this.hours)
-
+            hours.innerText = this.hours
             this.min = Math.floor(elapsedTime / 60 % 60)
-            $(`#minutes-${id}`).text(this.minutes)
-
+            minutes.innerText = this.minutes
             this.sec = Math.floor(elapsedTime % 60)
-            $(`#seconds-${id}`).text(this.seconds)
+            seconds.innerText = this.seconds
         }, 1000)
     },
 
 }
+
+document.querySelectorAll('.timer').forEach(node => {
+    const endDate = node.dataset.endDate
+    const productId = node.dataset.productId
+
+    timer.countDown(endDate, productId)
+})

@@ -28,16 +28,7 @@
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 
     {{-- javascript Files --}}
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="{{url('js/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{url('js/fontawesome.min.js')}}"></script>
-    <script src="{{url('js/swiper-bundle.js')}}"></script>
-    <script src="{{url('js/jquery.nice-select.js')}}"></script>
-    <script src="{{url('js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{url('js/wow.js')}}"></script>
-    <script src="{{url('js/main.js')}}"></script>
-    <script src="{{url('js/timer.js')}}"></script>
+    
     
 </head>
 
@@ -105,9 +96,9 @@
                     <div class="search-icon search-btn d-lg-block d-none">
                         <i class='bx bx-search-alt-2'></i>
                     </div>
-                    {{-- <div class="mobile-menu-btn d-lg-none d-block">
+                    <div class="mobile-menu-btn d-lg-none d-block">
                         <i class='bx bx-menu'></i>
-                    </div>  --}}
+                    </div> 
                 </div>
 
                 <div class="main-menu">
@@ -431,6 +422,15 @@
 </body>
 
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->
-
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="{{url('js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{url('js/fontawesome.min.js')}}"></script>
+    <script src="{{url('js/swiper-bundle.js')}}"></script>
+    <script src="{{url('js/jquery.nice-select.js')}}"></script>
+    <script src="{{url('js/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{url('js/wow.js')}}"></script>
+    <script src="{{url('js/main.js')}}"></script>
+    <script src="{{url('js/timer.js')}}"></script>
 </html>
 

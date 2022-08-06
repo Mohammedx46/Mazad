@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 
@@ -21,7 +20,7 @@ use App\Http\Controllers\ProductsController;
 
 Route::get('/', [AuctionController::class, 'index']);
 
-// Route::get('/auction-category', [CategoryController::class, 'auctionCategory']);
+Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
 // Route::get('/auction-details', [AuctionController::class, 'auction']);
 

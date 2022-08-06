@@ -48,10 +48,9 @@
     </div>
 @endif
 
-{{-- <script>
-    let show = true
-    setTimeout(()=>show = false, 3000)
-    let x = document.getElementsByClassName("processMessage")
-    x.innerText= " why why"
-    x.style.display='none'
-</script> --}}
+<script>
+    let x = document.querySelector(".processMessage")
+    setTimeout(
+        x.style.display='none'
+    , 3000)
+</script>

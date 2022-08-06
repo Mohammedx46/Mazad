@@ -10,7 +10,6 @@
             </div>
             <div class="col-1 d-flex justify-content-end align-items-center">
                 <div class="search-cross-btn">
-
                     <i class="bi bi-x"></i>
                 </div>
             </div>

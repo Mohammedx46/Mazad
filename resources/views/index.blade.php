@@ -8,16 +8,15 @@
     <!-- ---------------------------------------- -->
     <section class="category-section pt-110 pb-110 mb-110">
         <div class="container position-relative">
-            
             <x-sectionTitle title='إستعراض حسب التصنيف' description="" />
 
             <div class="row">
                 <div class="col-12">
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
-                            {{-- @foreach ($categories as $category) --}}
-                            <x-category.items  :categories="$categories" />
-                            {{-- @endforeach --}}
+                            @foreach ($categories as $category)
+                                <x-category.items  :categories="$categories" />
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -41,9 +40,9 @@
     <x-container.section class="live-auction">
             <!-- Introduction Section  -->           
             <x-sectionTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
-
+            
             <!-- Live Auction Items  -->               
-            <x-auction.items :products="$products" />
+            <x-auction.liveItems :products="$products" />
 
             {{-- Show All Button --}}
             <x-show-all  class="btn--fill-primary" />
@@ -64,7 +63,7 @@
         />
 
         <!-- Live Auction Items  -->               
-        <x-auction.items :products="$products" />
+        <x-auction.comingFeatureItems :comingFeatures="$comingFeatures" />
 
         {{-- Show All Button --}}
         <x-show-all  class="btn--fill-white" />

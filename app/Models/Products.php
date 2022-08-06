@@ -21,20 +21,36 @@ class Products extends Model
         'is_product_sold',
     ];
 
-    // public function scopeFilter($query, array $filters)
-    // {
+    public function scopeFilter($query, array $filters)
+    {
+        // dd($filters);
+        if ($filters['categoryId'] ?? false) {
+            $query->where('ProductCategories_id', 'like', '%' . request('categoryId') . '%');
+        }
 
-    //     if ($filters['tag'] ?? false) {
-    //         $query->where('tags', 'like', '%' . request('tag') . '%');
-    //     }
+        if ($filters['search'] ?? false) {
+            $query->where('product_name', 'like', '%' . request('search') . '%')
+                ->orWhere('product_short_description', 'like', '%' . request('search') . '%')
+                ->orWhere('product_description', 'like', '%' . request('search') . '%');
+        }
 
-    //     if ($filters['search'] ?? false) {
-    //         $query->where('title', 'like', '%' . request('search') . '%')
-    //             ->orWhere('description', 'like', '%' . request('search') . '%')
-    //             ->orWhere('tags', 'like', '%' . request('search') . '%');
-    //     }
-    // }
+        if ($filters['comingFeatures'] ?? true) {
+            $query->where('auction_start_date', '>=' ,  \Carbon\Carbon::tomorrow());
+        }
 
+        
+    }
+
+    public function scopeFilter2($query, array $filters)
+    {
+        if ($filters['liveAuctions'] ?? true) {
+            // $query->where('auction_start_date', '<=',  today()->format('Y-m-d h:m:s'));
+            $query->whereBetween('auction_start_date', [$filters['liveAuctions'], today()->format('Y-m-d h:m:s')] );
+            // $query->whereBetween('auction_start_date' , ['2022-08-22 00:50:28' , today()->format('Y-m-d h:m:s')] );
+            // $query->where('auction_start_date' , 'Between'  , $filters['liveAuctions']. 'and' . today()->format('Y-m-d h:m:s') );
+            // $query->whereBetween('auction_start_date', ['2022-08-23 00:50:28' , '2022-08-06 06:08:36'])->first();
+        }
+    }
 
 
     //------------------ Relationships ------------------

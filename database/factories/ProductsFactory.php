@@ -16,9 +16,9 @@ class ProductsFactory extends Factory
      */
     public function definition()
     {
-        $start_date = $this->faker->dateTimeBetween('-2 months', '+1 months');
+        $start_date = $this->faker->dateTimeBetween('tomorrow', '+1 month');
         $end_date = $this->faker->dateTimeBetween(
-                        $start_date->format('Y-m-d H:i:s').' +3 days',
+                        $start_date->format('Y-m-d H:i:s'),
                         $start_date->format('Y-m-d H:i:s').' +3 days');
         return [
             'product_name' => $this->faker->word(),

@@ -7,11 +7,10 @@
             <x-category.filter :categories="$categories" />
 
             <!-- Second Live Auctions  -->
-            <x-auction.items :products="$products" class="col-lg-4"/>
+            <x-auction.liveItems :products="$products"  class="col-lg-4"/>
 
             {{-- <!-- Third Pagination Live Auctions  --> --}}
             {{ $products->links('pagination') }}
-            
             
         </x-container.section>
 
