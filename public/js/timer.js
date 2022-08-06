@@ -45,7 +45,6 @@ const timer = {
             seconds.innerText = this.seconds
         }, 1000)
     },
-
 }
 
 document.querySelectorAll('.timer').forEach(node => {

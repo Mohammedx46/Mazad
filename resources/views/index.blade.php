@@ -42,7 +42,7 @@
             <x-sectionTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
             
             <!-- Live Auction Items  -->               
-            <x-auction.liveItems :products="$products" />
+            <x-auction.liveItems :section="1" :products="$products" />
 
             {{-- Show All Button --}}
             <x-show-all  class="btn--fill-primary" />

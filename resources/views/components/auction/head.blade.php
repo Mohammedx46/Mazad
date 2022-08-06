@@ -1,4 +1,4 @@
-@props(['product','comingFeature'])
+@props(['product','comingFeature', 'section'])
 
 
 <div class="auction-img">
@@ -6,6 +6,6 @@
             asset('storage/'.$product->product_main_image_location) :
             asset('/images/auction/cate1.png') }} " alt=""/>
 
-        <x-timer :section="1" :productId="$product->id" :endDate="$product->auction_end_date" />
+        <x-timer :section="$section" :productId="$product->id" :endDate="$product->auction_end_date" />
 
 </div>

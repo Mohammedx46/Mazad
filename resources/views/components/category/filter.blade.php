@@ -8,13 +8,11 @@
             <button type="submit" class="col-sm-1" style="border: none; background: transparent;color: #234432" > <i class="fa fa-search"  aria-hidden="true"></i> </button>
         </form>
         
-        <select name="best-work" >
+        <select name="best-work" onchange="route(event)" >
             <option >اختر تصنيف</option>
             @foreach ($categories as $category)
-                <option >
-                    <a href="auction-category/?categoryId={{$category->id}}">
-                        {{$category->category_name}} 
-                    </a> 
+                <option value="{{$category->id}}" >
+                    {{$category->category_name}} 
                 </option>
             @endforeach
         </select>
