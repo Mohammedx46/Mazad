@@ -26,7 +26,7 @@ class User extends Authenticatable
         'password',
         'user_status',
         'subscription_type',
-        'Insurance amount',
+        'insurance_amount',
 		'is_bidding',
         'is_confirm_terms',
     ];

@@ -28,7 +28,7 @@ class UserFactory extends Factory
             'user_status' => $this->faker->boolean(),
             'remember_token' => Str::random(10),
             'subscription_type' => random_int(1,4),
-            'Insurance amount'=> random_int(200,300),
+            'insurance_amount'=> random_int(200,300),
 		    'is_bidding'=> false,
             'is_confirm_terms' => true,
         ];

@@ -50,12 +50,12 @@
                                     </td>	
                                     <td>
                                         <a href="/categories/{{$category->id}}/edit"
-                                            class='btn btn-success'>تعديل</a>
+                                            class='btn btn-success'><i class="fa-solid fa-pen-to-square"></i> تعديل</a>
 
                                         <form method="POST" action="/categories/{{$category->id}}" style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button href="" class="btn btn-danger" >حذف</button>
+                                            <button href="" class="btn btn-danger" ><i class="fa-solid fa-trash">Delete</i> حذف</button>
                                         </form>
                                     </td>														
                                 </tr>

@@ -9,6 +9,18 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    // Show All Users
+    public function index()
+    {
+        $users  = User::latest() ;
+        $count = User::count();;
+        return view('mazad_admin.screens.users.users', [
+            "heading" => "كل المستخدمين",
+            "users" => $users->paginate(5),
+            "allUsersCount" => $count,
+        ]);
+    }
+
     //Show Sign In Form
     public function create()
     {
@@ -37,7 +49,7 @@ class UserController extends Controller
             'subscription_type' => ['required', 'numeric'],     
         ]);
         $formFields['password'] = bcrypt($formFields['password']);
-        $formFields['Insurance amount'] = 0;
+        $formFields['insurance_amount'] = 0;
         $formFields['is_bidding'] = false;
         
 
@@ -47,6 +59,37 @@ class UserController extends Controller
 
         return redirect('/')->with('success', "تم إضافة المستخدم وتسجيل الدخول"); 
     
+    }
+
+    //Show Sign In Form
+    public function edit(User $user)
+    {
+        return view('mazad_admin.screens.users.edit_user', [
+            'user' => $user,
+        ]);
+    }
+
+    public function update(Request $request, User $user)
+    {
+        // dd($formFields);
+        
+        $formFields = $request->validate([
+            'first_name'=> ['required'],
+        	'last_name'=>['required'],
+        	'email'=>['required','email', Rule::unique('users', 'email')],
+        	'phone_number'=>['required', 'numeric','digits:9'],
+        	'password'=>['required','confirmed', 'min:8'],    
+            'user_status'=> ['required'] ,  
+            'subscription_type' => ['required', 'numeric'],     
+        ]);
+        $formFields['password'] = bcrypt($formFields['password']);
+        $formFields['insurance_amount'] = 0;
+        $formFields['is_bidding'] = false;
+        
+        $user->update($formFields);
+
+
+        return redirect('/usersShow')->with('success', 'تم تعديل  المستخدم بنجاح');
     }
 
     // Login 
@@ -86,7 +129,7 @@ class UserController extends Controller
     public function userProducts()
     {
         return view('author', [
-            'products' => auth()->user()->products()->get()
+            // 'products' => auth()->user()->products()->get()
         ]);
     }
 }

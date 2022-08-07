@@ -1,39 +1,4 @@
-<?php 
-    require("../../dbconnect.php"); 
-    require("../../sidebar.php");
-?>
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ADMIN DASHBOARD | تهامة فلافور</title>
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="../../css/menu.css">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-</head>
-
-<body>
-
-    <!------------------------------------------------>
-    <!--------------- The left SideBar  -------------->
-    <!------------------------------------------------>
-    <?php 
-        $links = array(
-            "index"=> "../../index.php",
-            "allentities"=>"allentities.php",
-            "addentity"=>"addentity.php",
-            // --------------------
-            // Entity Category
-            // --------------------
-            "allcategories"=>"entitycategory/allcategories.php",
-            "addcategory"=>"entitycategory/addcategory.php"
-        );
-        sideBar($links);
-    ?>
-
+<x-admin-layout>
     <!------------------------------------------------>
     <!-------------- The Main Content  --------------->
     <!------------------------------------------------>
@@ -57,7 +22,8 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <form role="form" method="post" action="../../API/insert.php" >
+                                        <form role="form" method="POST" action="/users/{{$user->id}}" >
+                                            @csrf
                                             <!-------------- Left Side --------------->
                                             <div class="col-md-6 form-group">
 
@@ -65,28 +31,60 @@
                                                 <label class="labelAdd col-md-12" id="m">الاسم الأول
                                                     <input type="text" placeholder="أكتب اسمك الأول"
                                                         class="form-control" name="first_name" required
-                                                        value=""/>   
+                                                        value="{{$user->first_name}}"/> 
+
+                                                    @error('first_name')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label> 
                                                 
                                                 <!-------------- Privilege Field ---------------> 
                                                 <label class="labelAdd col-md-4"> نوع الإشتراك
                                                     <select class="form-control" name="subscription_type" required> 
-                                                    <option value="0">زائر</option>
-                                                    <option value="0">أساسي</option>
-                                                    <option value="0">زائر</option>
+                                                        <option value="0">زائر</option>
+                                                        <option value="0">أساسي</option>
+                                                        <option value="0">مميز</option>
                                                     </select>   
+                                                    @error('subscription_type')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label> 
                                                 <!-------------- Password Field --------------->  
                                                 <label class="labelAdd col-md-8">كلمة المرور
                                                     <input type="password" class="form-control"
-                                                        placeholder="أدخل كلمة السر" name="password" required
-                                                        value=""/>                                        
+                                                        placeholder="أدخل كلمة السر" name="password" required/>   
+                                                    @error('password')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror                                     
                                                 </label>
                                                 <!-------------- Phone Number Field ----------->
                                                 <label  class="labelAdd col-md-12">رقم الهاتف
                                                     <input type="text" class="form-control"
                                                         placeholder="أكتب رقم الهاتف 77 , 73 , 71 , 71" name="phone_number" required
-                                                        value=""/>
+                                                        value="{{$user->phone_number}}"/>
+                                                    @error('phone_number')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
+                                                </label>
+                                                <!-------------- Activation Field ---------->
+                                                <label class="labelAdd col-md-4">حالة المستخدم
+                                                    <select class="form-control" name="user_status" required>
+                                                        <optgroup>نشط</optgroup>
+                                                        <option value = "1">نشط     </option>
+                                                        <option value = "0">معطل    </option>
+                                                    </select>  
+                                                    @error('user_status')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror                                          
+                                                </label>  
+
+                                                <label  class="labelAdd col-md-8"> مبلغ التأمين
+                                                    <input type="number" class="form-control"
+                                                        placeholder="مبلغ التأمين" name="insurance_amount" required
+                                                        value="{{$user->insurance_amount}}"/>
+                                                    @error('insurance_amount')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label>
                                             </div>
                                         
@@ -99,44 +97,45 @@
                                                 <label class="labelAdd col-md-12" id="m">اللقب
                                                     <input type="text" placeholder="أكتب اسمك الأخير"
                                                         class="form-control" name="last_name" required
-                                                        value=""/>   
+                                                        value="{{$user->last_name}}"/>   
+                                                    @error('last_name')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label> 
 
                                                 <!------------- Confirm Password Field -----> 
                                                 <label class="labelAdd col-md-12">تأكيد كلمة المرور
                                                     <input type="password" class="form-control"
                                                         placeholder="أكتب لكمة المرور مرة أخرى" 
-                                                        name="confirmation_password" required
-                                                        value=""/>
+                                                        name="password_confirmation" required/>
+                                                    @error('password_confirmation')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label>
 
                                                 <!-------------- Email Field --------------->                                                                         
                                                 <label  class="labelAdd col-md-12">البريد الإلكتروني
                                                     <input type="email" class="form-control"
                                                         placeholder="أكتب بريدك الإلكتروني" name="email" required
-                                                        value=""/>
+                                                        value="{{$user->email}}"/>
+                                                    @error('email')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
                                                 </label>                   
                                             </div>
 
                                             <div class="form-group col-md-12">
                                                 
-                                                <!-------------- Activation Field ---------->
-                                                <label class="labelAdd col-md-2">حالة المستخدم
-                                                    <select class="form-control" name="active" required>
-                                                        <optgroup>نشط</optgroup>
-                                                        <option value = "1">نشط     </option>
-                                                        <option value = "0">معطل    </option>
-                                                    </select>                                            
-                                                </label>  
+                                                
 
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">
-                                                        <button type="submit" name ="submitUser" class="btn btn-primary">إضافة المستخدم</button>
+                                                        <button type="submit" name ="submit" class="btn btn-primary">تعديل المستخدم</button>
                                                         <button type="reset" class="btn btn-danger">إلغاء</button>
                                                     </div>
                                             </div>                                
-                                        </form>
+                                        </form> 
                                     </div>
                                 </div>
                             </div>
@@ -147,35 +146,4 @@
         </div>
     </div>
 
-
-    <!------------------------------------------------>
-    <!----------------- The Footer  ------------------>
-    <!------------------------------------------------>
-
-    <?php require("../../footer.php"); ?>
-
-    <script type="text/javascript" src="../../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../js/app.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('.fa-bars').click(function() {
-            $('.sidebar').toggle();
-        })
-    });
-    </script>
-
-    <script src="../ckeditor/ckeditor.js"></script>
-    <script>
-    CKEDITOR.replace('description', {
-        "filebrowserBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html",
-        "filebrowserImageBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html?type=Images",
-        "filebrowserFlashBrowseUrl": "..\/editor\/ckfinder\/ckfinder.html?type=Flash",
-        "filebrowserUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files",
-        "filebrowserImageUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images",
-        "filebrowserFlashUploadUrl": "..\/editor\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash"
-    });
-    </script>
-</body>
-
-</html>
+</x-admin-layout>

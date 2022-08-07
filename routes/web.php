@@ -31,7 +31,14 @@ Route::get('/contact', [AuctionController::class, 'contact']);
 
 // ------------ Users ---------------------
 // ----------------------------------------
-Route::get('/user/create', [AdminController::class, 'userCreate']);
+Route::get('/usersShow', [UserController::class, 'index']);
+
+Route::get('/users/create', [UserController::class, 'userCreate']);
+
+Route::get('/users/{user}/edit', [UserController::class, 'edit']);
+
+Route::put('/users/{user}', [UserController::class, 'update']);
+
 
 
 // ------------ Products ------------------
