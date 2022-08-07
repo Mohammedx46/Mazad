@@ -18,14 +18,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-    // $table->id('user_id');
-    // $table->string('first_name');
-    // $table->string('last_name');
-    // $table->string('email')->unique();
-    // $table->timestamp('email_verified_at')->nullable();
-    // $table->integer('mobile');
-    // $table->string('password');
-    // $table->boolean('user_status');
     protected $fillable = [
         'first_name',
         'last_name',
@@ -34,6 +26,9 @@ class User extends Authenticatable
         'password',
         'user_status',
         'subscription_type',
+        'Insurance amount',
+		'is_bidding',
+        'is_confirm_terms',
     ];
 
     /**
@@ -56,6 +51,12 @@ class User extends Authenticatable
     public function auction_user()
     {
         return $this->hasMany(AuctionUsers::class, 'user_id');
+    }
+
+    // Relationship To Products 
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'products_id');
     }
 
     protected $casts = [

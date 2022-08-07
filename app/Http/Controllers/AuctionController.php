@@ -19,7 +19,7 @@ class AuctionController extends Controller
         $liveAuctions = Products::latest()->Filter2(['liveAuctions'=> $date])->paginate(3);
         return view('index' , [
             "heading" => "All Auctions",
-            "products" => Products::all(),
+            "products" => $liveAuctions,
             "categories" => $liveAuctions,
             "comingFeatures" => $comingFeatures,
         ]);
@@ -27,6 +27,7 @@ class AuctionController extends Controller
 
     public function auctionCategory()
     {
+        // dd(request('search'));
         $comingFeatures = Products::latest()->ComingFeatures(['comingFeatures'])->paginate(5);
         $products = Products::latest()->filter(request(['categoryId', 'search']))->paginate(5);
         // dd($comingFeatures);
@@ -44,5 +45,10 @@ class AuctionController extends Controller
             "products" => Products::latest()->paginate(),
             "auction_images" => ProductImages::all(),
         ]);
+    }
+
+    public function contact()
+    {
+        return view('mazad.contact');
     }
 }

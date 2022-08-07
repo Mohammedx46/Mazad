@@ -18,6 +18,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            
             'first_name'=> $this->faker->firstName(),
             'last_name'=> $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -27,6 +28,9 @@ class UserFactory extends Factory
             'user_status' => $this->faker->boolean(),
             'remember_token' => Str::random(10),
             'subscription_type' => random_int(1,4),
+            'Insurance amount'=> random_int(200,300),
+		    'is_bidding'=> false,
+            'is_confirm_terms' => true,
         ];
     }
 

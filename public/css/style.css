@@ -6785,7 +6785,7 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
 
 .right-form-area .form-inner i {
     position: absolute;
-    right: 20px;
+    left: 20px;
     bottom: 14px
 }
 
@@ -6940,7 +6940,7 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
     position: relative;
     vertical-align: middle;
     cursor: pointer;
-    margin-right: 5px
+    margin-left: 10px;
 }
 
 .right-form-area input[type=checkbox]:checked+label:after {
@@ -6948,7 +6948,7 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
     display: block;
     position: absolute;
     top: 7px;
-    left: 6px;
+    right: 6px;
     width: 4px;
     height: 10px;
     border: 1px solid #fff;

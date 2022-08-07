@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 
@@ -26,6 +27,10 @@ Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
 Route::get('/admin', [AdminController::class, 'admin']);
 
+Route::get('/contact', [AuctionController::class, 'contact']);
+
+// ------------ Users ---------------------
+// ----------------------------------------
 Route::get('/user/create', [AdminController::class, 'userCreate']);
 
 
@@ -33,7 +38,7 @@ Route::get('/user/create', [AdminController::class, 'userCreate']);
 // ----------------------------------------
 Route::get('/productsShow', [ProductsController::class, 'index']);
 
-Route::get('/products/create', [ProductsController::class, 'create']);
+Route::get('/products/create', [ProductsController::class, 'create'])->middleware('auth');
 
 Route::post('/products', [ProductsController::class, 'store']);
 
@@ -61,3 +66,17 @@ Route::put('/categories/{category}', [CategoryController::class, 'update']);
 
 // Delete category 
 Route::delete('/categories/{category}', [CategoryController::class, 'delete']);
+
+
+// ------------ User ---------------------
+// ----------------------------------------
+
+Route::get('/signup', [UserController::class, 'create'])->middleware('guest');
+
+Route::post('/users', [UserController::class, 'store']);
+
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+Route::get('/logout', [UserController::class, 'logout']);

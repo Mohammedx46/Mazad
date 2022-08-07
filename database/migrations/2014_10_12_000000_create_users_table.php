@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('user_status');
             $table->integer('subscription_type');
+            $table->unsignedBigInteger('Insurance amount')->nullable();
+		    $table->boolean('is_bidding')->nullable();
+            $table->boolean('is_confirm_terms');
             $table->rememberToken();
             $table->timestamps();
         });

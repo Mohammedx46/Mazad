@@ -9,6 +9,7 @@ class Products extends Model
 {
     protected $fillable= [
         'productcategories_id',
+        'user_id',
         'product_name',
         'product_short_description',
         'product_description',
@@ -56,6 +57,12 @@ class Products extends Model
 
     //------------------ Relationships ------------------
     // Relationship To User
+
+    public function user()
+    {
+        return $this->belongsTo(Users::class, 'user_id');
+    }
+    
     public function category()
     {
         return $this->belongsTo(ProductCategories::class, 'productcategories_id');

@@ -37,7 +37,7 @@
     <!-- ---------------------------------------- -->
     <!-- Third Section Live Auction  -->
     <!-- ---------------------------------------- -->
-    <x-container.section class="live-auction">
+    <x-container.section class="live-auction" id="live-auction">
             <!-- Introduction Section  -->           
             <x-sectionTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
             
@@ -56,14 +56,14 @@
     <!-- ---------------------------------------- -->
     <!-- Fourth Section Coming Featured Assets  -->
     <!-- ---------------------------------------- -->
-    <x-container.section class="pb-110 coming-feature pt-110">
+    <x-container.section class="pb-110 coming-feature pt-110" id="coming-features">
         <!-- Introduction Section  -->           
         <x-sectionTitle  title='مزادات قادمة'
             description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" 
         />
 
         <!-- Live Auction Items  -->               
-        <x-auction.comingFeatureItems :comingFeatures="$comingFeatures" />
+        <x-auction.liveItems :section="2" :products="$comingFeatures" />
 
         {{-- Show All Button --}}
         <x-show-all  class="btn--fill-white" />

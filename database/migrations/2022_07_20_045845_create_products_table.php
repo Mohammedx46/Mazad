@@ -19,6 +19,10 @@ return new class extends Migration
                     ->constrained("productcategories")
                     ->cascadeOnUpdate()
                     ->nullOnDelete();
+            $table->foreignId('user_id')->nullable()
+                    ->constrained("users")
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
             $table->string('product_name');
             $table->text('product_short_description');
             $table->text('product_description');

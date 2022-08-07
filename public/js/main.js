@@ -67,3 +67,8 @@
 function route(event) {
     window.location.href = '/auction-category/?categoryId=' + event.target.value
 }
+
+
+function routeLogout(event) {
+    window.location.href = '/logout'
+}

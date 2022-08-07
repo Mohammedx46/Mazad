@@ -21,6 +21,8 @@ class ProductsFactory extends Factory
                         $start_date->format('Y-m-d H:i:s'),
                         $start_date->format('Y-m-d H:i:s').' +3 days');
         return [
+            'productcategories_id' => random_int(1,4),
+            'user_id' => 1,            
             'product_name' => $this->faker->word(),
             'product_short_description' => $this->faker->sentence(),
             'product_description' => $this->faker->paragraph(),
@@ -30,7 +32,6 @@ class ProductsFactory extends Factory
             'auction_start_date'=> $start_date,
             'auction_end_date'=> $end_date,
             'product_main_image_location' => 'images/auction/act'. random_int(1,5) .'.png',
-            'productcategories_id' => random_int(1,4),
             'is_product_sold' => 0,
         ];
     }

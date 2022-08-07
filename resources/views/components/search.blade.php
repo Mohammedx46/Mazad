@@ -1,6 +1,6 @@
+@props(['targetController','placeHolder'])
 
-
-
+{{-- 
 <div class="mobile-search">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -15,4 +15,9 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+<form  action="/{{$targetController}}">
+    <input type="sreach" id="search" name="search" class=" col-ms-7" placeholder="{{$placeHolder}}" >
+    <button type="submit" class="col-sm-1" style="border: none; background: transparent;color: #234432" > <i class="fa fa-search"  aria-hidden="true"></i> </button>
+</form>

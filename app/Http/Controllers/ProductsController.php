@@ -55,6 +55,7 @@ class ProductsController extends Controller
         ]);
         
         $formFields['is_product_sold'] = 0 ;
+        $formFields['user_id'] = auth()->id;
 
         // Store Image
         if ($request->hasFile('product_main_image_location')) {
