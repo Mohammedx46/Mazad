@@ -92,6 +92,14 @@ class UserController extends Controller
         return redirect('/usersShow')->with('success', 'تم تعديل  المستخدم بنجاح');
     }
 
+    // Delete User
+    public function delete(User $user)
+    {
+        $user->delete();
+
+        return back()->with('danger' , "تم حذف المستخدم بنجاح");
+    }
+
     // Login 
     public function login()
     {

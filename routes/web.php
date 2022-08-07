@@ -38,6 +38,8 @@ Route::get('/users/create', [UserController::class, 'userCreate']);
 Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
+// Delete user
+Route::delete('/users/{user}', [UserController::class, 'delete']);
 
 
 
