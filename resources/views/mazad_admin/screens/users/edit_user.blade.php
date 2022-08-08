@@ -24,6 +24,7 @@
                                     <div class="col-md-12">
                                         <form role="form" method="POST" action="/users/{{$user->id}}" >
                                             @csrf
+                                            @method('PUT')
                                             <!-------------- Left Side --------------->
                                             <div class="col-md-6 form-group">
 
@@ -112,7 +113,6 @@
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>
-
                                                 <!-------------- Email Field --------------->                                                                         
                                                 <label  class="labelAdd col-md-12">البريد الإلكتروني
                                                     <input type="email" class="form-control"
@@ -123,11 +123,7 @@
                                                     @enderror
                                                 </label>                   
                                             </div>
-
                                             <div class="form-group col-md-12">
-                                                
-                                                
-
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">

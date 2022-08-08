@@ -19,34 +19,32 @@ use App\Http\Controllers\ProductsController;
 */
 
 
+// ------------ Mazad ---------------------
+// ----------------------------------------
+
 Route::get('/', [AuctionController::class, 'index']);
 
 Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
-// Route::get('/auction-details', [AuctionController::class, 'auction']);
+Route::get('/live-auctions', [AuctionController::class, 'liveAuctions']);
+
+Route::get('/coming-auctions', [AuctionController::class, 'comingAuctions']);
 
 Route::get('/admin', [AdminController::class, 'admin']);
 
 Route::get('/contact', [AuctionController::class, 'contact']);
 
-// ------------ Users ---------------------
-// ----------------------------------------
-Route::get('/usersShow', [UserController::class, 'index']);
+// Author
+Route::get('/authors', [AuctionController::class, 'authors']);
 
-Route::get('/users/create', [UserController::class, 'userCreate']);
-
-Route::get('/users/{user}/edit', [UserController::class, 'edit']);
-
-Route::put('/users/{user}', [UserController::class, 'update']);
-// Delete user
-Route::delete('/users/{user}', [UserController::class, 'delete']);
-
+// Route::get('/author/{author}', [AuctionController::class, 'author']);
 
 
 // ------------ Products ------------------
 // ----------------------------------------
 Route::get('/productsShow', [ProductsController::class, 'index']);
 
+// Create Product 
 Route::get('/products/create', [ProductsController::class, 'create'])->middleware('auth');
 
 Route::post('/products', [ProductsController::class, 'store']);
@@ -56,7 +54,7 @@ Route::get('/products/{product}/edit', [ProductsController::class, 'edit']);
 
 Route::put('/products/{product}', [ProductsController::class, 'update']);
 
-// Delete category
+// Delete Product
 Route::delete('/products/{product}', [ProductsController::class, 'delete']);
 
 // ------------ Categories ----------------
@@ -64,6 +62,7 @@ Route::delete('/products/{product}', [ProductsController::class, 'delete']);
 
 Route::get('/categoriesShow', [CategoryController::class, 'index']);
 
+// Create category 
 Route::get('/categories/create', [CategoryController::class, 'create']);
 
 Route::post('/categories', [CategoryController::class, 'store']);
@@ -77,15 +76,35 @@ Route::put('/categories/{category}', [CategoryController::class, 'update']);
 Route::delete('/categories/{category}', [CategoryController::class, 'delete']);
 
 
+// ------------ Users ---------------------
+// ----------------------------------------
+Route::get('/usersShow', [UserController::class, 'index']);
+
+// Create User 
+Route::get('/users/create', [UserController::class, 'create']);
+
+// Edit User 
+Route::get('/users/{user}/edit', [UserController::class, 'edit']);
+
+Route::put('/users/{user}', [UserController::class, 'update']);
+
+// Delete user
+Route::delete('/users/{user}', [UserController::class, 'delete']);
+
+
+
 // ------------ User ---------------------
 // ----------------------------------------
 
 Route::get('/signup', [UserController::class, 'create'])->middleware('guest');
 
+// Create User 
 Route::post('/users', [UserController::class, 'store']);
 
+// Login
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
+// logout
 Route::get('/logout', [UserController::class, 'logout']);

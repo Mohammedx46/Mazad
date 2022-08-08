@@ -14,9 +14,7 @@
                 <div class="col-12">
                     <div class="swiper category1-slider" style="width: 100%;">
                         <div class="swiper-wrapper">
-                            @foreach ($categories as $category)
-                                <x-category.items  :categories="$categories" />
-                            @endforeach
+                            <x-category.items  :categories="$categories" />   
                         </div>
                     </div>
                 </div>
@@ -42,10 +40,10 @@
             <x-sectionTitle  title='المزادات الجارية' description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" />
             
             <!-- Live Auction Items  -->               
-            <x-auction.liveItems :section="1" :products="$products" />
+            <x-auction.items :section="1" :products="$products" />
 
             {{-- Show All Button --}}
-            <x-show-all  class="btn--fill-primary" />
+            <x-show-all targetPage="live-auctions" class="btn--fill-primary" />
             
     </x-container.section>
 
@@ -61,12 +59,11 @@
         <x-sectionTitle  title='مزادات قادمة'
             description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" 
         />
-
         <!-- Live Auction Items  -->               
-        <x-auction.liveItems :section="2" :products="$comingFeatures" />
+        <x-auction.items :section="2" :products="$comingAuctions" />
 
         {{-- Show All Button --}}
-        <x-show-all  class="btn--fill-white" />
+        <x-show-all targetPage="coming-auctions" class="btn--fill-white" />
     </x-container.section>
     <!-- End Fourth Section Coming Featured Assets -->
     <!-- ----------------------------------------- -->
@@ -83,9 +80,9 @@
             description="إستعرض في أفضل مزاد عن مزادات المنتجات. نريد أن نكون جزء من إبتسامتك ,نجاحك و منمو مستقبلك" 
         />
 
-        <x-author.authors/>
+        <x-author.authors :authors="$authors"/>
 
-        <x-show-all  class="btn--fill-primary" />
+        <x-show-all targetPage="authors" class="btn--fill-primary" />
     </x-container.section>
     <!--  End Fifth Section Hot Collection  -->
     <!-- ---------------------------------------- -->

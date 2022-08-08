@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
         $count = User::count();;
         return view('mazad_admin.screens.users.users', [
             "heading" => "كل المستخدمين",
-            "users" => $users->paginate(5),
+            "users" => $users->paginate(9),
             "allUsersCount" => $count,
         ]);
     }
@@ -24,37 +25,51 @@ class UserController extends Controller
     //Show Sign In Form
     public function create()
     {
+        $urlConst = 'http://127.0.0.1:8000/';
+        if (URL::full() == $urlConst.'users/create')
+        {        
+            return view('mazad_admin/screens/users/add_user');
+        }
         return view('users.signup');
     }
 
     public function store(Request $request)
     {        
-        // dd($formFields);
+        // dd($request);
         $formFields = $request;
         if ( $formFields['is_confirm_terms'])
         {
+            $formFields['is_confirm_terms'] = 1 ;
             $formFields = $request->validate([
+                'first_name'=> ['required'],
+                'last_name'=>['required'],
+                'email'=>['required','email', Rule::unique('users', 'email')],
+                'phone_number'=>['required', 'numeric','digits:9'],
+                'password'=>['required','confirmed', 'min:8'],   
                 'is_confirm_terms'=> ['required','accepted'],
             ]);
             $formFields['user_status'] = 3;
             $formFields['subscription_type']= 0 ;
+            $formFields['insurance_amount'] = 0;
         }
-        $formFields = $request->validate([
-            'first_name'=> ['required'],
-        	'last_name'=>['required'],
-        	'email'=>['required','email', Rule::unique('users', 'email')],
-        	'phone_number'=>['required', 'numeric','digits:9'],
-        	'password'=>['required','confirmed', 'min:8'],    
-            'user_status'=> ['required'] ,  
-            'subscription_type' => ['required', 'numeric'],     
-        ]);
+        else{
+            
+            $formFields = $request->validate([
+                'first_name'=> ['required'],
+                'last_name'=>['required'],
+                'email'=>['required','email', Rule::unique('users', 'email')],
+                'phone_number'=>['required', 'numeric','digits:9'],
+                'password'=>['required','confirmed', 'min:8'],    
+                'user_status'=> ['required'] ,  
+                'subscription_type' => ['required', 'numeric'], 
+            ]);
+            $formFields['is_confirm_terms'] = 1;
+        }
         $formFields['password'] = bcrypt($formFields['password']);
         $formFields['insurance_amount'] = 0;
-        $formFields['is_bidding'] = false;
-        
+        $formFields['is_bidding'] = false;        
 
         $user = User::create($formFields);
-
         auth()->login($user);
 
         return redirect('/')->with('success', "تم إضافة المستخدم وتسجيل الدخول"); 
@@ -72,18 +87,17 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // dd($formFields);
-        
         $formFields = $request->validate([
             'first_name'=> ['required'],
         	'last_name'=>['required'],
-        	'email'=>['required','email', Rule::unique('users', 'email')],
+        	'email'=>['required','email'],
         	'phone_number'=>['required', 'numeric','digits:9'],
         	'password'=>['required','confirmed', 'min:8'],    
             'user_status'=> ['required'] ,  
-            'subscription_type' => ['required', 'numeric'],     
+            'subscription_type' => ['required', 'numeric'],  
+            'insurance_amount' =>['required'],   
         ]);
         $formFields['password'] = bcrypt($formFields['password']);
-        $formFields['insurance_amount'] = 0;
         $formFields['is_bidding'] = false;
         
         $user->update($formFields);
@@ -96,7 +110,6 @@ class UserController extends Controller
     public function delete(User $user)
     {
         $user->delete();
-
         return back()->with('danger' , "تم حذف المستخدم بنجاح");
     }
 

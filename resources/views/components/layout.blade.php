@@ -83,7 +83,8 @@
                     <!-- Navigation Animation -->
                     <!-- ---------------------------------------- -->
                     <ul class="menu-list">
-                        <li class="menu-item"><a href="#" class="menu-link drop-down">الرئيسية</i></a></li>
+                        
+                        <li class="menu-item"><a href="{{URL::full() == 'http://127.0.0.1:8000' ? '#' : "/"}}" class="menu-link drop-down">الرئيسية</i></a></li>
                         <!-- <li class="menu-item"><a href="about.html" class="menu-link">حول</a></li> -->
                         <li class="menu-item">
                             <a href="#" class="menu-link drop-down">مزادات<i class='bx bx-chevron-down dropdown-icon'></i></a>

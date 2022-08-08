@@ -11,13 +11,4 @@ class AdminController extends Controller
     {
         return view('mazad_admin.index');
     }
-
-    public function userCreate()
-    {
-        return view('mazad_admin.screens.users.add_user');
-    }
-
-    
-
-
 }

@@ -2,7 +2,7 @@
 <html lang="ar">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ADMIN DASHBOARD | Market Rakhees</title>
+        <title>لوحة تحكم | منصة مزاد</title>
         <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/bootstrap.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/font-awesome.min.css')}}">
         {{-- <link rel="stylesheet" type="text/css" href="{{url('css/admin_css/ionicons.min.css')}}"> --}}
@@ -19,7 +19,7 @@
                 <!---------------- The Dashboard  ---------------->
                 <!------------------------------------------------>
                 <li>
-                    <a href="index.php" class="dashboard"><i class="fa fa-tachometer">
+                    <a href="/admin" class="dashboard"><i class="fa fa-tachometer">
                         </i> <span>لوحة التحكم</span></a>
                 </li>
 
@@ -33,8 +33,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="users"><i class="fa fa-eye"></i>عرض المستخدمين</a></li>
-                        <li><a href="add_user"><i class="fa fa-plus-circle"></i>إضافة مستخدم</a></li>
+                        <li><a href="/usersShow"><i class="fa fa-eye"></i>عرض المستخدمين</a></li>
+                        <li><a href="/users/create"><i class="fa fa-plus-circle"></i>إضافة مستخدم</a></li>
                     </ul>
                 </li>
 
@@ -48,8 +48,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="products"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
-                        <li><a href="add_product"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
+                        <li><a href="/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
+                        <li><a href="/products/create"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-th-large" aria-hidden="true"></i> <span>تصنيفات المنتجات</span>
@@ -59,10 +59,10 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li>
-                                    <a href="categories"><i class="fa fa-eye"></i>عرض التصنيفات</a>
+                                    <a href="/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
                                 </li>
                                 <li>
-                                    <a href="addCategory"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a>
+                                    <a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a>
                                 </li>
                             </ul>
                         </li>
@@ -79,7 +79,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="auctions"><i class="fa fa-eye"></i>عرض المزادات</a></li>
+                        <li><a href="/auctionsShow"><i class="fa fa-eye"></i>عرض المزادات</a></li>
                     </ul>
                 </li>
 
@@ -94,7 +94,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <!-- <li><a href="#"><i class="fa fa-edit"></i>Edit Profile</a></li> -->
-                        <li><a href="login"><i class="fa fa-power-off"></i>تسجيل الخروج</a></li>
+                        <li><a href="/logout"><i class="fa fa-power-off"></i>تسجيل الخروج</a></li>
                     </ul>
                 </li>
             </ul>
@@ -113,10 +113,10 @@
         
         <footer>
             <div class="col-sm-6">
-                Copyright &copy; 2018 <a href="http://www.webtrickshome.com">Webtrickshome.com</a> All rights reserved. 
+             &copy; 2022 <a href="http://www.webtrickshome.com">mazad.com</a> كل الحقوق محفوظة. 
             </div>
             <div class="col-sm-6">
-                <span class="pull-right">Version 1.1</span>
+                <span class="pull-right">Version 0.1</span>
             </div>
         </footer>
 

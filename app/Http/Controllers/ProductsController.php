@@ -13,6 +13,7 @@ class ProductsController extends Controller
 {
     //
 
+
     // Show all Products
     public function index()
     {
@@ -23,6 +24,7 @@ class ProductsController extends Controller
             "heading" => "All Products",
             "products" => $products->paginate(5),
             "allProductsCount" => $count,
+            
         ]);
     }
 
@@ -80,9 +82,13 @@ class ProductsController extends Controller
 
     public function update(Request $request, Products $product)
     {
+        if ($product->user_id != auth()->id())
+        {
+            abort('403', 'عملية غير مصرح بها');
+        }
+
         $date = Carbon::parse($request->auction_start_date);
-        $fourDays = $date->addDays(4);
-        
+        $fourDays = $date->addDays(4);        
         
         $formFields = $request->validate([
             'productcategories_id'=>['required'],
@@ -112,8 +118,12 @@ class ProductsController extends Controller
     // Delete Product
     public function delete(Products $product)
     {
-        $product->delete();
+        if ($product->user_id != auth()->id())
+        {
+            abort('403', 'عملية غير مصرح بها');
+        }
 
+        $product->delete();
         return back()->with('danger' , "تم حذف المنتج بنجاح");
     }
 

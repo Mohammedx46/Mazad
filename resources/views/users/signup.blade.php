@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <input type="checkbox" id="html" value="true" name="is_confirm_terms" required>
                                             <label for="html" style="font-size: 1.05em">موافق على بنود الخصوصية</label>
-                                            @error('confirm_terms')
+                                            @error('is_confirm_terms')
                                                 <div class="error-alert" role="alert"> {{$message}} </div>
                                             @enderror
                                         </div>

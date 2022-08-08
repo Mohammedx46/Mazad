@@ -76,6 +76,7 @@
                         <!--------------- End Body of Table --------------->
                     </table>
                 </div>
+                {{ $users->links('adminPagination') }}
             </div>
 
             <div class="clearfix"></div>

@@ -36,7 +36,7 @@ class Products extends Model
         }
     }
 
-    public function scopeFilter2($query, array $filters)
+    public function scopeLiveAuctions($query, array $filters)
     {
         if ($filters['liveAuctions'] ?? true) {
             // $query->where('auction_start_date', '<=',  today()->format('Y-m-d h:m:s'));
@@ -47,9 +47,9 @@ class Products extends Model
         }
     }
 
-    public function scopeComingFeatures($query , array $filters)
+    public function scopeComingAuctions($query , array $filters)
     {
-        if ($filters['comingFeatures'] ?? true) {
+        if ($filters['ComingAuctions'] ?? true) {
             $query->where('auction_start_date', '>=' ,  \Carbon\Carbon::tomorrow());
         }
     }
