@@ -37,9 +37,10 @@
                                 <th width="10%">رقم الهاتف</th>
                                 <th width="5%">حالة</th>
                                 <th width="10%">مبلغ التأمين</th>
-                                <th width="10%">نوع الإشتراك</th>
-                                <th width="10%">هل يزايد</th>
-                                <th width="15%">عملية </th>
+                                <th width="5%">نوع الإشتراك</th>
+                                <th width="15%">صورة المستخدم</th>
+                                <th width="5%">هل يزايد</th>
+                                <th width="10%">عملية </th>
                             </tr>
                         </thead>
 
@@ -56,6 +57,13 @@
                                         <td>{{$user->user_status}}</td>
                                         <td>{{$user->insurance_amount}}</td>
                                         <td>{{$user->subscription_type}}</td>
+                                        <td>
+                                            <img 
+                                                src="{{$user->user_image_location ? 
+                                                asset('storage/'.$user->user_image_location) :
+                                                asset('/images/auction/cate1.png')}}"    
+                                                alt="{{$user->first_name}}الصورة الخاصة ب " height="80" /> 
+                                        </td>
                                         <td>{{$user->is_bidding == 0 ? "لا" : "نعم"}}</td>
                                         <td>
                                             <a href="/users/{{$user->id}}/edit"
@@ -70,8 +78,6 @@
                                     </tr>
                                 @endforeach
                             @endunless
-                            <i class="fa-solid fa-trash">Delete</i>
-                            <i class="fa-solid fa-pen-to-square"></i>
                         </tbody>
                         <!--------------- End Body of Table --------------->
                     </table>

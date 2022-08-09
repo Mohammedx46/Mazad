@@ -29,6 +29,7 @@ class User extends Authenticatable
         'insurance_amount',
 		'is_bidding',
         'is_confirm_terms',
+        'user_image_location',
     ];
 
     /**
@@ -53,10 +54,16 @@ class User extends Authenticatable
         return $this->hasMany(AuctionUsers::class, 'user_id');
     }
 
+    // Relationship To Contacts
+    public function contacts()
+    {
+        return $this->hasMany(Contacts::class, 'user_id');
+    }
+
     // Relationship To Products 
     public function products()
     {
-        return $this->hasMany(Products::class, 'products_id');
+        return $this->hasMany(Products::class, 'user_id');
     }
 
     protected $casts = [

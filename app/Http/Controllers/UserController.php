@@ -67,7 +67,13 @@ class UserController extends Controller
         }
         $formFields['password'] = bcrypt($formFields['password']);
         $formFields['insurance_amount'] = 0;
-        $formFields['is_bidding'] = false;        
+        $formFields['is_bidding'] = false;  
+
+        // Store Image
+        if ($request->hasFile('user_image_location')) {
+
+            $formFields['user_image_location'] = $request->file('user_image_location')->store('user_image_locations', 'public');
+        }      
 
         $user = User::create($formFields);
         auth()->login($user);

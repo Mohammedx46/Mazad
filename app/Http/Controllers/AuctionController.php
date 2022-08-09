@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Contacts;
 use App\Models\Products;
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Models\ProductImages;
 use App\Models\ProductCategories;
 use function PHPUnit\Framework\returnSelf;
@@ -28,6 +29,29 @@ class AuctionController extends Controller
             "authors" => $authors,
         ]);
     }
+
+    public function auction(Products $product)
+    {
+        $user = User::find($product->user_id);
+        $category = ProductCategories::find($product->productcategories_id);
+
+        $date =  now()->addDay('-4')->format('Y-d-m h:m:s');
+        $liveAuctions = Products::latest()->LiveAuctions(['liveAuctions'=> $date])->paginate(3);
+
+        return view('mazad.auction-details', [
+            "heading" => "كل المزادات",
+            "product" => $product,
+            "products" => $liveAuctions,
+
+            "user" => $user,
+
+            "category" => $category,
+            "categories" => ProductCategories::latest(),
+
+            "auction_images" => ProductImages::all(),
+        ]);
+    }
+
 
     public function auctionCategory()
     {
@@ -62,25 +86,16 @@ class AuctionController extends Controller
         ]);
     }
 
-    public function auction(Request $request)
-    {
-        return view('mazad.auction-details', [
-            "heading" => "كل المزادات",
-            "products" => Products::latest()->paginate(),
-            "auction_images" => ProductImages::all(),
-        ]);
-    }
+    
 
     public function author()
     {
-        return view('mazad.author-details', [
-
-        ]);
+        return view('mazad.author-details');
     }
 
     public function authors()
     {
-        $authors = User::latest()->paginate(9);
+        $authors = User::latest()->paginate(12);
         return view('mazad.authors',[
             "authors" => $authors,
         ]);
@@ -89,5 +104,19 @@ class AuctionController extends Controller
     public function contact()
     {
         return view('mazad.contact');
+    }
+
+    public function store(Request $request)
+    {
+        $formFields = $request->validate([
+            'topic' => ['required'],
+            'user_message' => ['required'],
+        ]);
+
+        $formFields['user_id'] = auth()->id() ;
+
+        Contacts::create($formFields);
+
+        return back()->with('success', 'تم إرسال طلبك بنجاح');
     }
 }

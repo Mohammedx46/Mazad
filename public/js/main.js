@@ -59,6 +59,16 @@
                 this.classList.toggle('bi-eye');
             });
         }
+
+        const togglePasswordConfirmation = document.querySelector('#togglePasswordConfirmation');
+        const passwordConfirmation = document.querySelector('#passwordConfirmation');
+        if (togglePasswordConfirmation) {
+            togglePasswordConfirmation.addEventListener('click', function(e) {
+                const type = passwordConfirmation.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordConfirmation.setAttribute('type', type);
+                this.classList.toggle('bi-eye');
+            });
+        }
         $('.video-open').magnificPopup({ type: 'iframe' });
         $('select').niceSelect();
     }(jQuery));

@@ -22,7 +22,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <form role="form" method="POST" action="/users/{{$user->id}}" >
+                                        <form role="form" method="POST" action="/users/{{$user->id}}" enctype="multipart/form-data" >
                                             @csrf
                                             @method('PUT')
                                             <!-------------- Left Side --------------->
@@ -121,7 +121,17 @@
                                                     @error('email')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
-                                                </label>                   
+                                                </label> 
+                                                <!-------------- User Field ---------------> 
+                                                <label class="labelAdd col-md-6">الصورة لملفك  الشخصي
+                                                    <input type="file" class="form-control"
+                                                        name="user_image_location" required
+                                                        value="{{ old('user_image_location') }}"
+                                                    />
+                                                    @error('user_image_location')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
+                                                </label>                  
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class='col-md-12'></label>

@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Roles;
 use App\Models\Auctions;
+use App\Models\Contacts;
 use App\Models\Products;
 use App\Models\AuctionUsers;
 use App\Models\ProductImages;
@@ -24,7 +26,21 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $user = User::factory(30)->create();
+
+        Roles::factory(1)->create(
+            ['role_name' => 'admin']
+        );
+
+        Roles::factory(1)->create(
+            ['role_name' => 'manager']
+        );
+
+        Roles::factory(1)->create(
+            ['role_name' => 'user']
+        );
         
+        Contacts::factory(5)->create();
+
         ProductCategories::factory(4)->create();
         
         
@@ -42,6 +58,7 @@ class DatabaseSeeder extends Seeder
             'auction_id' => $auction[2]->id,
             'user_id' => $user[0]->id
         ]);
+
 
 
         // \App\Models\User::factory()->create([

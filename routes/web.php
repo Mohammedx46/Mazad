@@ -21,23 +21,37 @@ use App\Http\Controllers\ProductsController;
 
 // ------------ Mazad ---------------------
 // ----------------------------------------
+// ----------------------------------------
+
 
 Route::get('/', [AuctionController::class, 'index']);
 
+Route::get('/auction-details/{product}', [AuctionController::class, 'auction']);
+
+// Show Auctions by Category
 Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
 Route::get('/live-auctions', [AuctionController::class, 'liveAuctions']);
 
 Route::get('/coming-auctions', [AuctionController::class, 'comingAuctions']);
 
-Route::get('/admin', [AdminController::class, 'admin']);
-
-Route::get('/contact', [AuctionController::class, 'contact']);
 
 // Author
 Route::get('/authors', [AuctionController::class, 'authors']);
 
 // Route::get('/author/{author}', [AuctionController::class, 'author']);
+
+
+// Contact us
+Route::get('/contact', [AuctionController::class, 'contact']);
+
+Route::post('/contacts/create' , [AuctionController::class, 'store']);
+
+// ------------ Admin Management ----------
+// ----------------------------------------
+// ----------------------------------------
+
+Route::get('/admin', [AdminController::class, 'admin']);
 
 
 // ------------ Products ------------------
@@ -56,6 +70,7 @@ Route::put('/products/{product}', [ProductsController::class, 'update']);
 
 // Delete Product
 Route::delete('/products/{product}', [ProductsController::class, 'delete']);
+
 
 // ------------ Categories ----------------
 // ----------------------------------------

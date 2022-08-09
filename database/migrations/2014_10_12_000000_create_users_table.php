@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('insurance_amount')->nullable();
 		    $table->boolean('is_bidding')->nullable();
             $table->boolean('is_confirm_terms');
+            $table->string('user_image_location')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

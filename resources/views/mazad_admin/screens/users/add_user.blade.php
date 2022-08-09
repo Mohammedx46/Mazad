@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
 
-                                        <form role="form" method="POST" action="/users" >
+                                        <form role="form" method="POST" action="/users" enctype="multipart/form-data">
                                             @csrf
                                             <!-------------- Left Side --------------->
                                             <div class="col-md-6 form-group">
@@ -63,6 +63,27 @@
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>
+                                                <!-------------- Activation Field ---------->
+                                                <label class="labelAdd col-md-4">حالة المستخدم
+                                                    <select class="form-control" name="user_status" required>
+                                                        <optgroup>نشط</optgroup>
+                                                        <option value = "1">نشط     </option>
+                                                        <option value = "0">معطل    </option>
+                                                    </select>  
+                                                    @error('user_status')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror                                          
+                                                </label> 
+                                                <!-------------- User Field ---------------> 
+                                                <label class="labelAdd col-md-8">الصورة لملفك  الشخصي
+                                                    <input type="file" class="form-control"
+                                                        name="user_image_location" required
+                                                        value="{{ old('user_image_location') }}"
+                                                    />
+                                                    @error('user_image_location')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror
+                                                </label>
                                             </div>
                                         
                                             <!----------------------------------------->
@@ -101,20 +122,7 @@
                                                 </label>                   
                                             </div>
 
-                                            <div class="form-group col-md-12">
-                                                
-                                                <!-------------- Activation Field ---------->
-                                                <label class="labelAdd col-md-2">حالة المستخدم
-                                                    <select class="form-control" name="user_status" required>
-                                                        <optgroup>نشط</optgroup>
-                                                        <option value = "1">نشط     </option>
-                                                        <option value = "0">معطل    </option>
-                                                    </select>  
-                                                    @error('user_status')
-                                                        <div class="error-alert" role="alert"> {{$message}} </div>
-                                                    @enderror                                          
-                                                </label>  
-
+                                            <div class="form-group col-md-12">                                                
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">

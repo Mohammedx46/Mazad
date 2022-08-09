@@ -4,11 +4,11 @@
     
     <div class="c-feature-category">{{$product->product_title}}</div>
 
-    <h5><a href="auction-details"> {{$product->product_description}}</a></h5>
+    <h5><a href="/auction-details/{{$product->id}}"> {{$product->product_description}}</a></h5>
     <p>السعر الحالي : {{$product->product_start_price}} </p>
     <div class="السعر">السعر الإبتدائي  {{$product->product_start_price}}</div>
     <div class="auction-card-bttm">
-        <a href="auction-details" class="eg-btn btn--outline">زايد</a>
+        <a href="/auction-details/{{$product->id}}" class="eg-btn btn--outline">زايد</a>
         <div class="share-area">
             <ul class="social-icons d-flex">
                 <li><a href="#"><i class="bx bxl-facebook"></i></a></li>

@@ -11,16 +11,16 @@
                 </div>
             </div>
         @endforeach
-    @else 
-            @php
-                if ($section == 1 )
-                {
-                    echo  '<h1 style="text-align:center; margin:3em 0;">المعذرة, لا يوجد مزادات جارية حالياً</h1>' ;
-                }
-                else if ($section == 2)
-                {
-                    echo  '<h1 style="text-align:center; color: #fff; margin:3em 0;">المعذرة, لا يوجد مزادات قادمة حالياً</h1>' ;
-                }
-            @endphp
+    @else  
+        @php
+            if ($section == 1 )
+            {
+                echo  '<h1 style="text-align:center; margin:3em 0;">المعذرة, لا يوجد مزادات جارية حالياً</h1>' ;
+            }
+            else if ($section == 2)
+            {
+                echo  '<h1 style="text-align:center; color: #fff; margin:3em 0;">المعذرة, لا يوجد مزادات قادمة حالياً</h1>' ;
+            }
+        @endphp
     @endif
 </x-container.items-container>
