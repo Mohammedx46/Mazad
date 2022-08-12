@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         $categories = ProductCategories::latest() ;
         $count = ProductCategories::count();
-        return view('mazad_admin.screens.products.product_category.categories', [
+        return view('mazad_admin.products.product_category.categories', [
             "heading" => "All Categories",
             "categories" => $categories->paginate(4),
             "allCategoriesCount" => $count,
@@ -25,10 +25,10 @@ class CategoryController extends Controller
     // Show Create Form
     public function create()
     {
-        $categories = ProductCategories::latest();
+        $categories = ProductCategories::latest()->paginate(3);
         $count = ProductCategories::count();
-        return view('mazad_admin.screens.products.product_category.add_category', [
-            "categories" => $categories->paginate(3),
+        return view('mazad_admin.products.product_category.add_category', [
+            "categories" => $categories,
             "allCategoriesCount" => $count,
         ]);
     }
@@ -52,7 +52,7 @@ class CategoryController extends Controller
     // Show Create Form
     public function edit(ProductCategories $category)
     {
-        return view('mazad_admin.screens.products.product_category.edit_category', [
+        return view('mazad_admin.products.product_category.edit_category', [
             'category' => $category,
         ]);
     }

@@ -134,7 +134,7 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 // Roles 
 
-Route::group(['prefix' =>'roles'], function(){
+Route::group(['prefix' =>'/roles'], function(){
     Route::get('/', [RolesController::class , 'index']);
 
     Route::get('/create', [RolesController::class , 'create']);
@@ -143,7 +143,7 @@ Route::group(['prefix' =>'roles'], function(){
 
     Route::get('/{edit}/edit', [RolesController::class , 'edit']);
 
-    Route::post('/update', [RolesController::class , 'update']);
+    Route::post('/update/{edit}', [RolesController::class , 'update']);
 
     
 });

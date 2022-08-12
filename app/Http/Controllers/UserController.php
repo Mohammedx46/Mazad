@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $users  = User::latest() ;
         $count = User::count();;
-        return view('mazad_admin.screens.users.users', [
+        return view('mazad_admin.users.users', [
             "heading" => "كل المستخدمين",
             "users" => $users->paginate(9),
             "allUsersCount" => $count,
@@ -85,7 +85,7 @@ class UserController extends Controller
     //Show Sign In Form
     public function edit(User $user)
     {
-        return view('mazad_admin.screens.users.edit_user', [
+        return view('mazad_admin.users.edit_user', [
             'user' => $user,
         ]);
     }

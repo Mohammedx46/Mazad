@@ -18,10 +18,10 @@ class RolesFactory extends Factory
     {
         $json = [
 
-            "users" => 'user',
-            "auctions"=> 'auc',
-            "products"=> ' pro',
-            "categories" => 'cat',
+            "users" ,
+            "auctions",
+            "products",
+            "categories" ,
         ];
         $json = json_encode($json);
         return [

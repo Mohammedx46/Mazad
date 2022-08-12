@@ -20,7 +20,7 @@ class ProductsController extends Controller
         // dd($request);
         $products = Products::latest() ;
         $count = Products::where('is_product_sold','=','0')->count();
-        return view('mazad_admin.screens.products.products', [
+        return view('mazad_admin.products.products', [
             "heading" => "All Products",
             "products" => $products->paginate(5),
             "allProductsCount" => $count,
@@ -33,7 +33,7 @@ class ProductsController extends Controller
     public function create()
     {
         
-        return view('mazad_admin.screens.products.add_product', [
+        return view('mazad_admin.products.add_product', [
             'categories' => ProductCategories::all(),
         ]);
     }
@@ -74,7 +74,7 @@ class ProductsController extends Controller
     // Show Edit Form
     public function edit(Products $product)
     {
-        return view('mazad_admin.screens.products.edit_product', [
+        return view('mazad_admin.products.edit_product', [
             'product' => $product,
             'categories' => ProductCategories::all(),
         ]);
