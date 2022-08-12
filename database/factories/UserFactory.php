@@ -18,7 +18,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            
+            'role_id' => random_int(1,3),
             'first_name'=> $this->faker->firstName(),
             'last_name'=> $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'insurance_amount'=> random_int(200,300),
 		    'is_bidding'=> false,
             'is_confirm_terms' => true,
+            'user_image_location' => 'images/bg/social-post4.png',
         ];
     }
 

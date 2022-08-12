@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('auction_users', function (Blueprint $table) {
-            $table->id('auction_user_id');
-            $table->foreignId('auction_id')
-                ->constrained("auctions")
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')
                 ->constrained("users")
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-            $table->unsignedBigInteger('user_price');
+            $table->string('topic');
+            $table->text('user_message');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auction_users');
+        Schema::dropIfExists('contacts');
     }
 };

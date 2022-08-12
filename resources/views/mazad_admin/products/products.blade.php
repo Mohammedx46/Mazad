@@ -74,7 +74,7 @@
                                         <form method="POST" action="/products/{{$product->id}}" style="display: inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button href="" class="btn btn-danger" ><i class="fa-solid fa-trash">Delete</i> حذف</button>
+                                            <button href="" class="btn btn-danger" > حذف</button>
                                         </form>
                                     </td>
                                 </tr>

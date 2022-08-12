@@ -2,7 +2,7 @@
 
 <div class="row mb-50">
     <div class="all-comments-area d-flex justify-content-between flex-wrap">
-        <h5>كل المزادات</h5>
+        <h5>{{$filterTitle}}</h5>
         {{-- <x-search targetController="category-auction" placeHolder="ابحث عن المنتج بالاسم أو الوصف" /> --}}
         
         <form method="get"  action="/category-auction">

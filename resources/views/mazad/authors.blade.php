@@ -6,16 +6,21 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10 ">
                         <div data-wow-duration="0.5s" data-wow-delay="0.2s" class="eg-card author-card1 wow fadeInDown">
                             <div class="author-img">
-                                <img src="{{asset('storage/images/author/t-author2.png')}}" alt="">
+                                <img src=" {{$author->user_image_location ? 
+                                    asset('storage/'.$author->user_image_location) :
+                                    asset('storage/images/author/t-author2.png') }} " alt=""> 
                             </div>
                             <div class="author-content">
                                 <div class="t-author">
-                                    <img src="{{asset('storage/images/feature/fa2.png')}}" alt="">
-                                    <h5><a href="author-details.html">Cameron Williamson</a></h5>
+                                    <img src=" {{$author->user_image_location ? 
+                                        asset('storage/'.$author->user_image_location) :
+                                        asset('storage/images/auction/cate1.png') }} " alt="">
+                                        
+                                    <h5><a href="#">Cameron Williamson</a></h5>
                                     <span>@cameron20</span>
                                 </div>
                                 <div class="t-author-buttons">
-                                    <a href="author-details.html" class="top-author-btn">Details</a>
+                                    <a href="#" class="top-author-btn">Details</a>
                                     <a href="#" class="follow-btn">Follow</a>
                                 </div>
                             </div>

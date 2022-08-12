@@ -10,7 +10,7 @@
                         <div class="form-title">
                             <h3>إنشاء حساب</h3>
                         </div>
-                        <form action="/users" method="POST" class="w-100">
+                        <form action="/users" method="POST" class="w-100" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -66,12 +66,25 @@
                                 <div class="col-md-12">
                                     <div class="form-inner">
                                         <label style="font-size:1.2em;">تأكيد كلمة السر</label>
-                                        <input type="password" name="password_confirmation" id="password" placeholder="تأكيد كلمة سر" required />
-                                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                                        <input type="password" name="password_confirmation" id="passwordConfirmation" placeholder="تأكيد كلمة سر" required />
+                                        <i class="bi bi-eye-slash" id="togglePasswordConfirmation"></i>
                                     </div>
                                     @error('password_confirmation')
                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                     @enderror
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-inner">
+                                        <label style="font-size:1.2em;">صورة لمفك الشخصي</label>
+                                        <input type="file" class="form-control"
+                                            name="user_image_location" required
+                                            value="{{ old('user_image_location') }}"
+                                        />
+                                        @error('user_image_location')
+                                            <div class="error-alert" role="alert"> {{$message}} </div>
+                                        @enderror
+                                    </div>
                                 </div>
 
                                 <div class="col-md-12">

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +22,20 @@ use App\Http\Controllers\ProductsController;
 
 // ------------ Mazad ---------------------
 // ----------------------------------------
+// ----------------------------------------
+
 
 Route::get('/', [AuctionController::class, 'index']);
 
+Route::get('/auction-details/{product}', [AuctionController::class, 'auction']);
+
+// Show Auctions by Category
 Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
 Route::get('/live-auctions', [AuctionController::class, 'liveAuctions']);
 
 Route::get('/coming-auctions', [AuctionController::class, 'comingAuctions']);
 
-Route::get('/admin', [AdminController::class, 'admin']);
-
-Route::get('/contact', [AuctionController::class, 'contact']);
 
 // Author
 Route::get('/authors', [AuctionController::class, 'authors']);
@@ -40,40 +43,60 @@ Route::get('/authors', [AuctionController::class, 'authors']);
 // Route::get('/author/{author}', [AuctionController::class, 'author']);
 
 
+// Contact us
+Route::get('/contact', [AuctionController::class, 'contact']);
+
+Route::post('/contacts/create' , [AuctionController::class, 'store']);
+
+// ------------ Admin Management ----------
+// ----------------------------------------
+// ----------------------------------------
+
+Route::get('/admin', [AdminController::class, 'admin']);
+
+
 // ------------ Products ------------------
 // ----------------------------------------
-Route::get('/productsShow', [ProductsController::class, 'index']);
+Route::group(['prefix'=> 'products'], function(){
 
-// Create Product 
-Route::get('/products/create', [ProductsController::class, 'create'])->middleware('auth');
+    Route::get('/productsShow', [ProductsController::class, 'index']);
+    
+    // Create Product 
+    Route::get('/create', [ProductsController::class, 'create'])->middleware('auth');
+    
+    Route::post('', [ProductsController::class, 'store']);
+    
+    // Edit Product 
+    Route::get('/{product}/edit', [ProductsController::class, 'edit']);
+    
+    Route::put('/{product}', [ProductsController::class, 'update']);
+    
+    // Delete Product
+    Route::delete('/products/{product}', [ProductsController::class, 'delete']);
+});
 
-Route::post('/products', [ProductsController::class, 'store']);
-
-// Edit Product 
-Route::get('/products/{product}/edit', [ProductsController::class, 'edit']);
-
-Route::put('/products/{product}', [ProductsController::class, 'update']);
-
-// Delete Product
-Route::delete('/products/{product}', [ProductsController::class, 'delete']);
 
 // ------------ Categories ----------------
 // ----------------------------------------
 
-Route::get('/categoriesShow', [CategoryController::class, 'index']);
 
-// Create category 
-Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::group(['prefix' => '/categories'], function(){
 
-Route::post('/categories', [CategoryController::class, 'store']);
-
-// Edit category 
-Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
-
-Route::put('/categories/{category}', [CategoryController::class, 'update']);
-
-// Delete category 
-Route::delete('/categories/{category}', [CategoryController::class, 'delete']);
+    Route::get('/categoriesShow', [CategoryController::class, 'index']);
+    
+    // Create category 
+    Route::get('/categories/create', [CategoryController::class, 'create']);
+    
+    Route::post('/categories', [CategoryController::class, 'store']);
+    
+    // Edit category 
+    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
+    
+    Route::put('/categories/{category}', [CategoryController::class, 'update']);
+    
+    // Delete category 
+    Route::delete('/categories/{category}', [CategoryController::class, 'delete']);
+});
 
 
 // ------------ Users ---------------------
@@ -108,3 +131,19 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // logout
 Route::get('/logout', [UserController::class, 'logout']);
+
+// Roles 
+
+Route::group(['prefix' =>'roles'], function(){
+    Route::get('/', [RolesController::class , 'index']);
+
+    Route::get('/create', [RolesController::class , 'create']);
+
+    Route::post('/store', [RolesController::class , 'store']);
+
+    Route::get('/{edit}/edit', [RolesController::class , 'edit']);
+
+    Route::post('/update', [RolesController::class , 'update']);
+
+    
+});

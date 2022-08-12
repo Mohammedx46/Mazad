@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
+        'role_id',
         'first_name',
         'last_name',
         'email',
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'insurance_amount',
 		'is_bidding',
         'is_confirm_terms',
+        'user_image_location',
     ];
 
     /**
@@ -47,16 +49,27 @@ class User extends Authenticatable
      * @var array<string, string>
      */
 
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'role_id');
+    }
+
      // Relationship To AuctionUsers    
     public function auction_user()
     {
         return $this->hasMany(AuctionUsers::class, 'user_id');
     }
 
+    // Relationship To Contacts
+    public function contacts()
+    {
+        return $this->hasMany(Contacts::class, 'user_id');
+    }
+
     // Relationship To Products 
     public function products()
     {
-        return $this->hasMany(Products::class, 'products_id');
+        return $this->hasMany(Products::class, 'user_id');
     }
 
     protected $casts = [

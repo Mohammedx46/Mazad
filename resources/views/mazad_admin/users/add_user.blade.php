@@ -1,12 +1,8 @@
 <x-admin-layout>
-    <!------------------------------------------------>
-    <!-------------- The Main Content  --------------->
-    <!------------------------------------------------>
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 title">
-                <h1><i class="fa fa-bars"></i> تعديل بيانات المكون</h1>
+                <h1><i class="fa fa-bars"></i> إضافة بيانات مستخدم جديد</h1>
             </div>
 
             <div class="col-sm-12">
@@ -17,14 +13,14 @@
                         <!-- Form Elements -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <i class="fa fa-plus-circle"></i> تعديل
+                                <i class="fa fa-plus-circle"></i> إضافة بيان جديد
                             </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <form role="form" method="POST" action="/users/{{$user->id}}" >
+
+                                        <form role="form" method="POST" action="/users" enctype="multipart/form-data">
                                             @csrf
-                                            @method('PUT')
                                             <!-------------- Left Side --------------->
                                             <div class="col-md-6 form-group">
 
@@ -32,7 +28,7 @@
                                                 <label class="labelAdd col-md-12" id="m">الاسم الأول
                                                     <input type="text" placeholder="أكتب اسمك الأول"
                                                         class="form-control" name="first_name" required
-                                                        value="{{$user->first_name}}"/> 
+                                                        value="{{old('first_name')}}"/> 
 
                                                     @error('first_name')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
@@ -62,7 +58,7 @@
                                                 <label  class="labelAdd col-md-12">رقم الهاتف
                                                     <input type="text" class="form-control"
                                                         placeholder="أكتب رقم الهاتف 77 , 73 , 71 , 71" name="phone_number" required
-                                                        value="{{$user->phone_number}}"/>
+                                                        value="{{old('phone_number')}}"/>
                                                     @error('phone_number')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
@@ -77,13 +73,14 @@
                                                     @error('user_status')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror                                          
-                                                </label>  
-
-                                                <label  class="labelAdd col-md-8"> مبلغ التأمين
-                                                    <input type="number" class="form-control"
-                                                        placeholder="مبلغ التأمين" name="insurance_amount" required
-                                                        value="{{$user->insurance_amount}}"/>
-                                                    @error('insurance_amount')
+                                                </label> 
+                                                <!-------------- User Field ---------------> 
+                                                <label class="labelAdd col-md-8">الصورة لملفك  الشخصي
+                                                    <input type="file" class="form-control"
+                                                        name="user_image_location" required
+                                                        value="{{ old('user_image_location') }}"
+                                                    />
+                                                    @error('user_image_location')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>
@@ -98,7 +95,7 @@
                                                 <label class="labelAdd col-md-12" id="m">اللقب
                                                     <input type="text" placeholder="أكتب اسمك الأخير"
                                                         class="form-control" name="last_name" required
-                                                        value="{{$user->last_name}}"/>   
+                                                        value="{{old('last_name')}}"/>   
                                                     @error('last_name')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
@@ -113,25 +110,28 @@
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>
+
                                                 <!-------------- Email Field --------------->                                                                         
                                                 <label  class="labelAdd col-md-12">البريد الإلكتروني
                                                     <input type="email" class="form-control"
                                                         placeholder="أكتب بريدك الإلكتروني" name="email" required
-                                                        value="{{$user->email}}"/>
+                                                        value="{{old('email')}}"/>
                                                     @error('email')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>                   
                                             </div>
-                                            <div class="form-group col-md-12">
+
+                                            <div class="form-group col-md-12">                                                
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">
-                                                        <button type="submit" name ="submit" class="btn btn-primary">تعديل المستخدم</button>
+                                                        <button type="submit" name ="submit" class="btn btn-primary">إضافة المستخدم</button>
                                                         <button type="reset" class="btn btn-danger">إلغاء</button>
                                                     </div>
                                             </div>                                
                                         </form> 
+
                                     </div>
                                 </div>
                             </div>
@@ -141,5 +141,4 @@
             </div>
         </div>
     </div>
-
 </x-admin-layout>
