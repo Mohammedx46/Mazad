@@ -31,10 +31,11 @@
                         <thead>
                             <tr>
                                 {{-- <th width="3%"><input type="checkbox" id="select-all"> </th> --}}
-                                <th width="10%">الاسم الأول</th>
-                                <th width="10%"> اللقب </th>
-                                <th width="15%">البريد الإلكتروني</th>
-                                <th width="10%">رقم الهاتف</th>
+                                <th width="5%">الاسم الأول</th>
+                                <th width="5%"> اللقب </th>
+                                <th width="5%"> الصلاحية </th>
+                                <th width="10%">البريد الإلكتروني</th>
+                                <th width="5%">رقم الهاتف</th>
                                 <th width="5%">حالة</th>
                                 <th width="10%">مبلغ التأمين</th>
                                 <th width="5%">نوع الإشتراك</th>
@@ -52,6 +53,7 @@
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$user->first_name}}</td>
                                         <td>{{$user->last_name}}</td>
+                                        <td>{{$user->role->role_name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->phone_number}}</td>
                                         <td>{{$user->user_status}}</td>

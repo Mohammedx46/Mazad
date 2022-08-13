@@ -131,7 +131,18 @@
                                                     @error('user_image_location')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
-                                                </label>                  
+                                                </label>  
+                                                
+                                                <label class="labelAdd col-md-4">صلاحية المتسخدم
+                                                    <select class="form-control" name="role_id" required>
+                                                        @foreach ($roles as $role)
+                                                            <option value="{{$role->id}}" {{$user->role->role_name == $role->role_name? 'selected' : ''}}>{{$role->role_name}}</option>
+                                                        @endforeach
+                                                    </select>  
+                                                    @error('role_id')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror                                          
+                                                </label> 
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label class='col-md-12'></label>

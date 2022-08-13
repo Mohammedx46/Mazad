@@ -39,9 +39,9 @@ class DatabaseSeeder extends Seeder
             ['role_name' => 'user']
         );
         
-        $user = User::factory(30)->create();
+        $user = User::factory(3)->create();
 
-        Contacts::factory(5)->create();
+        // Contacts::factory(5)->create();
 
         ProductCategories::factory(4)->create();
         

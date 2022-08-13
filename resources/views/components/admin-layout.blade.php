@@ -48,27 +48,49 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
+                        <li><a href="products/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
                         <li><a href="/products/create"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-th-large" aria-hidden="true"></i> <span>تصنيفات المنتجات</span>
-                                <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
-                                </li>
-                                <li>
-                                    <a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a>
-                                </li>
-                            </ul>
+                        
+                    </ul>
+                </li>
+
+                <!----------------- The Categories  -------------->
+                <!------------------------------------------------>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-th-large" aria-hidden="true"></i> <span>تصنيفات</span>
+                        <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="categories/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
+                        </li>
+                        <li>
+                            <a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a>
                         </li>
                     </ul>
                 </li>
 
+                <!----------------- The Roles  ------------------->
+                <!------------------------------------------------>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-th-large" aria-hidden="true"></i> <span>الصلاحيات</span>
+                        <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a href="/roles"><i class="fa fa-eye"></i>عرض الصلاحيات</a>
+                        </li>
+                        <li>
+                            <a href="/roles/create"><i class="fa fa-plus-circle"> </i>إضافة صلاحية</a>
+                        </li>
+                    </ul>
+                </li>
                 <!----------------- The Auctions  ---------------->
                 <!------------------------------------------------>
                 <li class="treeview">

@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -25,6 +25,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        
+        foreach(config('global.Permissions') as $ability => $value){
+            // dd($ability);
+            Gate::define($ability, function($auth) use ($ability) 
+            {
+                return $auth->hasAbility($ability);
+            });
+            
+        }
         //
     }
 }

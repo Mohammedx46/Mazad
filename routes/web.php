@@ -85,17 +85,17 @@ Route::group(['prefix' => '/categories'], function(){
     Route::get('/categoriesShow', [CategoryController::class, 'index']);
     
     // Create category 
-    Route::get('/categories/create', [CategoryController::class, 'create']);
+    Route::get('/create', [CategoryController::class, 'create']);
     
     Route::post('/categories', [CategoryController::class, 'store']);
     
     // Edit category 
-    Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
+    Route::get('/{category}/edit', [CategoryController::class, 'edit']);
     
-    Route::put('/categories/{category}', [CategoryController::class, 'update']);
+    Route::put('/{category}', [CategoryController::class, 'update']);
     
     // Delete category 
-    Route::delete('/categories/{category}', [CategoryController::class, 'delete']);
+    Route::delete('/{category}', [CategoryController::class, 'delete']);
 });
 
 
@@ -133,8 +133,9 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/logout', [UserController::class, 'logout']);
 
 // Roles 
-
+// Route::group(['prefix' =>'/roles', 'middleware' => 'can:Permissions'], function(){
 Route::group(['prefix' =>'/roles'], function(){
+
     Route::get('/', [RolesController::class , 'index']);
 
     Route::get('/create', [RolesController::class , 'create']);

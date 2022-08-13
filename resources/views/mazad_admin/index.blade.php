@@ -24,10 +24,10 @@
                         <!------------ Second Column ------------->
                         <div class="col-sm-4 quick-links">
                             <h4>عرض السجلات</h4>
-                            <p><a href="usersShow"><i class="fa fa-users"></i> عرض المستخدمين</a></p>
-                            <p><a href="products/productsShow"><i class="fa fa-shopping-cart"></i> عرض المنتجات</a></p>
-                            <p><a href="categories/categoriesShow"><i class="fa fa-th-large"></i> عرض تصنيفات المنتجات</a></p>
-                            <p><a href="auctoinsShow"><i class="fa fa-gavel"></i> عرض المزادات</a></p>
+                            <p><a href="/usersShow"><i class="fa fa-users"></i> عرض المستخدمين</a></p>
+                            <p><a href="/products/productsShow"><i class="fa fa-shopping-cart"></i> عرض المنتجات</a></p>
+                            <p><a href="/categories/categoriesShow"><i class="fa fa-th-large"></i> عرض تصنيفات المنتجات</a></p>
+                            <p><a href="/auctoinsShow"><i class="fa fa-gavel"></i> عرض المزادات</a></p>
                         </div>
         
                         <!------------ Third Column -------------->

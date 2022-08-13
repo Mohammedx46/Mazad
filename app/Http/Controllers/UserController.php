@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
@@ -14,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users  = User::latest() ;
-        $count = User::count();;
+        $count = User::count();
         return view('mazad_admin.users.users', [
             "heading" => "كل المستخدمين",
             "users" => $users->paginate(9),
@@ -26,11 +27,16 @@ class UserController extends Controller
     public function create()
     {
         $urlConst = 'http://127.0.0.1:8000/';
+        $roles = Roles::all();
         if (URL::full() == $urlConst.'users/create')
         {        
-            return view('mazad_admin/screens/users/add_user');
+            return view('mazad_admin.users.add_user', [
+                'roles' => $roles,
+            ]);
         }
-        return view('users.signup');
+        return view('users.signup', [
+            'roles' => $roles,
+        ]);
     }
 
     public function store(Request $request)
@@ -45,12 +51,13 @@ class UserController extends Controller
                 'last_name'=>['required'],
                 'email'=>['required','email', Rule::unique('users', 'email')],
                 'phone_number'=>['required', 'numeric','digits:9'],
-                'password'=>['required','confirmed', 'min:8'],   
+                'password'=>['required','confirmed', 'min:3'],   
                 'is_confirm_terms'=> ['required','accepted'],
             ]);
             $formFields['user_status'] = 3;
             $formFields['subscription_type']= 0 ;
             $formFields['insurance_amount'] = 0;
+            $formFields['role_id'] = 3;
         }
         else{
             
@@ -59,9 +66,10 @@ class UserController extends Controller
                 'last_name'=>['required'],
                 'email'=>['required','email', Rule::unique('users', 'email')],
                 'phone_number'=>['required', 'numeric','digits:9'],
-                'password'=>['required','confirmed', 'min:8'],    
+                'password'=>['required','confirmed', 'min:3'],    
                 'user_status'=> ['required'] ,  
-                'subscription_type' => ['required', 'numeric'], 
+                'subscription_type' => ['required', 'numeric'],
+                'role_id' => ['required'], 
             ]);
             $formFields['is_confirm_terms'] = 1;
         }
@@ -85,8 +93,10 @@ class UserController extends Controller
     //Show Sign In Form
     public function edit(User $user)
     {
+        $roles = Roles::all();
         return view('mazad_admin.users.edit_user', [
             'user' => $user,
+            'roles' => $roles,
         ]);
     }
 
@@ -98,10 +108,11 @@ class UserController extends Controller
         	'last_name'=>['required'],
         	'email'=>['required','email'],
         	'phone_number'=>['required', 'numeric','digits:9'],
-        	'password'=>['required','confirmed', 'min:8'],    
+        	'password'=>['required','confirmed', 'min:3'],    
             'user_status'=> ['required'] ,  
             'subscription_type' => ['required', 'numeric'],  
-            'insurance_amount' =>['required'],   
+            'insurance_amount' =>['required'], 
+            'role_id' => ['required'],  
         ]);
         $formFields['password'] = bcrypt($formFields['password']);
         $formFields['is_bidding'] = false;

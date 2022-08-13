@@ -119,7 +119,19 @@
                                                     @error('email')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
-                                                </label>                   
+                                                </label> 
+                                                
+                                                <label class="labelAdd col-md-4">صلاحية المتسخدم
+                                                    <select class="form-control" name="role_id" required>
+                                                        <optgroup>نشط</optgroup>
+                                                        @foreach ($roles as $role)
+                                                            <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                                        @endforeach
+                                                    </select>  
+                                                    @error('role_id')
+                                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                                    @enderror                                          
+                                                </label> 
                                             </div>
 
                                             <div class="form-group col-md-12">                                                

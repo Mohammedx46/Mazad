@@ -17,11 +17,9 @@ class RolesFactory extends Factory
     public function definition()
     {
         $json = [
-
-            "users" ,
-            "auctions",
-            "products",
-            "categories" ,
+            "Products" ,
+            "Categories",
+            "Permissions",
         ];
         $json = json_encode($json);
         return [

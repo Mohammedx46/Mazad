@@ -2,11 +2,9 @@
 
 return [
     'Permissions' =>[
-
-            "users" => 'user',
-            "auctions"=> 'auc',
-            "products"=> ' pro',
-            "categories" => 'cat',
+            "Products" => 'للتحكم في المنتجات والسلع',
+            "Categories"=> 'للتحكم في التصنيفات ',
+            "Permissions"=> 'للتحكم في الصلاحيات ',
         ]
     ];
 
