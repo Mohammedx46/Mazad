@@ -50,7 +50,10 @@
 
 <script>
     let x = document.querySelector(".processMessage")
-    setTimeout(
+    console.log(x)
+    setTimeout(() => {
         x.style.display='none'
-    , 3000)
+    }, 3000);
+    
+    clearTimeout()
 </script>

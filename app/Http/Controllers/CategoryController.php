@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use PhpParser\Builder\Function_;
-use App\Models\ProductCategories;
+use App\Models\Categories;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -13,8 +13,8 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = ProductCategories::latest() ;
-        $count = ProductCategories::count();
+        $categories = Categories::latest() ;
+        $count = Categories::count();
         return view('mazad_admin.products.product_category.categories', [
             "heading" => "All Categories",
             "categories" => $categories->paginate(4),
@@ -25,8 +25,8 @@ class CategoryController extends Controller
     // Show Create Form
     public function create()
     {
-        $categories = ProductCategories::latest()->paginate(3);
-        $count = ProductCategories::count();
+        $categories = Categories::latest()->paginate(3);
+        $count = Categories::count();
         return view('mazad_admin.products.product_category.add_category', [
             "categories" => $categories,
             "allCategoriesCount" => $count,
@@ -44,13 +44,13 @@ class CategoryController extends Controller
 
         $formFields['category_image_location'] = 'act1.png';
         
-        ProductCategories::create($formFields);
+        Categories::create($formFields);
         
-        return redirect('/categoriesShow')->with('success', 'تم إضافة التصنيف بنجاح');
+        return redirect('/categories/categoriesShow')->with('success', 'تم إضافة التصنيف بنجاح');
     }
 
     // Show Create Form
-    public function edit(ProductCategories $category)
+    public function edit(Categories $category)
     {
         return view('mazad_admin.products.product_category.edit_category', [
             'category' => $category,
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     }
 
     // Store Product Data
-    public function update(Request $request, ProductCategories $category)
+    public function update(Request $request, Categories $category)
     {
         $formFields = $request->validate([
             'category_name'=> ['required', 'alpha'],
@@ -72,11 +72,11 @@ class CategoryController extends Controller
         
         $category->update($formFields);
         
-        return redirect('/categoriesShow')->with('success', 'تم تعديل  التصنيف بنجاح');
+        return redirect('/categories/categoriesShow')->with('success', 'تم تعديل  التصنيف بنجاح');
     }
 
     // Delete Category
-    public function delete(ProductCategories $category)
+    public function delete(Categories $category)
     {
         $category->delete();
         return back()->with('danger' , "تم حذف التصنيف بنجاح");

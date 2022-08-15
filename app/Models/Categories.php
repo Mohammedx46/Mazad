@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Productcategories extends Model
+class Categories extends Model
 {
     protected $fillable =[
         'category_name',
@@ -16,7 +16,7 @@ class Productcategories extends Model
     // Relationship To Products
     public function products()
     {
-        return $this->hasMany(Products::class, 'productcategories_id');
+        return $this->hasMany(Products::class, 'categories_id');
     }
     
     use HasFactory;

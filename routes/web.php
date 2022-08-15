@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\BiddingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RolesController;
@@ -57,14 +58,14 @@ Route::get('/admin', [AdminController::class, 'admin']);
 
 // ------------ Products ------------------
 // ----------------------------------------
-Route::group(['prefix'=> 'products'], function(){
+Route::group(['prefix'=> '/products'], function(){
 
     Route::get('/productsShow', [ProductsController::class, 'index']);
     
     // Create Product 
-    Route::get('/create', [ProductsController::class, 'create'])->middleware('auth');
+    Route::get('/create', [ProductsController::class, 'create']);
     
-    Route::post('', [ProductsController::class, 'store']);
+    Route::post('/', [ProductsController::class, 'store']);
     
     // Edit Product 
     Route::get('/{product}/edit', [ProductsController::class, 'edit']);
@@ -87,7 +88,7 @@ Route::group(['prefix' => '/categories'], function(){
     // Create category 
     Route::get('/create', [CategoryController::class, 'create']);
     
-    Route::post('/categories', [CategoryController::class, 'store']);
+    Route::post('/', [CategoryController::class, 'store']);
     
     // Edit category 
     Route::get('/{category}/edit', [CategoryController::class, 'edit']);
@@ -142,9 +143,20 @@ Route::group(['prefix' =>'/roles'], function(){
 
     Route::post('/store', [RolesController::class , 'store']);
 
-    Route::get('/{edit}/edit', [RolesController::class , 'edit']);
+    Route::get('/{role}/edit', [RolesController::class , 'edit']);
 
-    Route::post('/update/{edit}', [RolesController::class , 'update']);
+    Route::put('/update/{role}', [RolesController::class , 'update']);
+
+    Route::delete('/{role}', [RolesController::class , 'delete']);
 
     
+});
+
+// ------------ Bidding -------------------
+// ----------------------------------------
+
+Route::group(['prefix' => '/bidding'], function(){
+    Route::get('/{product}', [BiddingController::class, 'isBidding']);
+
+    Route::post('/bid/create/{product}', [BiddingController::class, 'storeBidding']);
 });

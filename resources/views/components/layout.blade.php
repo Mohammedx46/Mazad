@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naftrend - NFT Marketplace HTML Template</title>
+    <title>منصة مزاد - {{$heading}}</title>
     <link rel="stylesheet" href="{{url('css/all.css')}}">
 
     <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
@@ -71,8 +71,8 @@
                     
                     <div class="mobile-logo-area d-lg-none d-block">
                         <div class="mobile-logo-wrap d-flex justify-content-between align-items-center">
-                            <img src="{{asset('images/auction/act1.png')}}" alt="">
-                            <img src="{{asset('images/bg/h-logo.png')}}" alt="">
+                            <img src="{{asset('storage/images/auction/act1.png')}}" alt="">
+                            <img src="{{asset('storage/images/bg/h-logo.png')}}" alt="">
                             <div class="menu-close-btn">
                                 <i class="bi bi-x-lg"></i>
                             </div>
@@ -118,8 +118,8 @@
                                 <ul class="submenu">
                                     <!-- <li class="sub-item"><a href="top-author.html">top author</a></li>
                                     <li class="sub-item"><a href="author-details.html">author details</a></li> -->
-                                    <li class="sub-item"><a href="signup">إنشاء حساب</a></li>
-                                    <li class="sub-item"><a href="login">تسجيل دخول</a></li>
+                                    <li class="sub-item"><a href="/signup">إنشاء حساب</a></li>
+                                    <li class="sub-item"><a href="/login">تسجيل دخول</a></li>
                                 </ul>
                             </li>
                         @endauth
@@ -146,7 +146,7 @@
                     <a href="#">Connect Wallet</a>
                 </div> -->
                 <div class="header-logo">
-                    <a href="index-2.html"><img src="{{asset('images/icons/auction.png')}}" alt=""></a>
+                    <a href="index-2.html"><img src="{{asset('storage/images/icons/auction.png')}}" alt=""></a>
                 </div>
             </div>
         </div>
@@ -180,8 +180,8 @@
                                         <h5> الوقت المتبقي </h5>
                                         <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
                                     </div>
-                                    <img src="{{asset('images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('images/banner/banner-vdobg.png')}}" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
                                     <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
                                     </div>
@@ -221,8 +221,8 @@
                                         <h5> الوقت المتبقي </h5>
                                         <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
                                     </div>
-                                    <img src="{{asset('images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('images/banner/banner-vdobg.png')}}" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
                                     <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
                                     </div>
@@ -238,8 +238,8 @@
                         <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
                         <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
                     </ul> -->
-                    <!-- <img src="{{asset('images/banner/left-bttm.vctr.svg')}}" class="left-bttm-vctr" alt="">
-                    <img src="{{asset('images/banner/bannr-bottm-right.png')}}" class="right-bttn-vctr" alt=""> -->
+                    <!-- <img src="{{asset('storage/images/banner/left-bttm.vctr.svg')}}" class="left-bttm-vctr" alt="">
+                    <img src="{{asset('storage/images/banner/bannr-bottm-right.png')}}" class="right-bttn-vctr" alt=""> -->
                 </div>
                 <!-- Third Header  -->
                 <!-- ---------------------------------------- -->
@@ -262,8 +262,8 @@
                                         <h5> الوقت المتبقي </h5>
                                         <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
                                     </div>
-                                    <img src="{{asset('images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('images/banner/banner-vdobg.png')}}" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
+                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
                                     <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
                                     </div>
@@ -330,7 +330,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="footer-item">
-                                <img src="{{url('images/bg/footer-logo.png')}}" alt="">
+                                <img src="{{asset('storage/images/bg/footer-logo.png')}}" alt="">
                             </div>
                             <div class="footer-item">
                                 <div class="footer-title">
@@ -382,19 +382,19 @@
                         <ul class="pay-list d-flex align-items-center justify-content-lg-end justify-content-center m-0">
                             <li class=" d-md-block d-none"><a href="#">نحن نقبل:</a></li>
                             <li>
-                                <a href="#"><img src="{{url('images/bg/f-pay1.png')}}" alt=""></a>
+                                <a href="#"><img src="{{url('storage/images/bg/f-pay1.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="{{url('images/bg/f-pay2.png')}}" alt=""></a>
+                                <a href="#"><img src="{{url('storage/images/bg/f-pay2.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="{{url('images/bg/f-pay3.png')}}" alt=""></a>
+                                <a href="#"><img src="{{url('storage/images/bg/f-pay3.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="{{url('images/bg/f-pay4.png')}}" alt=""></a>
+                                <a href="#"><img src="{{url('storage/images/bg/f-pay4.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="{{url('images/bg/f-pay5.png')}}" alt=""></a>
+                                <a href="#"><img src="{{url('storage/images/bg/f-pay5.png')}}" alt=""></a>
                             </li>
                         </ul>
                     </div>
@@ -406,7 +406,7 @@
 </body>
 
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+{{-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> --}}
     <script src="{{url('js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{url('js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url('js/fontawesome.min.js')}}"></script>

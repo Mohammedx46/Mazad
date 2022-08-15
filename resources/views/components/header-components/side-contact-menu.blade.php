@@ -2,7 +2,7 @@
     <div class="menu-toggle-wrap bg-white">
         <div class="sidebar-top-area d-flex justify-content-between align-items-center">
             <div class="sidebar-logo">
-                <a href="index-2.html"><img src="{{asset('images/bg/sidebar-logo.png')}}" alt=""></a>
+                <a href="index-2.html"><img src="{{asset('storage/conimages/bg/sidebar-logo.png')}}" alt=""></a>
             </div>
             <div class="cross-icon">
                 <i class='bx bx-x'></i>

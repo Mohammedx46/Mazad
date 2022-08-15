@@ -9,7 +9,7 @@ class Auctions extends Model
 {
 
     protected $fillable =[
-        'products_id',
+        'product_id',
         'auction_current_price',
         'auction_status'
     ];
@@ -22,7 +22,7 @@ class Auctions extends Model
 
     // Relationship To Product
     public function product (){
-        return $this->belongsTo(Products::class , 'products_id');
+        return $this->belongsTo(Products::class , 'product_id');
     }
     use HasFactory;
 }

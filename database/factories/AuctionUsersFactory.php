@@ -16,8 +16,10 @@ class AuctionUsersFactory extends Factory
      */
     public function definition()
     {
+        
         return [
             'user_price'=> 300,
+            'user_total_bidding'=> 500,
         ];
     }
 }

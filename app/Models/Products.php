@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     protected $fillable= [
-        'productcategories_id',
+        'categories_id',
         'user_id',
         'product_name',
         'product_short_description',
@@ -38,12 +38,9 @@ class Products extends Model
 
     public function scopeLiveAuctions($query, array $filters)
     {
+        // dd($filters);
         if ($filters['liveAuctions'] ?? true) {
-            // $query->where('auction_start_date', '<=',  today()->format('Y-m-d h:m:s'));
             $query->whereBetween('auction_start_date', [$filters['liveAuctions'], today()->format('Y-m-d h:m:s')] );
-            // $query->whereBetween('auction_start_date' , ['2022-08-22 00:50:28' , today()->format('Y-m-d h:m:s')] );
-            // $query->where('auction_start_date' , 'Between'  , $filters['liveAuctions']. 'and' . today()->format('Y-m-d h:m:s') );
-            // $query->whereBetween('auction_start_date', ['2022-08-23 00:50:28' , '2022-08-06 06:08:36'])->first();
         }
     }
 
@@ -65,13 +62,13 @@ class Products extends Model
     
     public function category()
     {
-        return $this->belongsTo(ProductCategories::class, 'productcategories_id');
+        return $this->belongsTo(ProductCategories::class, 'categories_id');
     }
 
     // Relationship To auction
     public function auction()
     {   
-        return $this->hasMany(Auction::class,'products_id');
+        return $this->hasMany(Auction::class,'product_id');
     }
 
     // Relationship To images

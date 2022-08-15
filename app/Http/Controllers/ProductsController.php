@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Productcategories;
+use App\Models\Auctions;
+use App\Models\categories;
 use Carbon\Carbon;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -34,20 +35,21 @@ class ProductsController extends Controller
     {
         
         return view('mazad_admin.products.add_product', [
-            'categories' => ProductCategories::all(),
+            'categories' => Categories::all(),
         ]);
     }
 
     public function store(Request $request)
     {
+        // dd($request);
         $date = Carbon::parse($request->auction_start_date);
         $fourDays = $date->addDays(4);
         
         
         $formFields = $request->validate([
-            'productcategories_id'=>['required'],
-            'product_name'=> ['required', 'alpha'],
-        	'product_short_description'=> ['required', 'alpha', 'max:255'],
+            'categories_id'=>['required'],
+            'product_name'=> ['required'],
+        	'product_short_description'=> ['required', 'max:255'],
         	'product_description'=> ['required'],
         	'product_start_price'=> ['required','numeric'],
         	'product_sell_now_price'=> ['required','numeric'],
@@ -57,7 +59,8 @@ class ProductsController extends Controller
         ]);
         
         $formFields['is_product_sold'] = 0 ;
-        $formFields['user_id'] = auth()->id;
+        $formFields['user_id'] = auth()->id();
+        // $formFields['user_id'] = 1;
 
         // Store Image
         if ($request->hasFile('product_main_image_location')) {
@@ -65,8 +68,13 @@ class ProductsController extends Controller
             $formFields['product_main_image_location'] = $request->file('product_main_image_location')->store('product_main_image_locations', 'public');
         }
 
-        Products::create($formFields);
+
+        $product = Products::create($formFields);
+        $auctionFields['product_id'] = $product->id;
+        $auctionFields['auction_current_price'] = $formFields['product_start_price'];
+        $auctionFields['auction_status'] = 0 ;
         
+        Auctions::create($auctionFields);
         return redirect('/')->with('success', 'تم إضافة المنتج بنجاح');
     }
 
@@ -76,7 +84,7 @@ class ProductsController extends Controller
     {
         return view('mazad_admin.products.edit_product', [
             'product' => $product,
-            'categories' => ProductCategories::all(),
+            'categories' => Categories::all(),
         ]);
     }
 
@@ -91,7 +99,7 @@ class ProductsController extends Controller
         $fourDays = $date->addDays(4);        
         
         $formFields = $request->validate([
-            'productcategories_id'=>['required'],
+            'categories_id'=>['required'],
             'product_name'=> ['required', 'max:50'],
         	'product_short_description'=> ['required', 'max:255'],
         	'product_description'=> ['required'],
@@ -118,7 +126,7 @@ class ProductsController extends Controller
     // Delete Product
     public function delete(Products $product)
     {
-        if ($product->user_id != auth()->id())
+        if (!$product->user_id != auth()->id())
         {
             abort('403', 'عملية غير مصرح بها');
         }

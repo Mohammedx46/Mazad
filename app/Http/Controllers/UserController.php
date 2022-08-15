@@ -31,10 +31,12 @@ class UserController extends Controller
         if (URL::full() == $urlConst.'users/create')
         {        
             return view('mazad_admin.users.add_user', [
+                'heading' => "إنشاء حساب",
                 'roles' => $roles,
             ]);
         }
         return view('users.signup', [
+            'heading' => "إنشاء حساب",
             'roles' => $roles,
         ]);
     }
@@ -133,7 +135,9 @@ class UserController extends Controller
     // Login 
     public function login()
     {
-        return view('users.login');
+        return view('users.login',[
+            'heading' => "تسجيل الدخول",
+        ]);
     }
 
     public function authenticate(Request $request)

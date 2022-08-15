@@ -133,14 +133,14 @@
                                                 
                                                 <!----------- Product Category Field ------------>
                                                 <label class="labelAdd col-md-3">تصنيف المنتج
-                                                    <select class="form-control" name="productcategories_id" required>
+                                                    <select class="form-control" name="categories_id" required>
                                                         
                                                         @foreach ($categories as $category)
                                                             <option value="{{$category->id}}">{{$category->category_name}} </option>
                                                         @endforeach
                                                         
                                                     </select>
-                                                    @error('productcategories_id')
+                                                    @error('categories_id')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label>

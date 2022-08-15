@@ -18,6 +18,7 @@
                         <div class="col-md-12">
                             <form method="POST" action="/roles/update/{{$role->id}}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label>اسم الصلاحية</label>
                                     <input type="text" name="role_name" class="form-control" required 

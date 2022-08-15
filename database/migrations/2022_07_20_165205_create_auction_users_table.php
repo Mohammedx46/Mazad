@@ -24,6 +24,7 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->unsignedBigInteger('user_price');
+            $table->unsignedBigInteger('user_total_bidding');
             $table->timestamps();
         });
     }

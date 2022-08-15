@@ -8,14 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class AuctionUsers extends Model
 {
     protected $fillable=[
-        'auctions_id',
+        'auction_id',
         'user_id',
         'user_price',
+        'user_total_bidding',
     ];
+
+    public function scopeYourBidding($query, array $filters)
+    {
+        // dd($filters);
+        if ($filters['yourBidding'] ?? false) {
+            $query->where('user_id', '=',  $filters['yourBidding'] , 'AND' , 'user_price' );
+        }
+
+    }
 
     // Relationship To Auction
     public function auction (){
-        return $this->belongsTo(Auctions::class,'auctions_id');
+        return $this->belongsTo(Auctions::class,'auction_id');
     }
 
     // Relationship To User

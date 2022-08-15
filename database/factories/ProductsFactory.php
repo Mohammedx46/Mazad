@@ -21,7 +21,7 @@ class ProductsFactory extends Factory
                         $start_date->format('Y-m-d H:i:s'),
                         $start_date->format('Y-m-d H:i:s').' +3 days');
         return [
-            'productcategories_id' => random_int(1,4),
+            'categories_id' => random_int(1,4),
             'user_id' => 1,            
             'product_name' => $this->faker->word(),
             'product_short_description' => $this->faker->sentence(),

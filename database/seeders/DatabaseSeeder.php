@@ -11,7 +11,7 @@ use App\Models\AuctionUsers;
 use App\Models\ProductImages;
 use Illuminate\Database\Seeder;
 use App\Models\ProductDocuments;
-use App\Models\ProductCategories;
+use App\Models\Categories;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -39,14 +39,72 @@ class DatabaseSeeder extends Seeder
             ['role_name' => 'user']
         );
         
-        $user = User::factory(3)->create();
+        $password = bcrypt(123);
+        User::create([
+            'role_id' => 3,
+            'name' => 'جمال عبده حسن',					
+            'last_name' => 'القاضي',
+            'email' => 'jamal@gmail.com',
+            'phone_number' => '775020407',
+            'password' => $password,
+            'user_status' => '1',
+            'subscription_type' => '1',
+            'insurance_amount' => '0',
+            'is_bidding' => '0',
+            'is_confirm_terms' => '1',
+            'user_image_location' => 'storage/users/jamal.jpg',
+        ]);
 
+        User::create([
+            'role_id' => 3,
+            'name' => 'رشيد قائد عبده',					
+            'last_name' => 'الوصابي',
+            'email' => 'rashid@gmail.com',
+            'phone_number' => '771186772',
+            'password' => $password,
+            'user_status' => '1',
+            'subscription_type' => '1',
+            'insurance_amount' => '0',
+            'is_bidding' => '0',
+            'is_confirm_terms' => '1',
+            'user_image_location' => 'storage/users/rashid.jpg',
+        ]);
+
+        User::create([
+            'role_id' => 3,
+            'name' => 'محمد خالد محمد',					
+            'last_name' => 'الحسني',
+            'email' => 'mohmmedx46@gmail.com',
+            'phone_number' => '774814450',
+            'password' => $password,
+            'user_status' => '1',
+            'subscription_type' => '1',
+            'insurance_amount' => '1',
+            'is_bidding' => '0',
+            'is_confirm_terms' => '1',
+            'user_image_location' => 'storage/users/mohmmed.jpg',
+        ]);
         // Contacts::factory(5)->create();
 
-        ProductCategories::factory(4)->create();
+        Categories::factory(4)->create();
         
         
         $product = Products::factory(8)->create();
+
+        Products::create([
+            'categories_id' => 2 ,
+		    'user_id' => 3,
+        	'product_name' => 'سيارة هيلوكس',
+        	'product_short_description' => 'سيار مخلوع الصدام',
+        	'product_description' => 'مكسر مكسر مكسر',
+        	'product_start_price' => 200,
+        	'product_sell_now_price' => 400,
+		    'product_quantity' => 1,
+        	'auction_start_date' => '2022-8-15 08:02:00' ,
+        	'auction_end_date' => '2022-8-18 08:02:00',
+        	'product_main_image_location' => 'images/auction/cat1.png' ,
+        	'is_product_sold' => 0,
+        ]);
 
         ProductDocuments::factory(5)->create();
 
@@ -56,9 +114,14 @@ class DatabaseSeeder extends Seeder
 
         $auction = Auctions::factory(5)->create();
 
+        Auctions::create([
+            'product_id' => 9,
+            'auction_current_price' => 200,
+            'auction_status' => 0,
+        ]);
         AuctionUsers::factory(5)->create([
             'auction_id' => $auction[2]->id,
-            'user_id' => $user[0]->id
+            'user_id' => 1
         ]);
 
 

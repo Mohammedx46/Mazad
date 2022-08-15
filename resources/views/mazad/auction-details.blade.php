@@ -1,7 +1,5 @@
-<x-layout>
-    <!-- ---------------------------------------- -->
-    <!-- Second Section ِAuction  -->
-    <!-- ---------------------------------------- -->
+<x-layout :heading="$heading">
+    
     <x-container.section class="auction-details-section  pt-110" >
         <!-- First Section ِAuction and Bidding -->
         <!-- --------------------------------- -->
@@ -15,21 +13,22 @@
                         <img src=" {{$product->product_main_image_location ? 
                                 asset('storage/'.$product->product_main_image_location) :
                                 asset('storage/images/bg/auction-big1.png') }}" 
-                                class="img-fluid" alt="" >
+                                class="img-fluid" alt="" width="500px" />
                     </div>
                     <div class="tab-pane big-image fade" id="gallery-img2">
                         <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
                             <x-timer :section="6" :endDate="$product->auction_end_date" :productId="$product->id"/>
                         </div>
-                        <img src=" {{$product->product_main_image_location ? 
-                            asset('storage/'.$product->product_main_image_location) :
-                            asset('storage/images/bg/auction-big1.png') }}" 
-                            class="img-fluid" alt="" >                    </div>
+                            <img src=" {{$product->product_main_image_location ? 
+                                asset('storage/'.$product->product_main_image_location) :
+                                asset('storage/images/bg/auction-big1.png') }}" 
+                                class="img-fluid" alt=""  width="600px" />   
+                    </div>
                     <div class="tab-pane big-image fade" id="gallery-img3">
                         <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
                             <x-timer :section="7" :endDate="$product->auction_end_date" :productId="$product->id"/>
                         </div>
-                        <img src="{{asset('storage/images/bg/auction-big3.png')}}" class="img-fluid" alt="">
+                        <img src="{{asset('storage/images/bg/auction-big3.png')}}" class="img-fluid" alt="" >
                     </div>
                     <div class="tab-pane big-image fade show" id="gallery-img4">
                         <div class="auction-gallery-timer d-flex align-items-center justify-content-start">
@@ -94,7 +93,7 @@
                                     <div class="author-name">
                                         <span>صاحب السلعة</span>
                                         <a href="#">
-                                            <h6>{{$user->first_name}}</h6>
+                                            <h6>{{ $user->name . ' ' . $user->last_name}}</h6>
                                         </a>
                                     </div>
                                 </div>
@@ -110,20 +109,42 @@
                     <div class="auction-product-overview text-lg-end text-center">
                         <h4 class="component-title">لمحة مختصرة</h4>
                         <ul class="overview-list">
-
                             <li><span> تصنيف </span> : <span>{{$category->category_name}}</span> </li>
                             <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li>
                         </ul>
                     </div>
-                    <div class="bid-now-area text-lg-end text-center">
-                        <h4 class="component-title">زايد الأن</h4>
-                        <p class="row "> <span class="col-sm-6">  مزايدتك : 20$</span> <span class="col-sm-6"> أقل مزايدة ممكنة : 20.00$</span></p>
-                        <form>
-                            <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
-                                <input type="text" placeholder="$00.00"><a href="#" class="eg-btn btn--fill-primary bid-btn">زايد</a>
-                            </div>
-                        </form>
-                    </div>
+                    
+                    
+                    
+                    @unless($is_bid)
+                        <div class="bid-now-area text-lg-end text-center">
+                            <h4 class="component-title">زايد الأن</h4>
+                            <form action="/bidding/{{$product->id}}" method="GET">
+                                @csrf
+                                <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
+                                    <button type="submit"  class="eg-btn btn--fill-primary bid-btn">بدء المزايدة</button>
+                                </div>
+                            </form>
+                        </div>
+                    @else
+                        <div class="bid-now-area text-lg-end text-center">
+                            <h4 class="component-title">زايد الأن</h4>
+                                <p class="row "> <span class="col-sm-6">  مزايدتك : 20$</span> <span class="col-sm-6"> أقل مزايدة ممكنة : 20.00$</span></p>
+                            <form action="/bidding/bid/create/{{$product->id}}" method="POST">
+                                @csrf
+                                <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
+                                    
+                                    <input type="text" placeholder="$00.00" name="user_price" required
+                                        value="{{old('user_price')}}"/>
+                                    
+                                    @error('user_price')
+                                        <div class="error-alert" role="alert"> {{$message}} </div>
+                                    @enderror
+                                    <button type="submit" class="eg-btn btn--fill-primary bid-btn">زايد</button>
+                                </div>
+                            </form>
+                        </div>
+                    @endunless
                 </div>
             </div>
         </div>
@@ -285,6 +306,10 @@
     <x-container.section class=" best-work-section pt-110 pb-110" >
 
         <x-category.filter :categories="$categories" filterTitle="المزادات الجارية" />
+
+        {{-- @php
+            dd($products)
+        @endphp --}}
         <x-auction.items :section="6" :products="$products" />
 
     </x-container.section>

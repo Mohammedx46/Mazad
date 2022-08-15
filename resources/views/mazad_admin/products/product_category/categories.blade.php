@@ -44,9 +44,9 @@
                                         <img 
                                             src="{{$category->category_image_location ? 
                                             asset('storage/'.$category->category_image_location) :
-                                            asset('/images/auction/cate1.png')}}"
+                                            asset('storage/images/auction/cate1.png')}}"
 
-                                            alt="image of {{$category->category_name}} category" width="200" />
+                                            alt="image of {{$category->category_name}} category"  width="200" />
                                     </td>	
                                     <td>
                                         <a href="/categories/{{$category->id}}/edit"

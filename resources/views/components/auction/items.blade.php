@@ -1,6 +1,9 @@
 @props(['products', 'section'])
 
 <x-container.items-container>
+    {{-- @php
+        dd($products)
+    @endphp --}}
     @if (!$products->isEmpty())
         @foreach ($products as $product)
             <div {{$attributes->merge(['class' => "col-lg-4 col-md-6 col-sm-10 "])}} >

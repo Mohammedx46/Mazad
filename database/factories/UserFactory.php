@@ -19,7 +19,7 @@ class UserFactory extends Factory
     {
         return [
             'role_id' => random_int(1,3),
-            'first_name'=> $this->faker->firstName(),
+            'name'=> $this->faker->firstName(),
             'last_name'=> $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),

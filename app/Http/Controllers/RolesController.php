@@ -69,6 +69,18 @@ class RolesController extends Controller
         }
     }
 
+    // Delete Roles
+    public function delete(Roles $role)
+    {
+        // if (!$role->user_id != auth()->id())
+        // {
+        //     abort('403', 'عملية غير مصرح بها');
+        // }
+
+        $role->delete();
+        return back()->with('danger' , "تم حذف الصلاحية بنجاح");
+    }
+
 
     protected function process (Roles $role, Request $r)
     {

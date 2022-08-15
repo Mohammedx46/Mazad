@@ -1,6 +1,6 @@
 
 
-<x-layout>
+<x-layout  :heading="$heading">
 
     <x-container.section class="live-auction-section pt-110">
             <!-- Filter  -->
