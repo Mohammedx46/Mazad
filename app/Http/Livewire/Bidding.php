@@ -1,17 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Livewire;
 
+use Livewire\Component;
 use App\Models\User;
 use App\Models\Auctions;
 use App\Models\Products;
 use App\Models\Categories;
 use App\Models\AuctionUsers;
-use Illuminate\Http\Request;
 use App\Models\ProductImages;
 
-class BiddingController extends Controller
+class Bidding extends Component
 {
+
+    public function render()
+    {
+        return view('livewire.bidding');
+    }
+
     public function isBidding(Products $product)
     {
         $user = User::find($product->user_id);

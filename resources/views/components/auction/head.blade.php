@@ -2,6 +2,9 @@
 
 
 <div class="auction-img">
+    {{-- @php
+        dd($product->product_main_image_location)
+    @endphp --}}
         <img src=" {{$product->product_main_image_location ? 
             asset('storage/'.$product->product_main_image_location) :
             asset('storage/images/auction/cate1.png') }} " alt=""/>

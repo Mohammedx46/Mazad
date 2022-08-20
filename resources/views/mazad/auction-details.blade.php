@@ -1,4 +1,38 @@
 <x-layout :heading="$heading">
+
+    <?php 
+        if ( isset($_GET['action'], $_GET['product_id']))
+        {
+            $product_id= $_GET['product_id'] ;
+            $product = Products::find($product_id);
+            switch($_GET['action'])
+            {     
+                case 'bid':
+                dd(request());
+                    $formFields = request()->validate([
+                            'user_price' => ['required', 'numeric', 'min:20'],
+                        ]);
+                    $auctions = Auctions::all();
+                    foreach($auctions as $auction)
+                    {
+                        if ( $auction->product_id == $product->id)
+                            $formFields['auction_id'] = $auction->id;
+                    }
+                    $formFields['user_id'] = auth()->id();
+
+                    $auctionUsers =  AuctionUsers::all()->where('user_id' , '=' , auth()->id())
+                        ->where('auction_id' , '=' , $formFields['auction_id'])
+                        ->sum('user_price');
+                    $formFields['user_total_bidding'] = $auctionUsers;
+
+                    
+                    AuctionUsers::create($formFields);
+                    $auctionUsers = AuctionUsers::latest()->where ('auction_id' , '=' , $formFields['auction_id']);
+                break;
+            }
+        }
+    ?>
+        
     
     <x-container.section class="auction-details-section  pt-110" >
         <!-- First Section ِAuction and Bidding -->
@@ -62,8 +96,8 @@
                 </ul>
             </div>
 
-        <!-- Left Side of Auction and Bidding  -->
-        <!-- --------------------------------- -->
+            <!-- Left Side of Auction and Bidding  -->
+            <!-- --------------------------------- -->
             <div class="col-lg-6">
                 <div class="auction-details-content-area">
                     <!-- Stars Rating  -->
@@ -114,37 +148,9 @@
                         </ul>
                     </div>
                     
+                    <livewire:bidding/>
                     
                     
-                    @unless($is_bid)
-                        <div class="bid-now-area text-lg-end text-center">
-                            <h4 class="component-title">زايد الأن</h4>
-                            <form action="/bidding/{{$product->id}}" method="GET">
-                                @csrf
-                                <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
-                                    <button type="submit"  class="eg-btn btn--fill-primary bid-btn">بدء المزايدة</button>
-                                </div>
-                            </form>
-                        </div>
-                    @else
-                        <div class="bid-now-area text-lg-end text-center">
-                            <h4 class="component-title">زايد الأن</h4>
-                                <p class="row "> <span class="col-sm-6">  مزايدتك : 20$</span> <span class="col-sm-6"> أقل مزايدة ممكنة : 20.00$</span></p>
-                            <form action="/bidding/bid/create/{{$product->id}}" method="POST">
-                                @csrf
-                                <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
-                                    
-                                    <input type="text" placeholder="$00.00" name="user_price" required
-                                        value="{{old('user_price')}}"/>
-                                    
-                                    @error('user_price')
-                                        <div class="error-alert" role="alert"> {{$message}} </div>
-                                    @enderror
-                                    <button type="submit" class="eg-btn btn--fill-primary bid-btn">زايد</button>
-                                </div>
-                            </form>
-                        </div>
-                    @endunless
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@
                                     <div class="form-agreement form-inner d-flex justify-content-between flex-wrap">
                                         <div class="form-group">
                                             <!-- <input type="checkbox" id="html"> -->
-                                            <label for="html"><a href="signup" id="sign-reverse">إنشاء حساب ؟</a>
+                                            <label for="html"><a href="/signup" id="sign-reverse">إنشاء حساب ؟</a>
                                             </label>
                                         </div>
                                         <a href="#" class="forgot-pass">نسيت كلمة السر</a>

@@ -97,7 +97,7 @@
                                                 <div class="error-alert" role="alert"> {{$message}} </div>
                                             @enderror
                                         </div>
-                                        <a href="login" id="sign-reverse" style="font-size: 1.05em">  تسجيل الدخول ؟ </a>
+                                        <a href="/login" id="sign-reverse" style="font-size: 1.05em">  تسجيل الدخول ؟ </a>
                                     </div>
                                 </div>
                             </div>
