@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean('user_status');
             $table->integer('subscription_type');
             $table->unsignedBigInteger('insurance_amount')->nullable();
+            $table->integer('joined_auctions');
 		    $table->boolean('is_bidding')->nullable();
             $table->boolean('is_confirm_terms');
             $table->string('user_image_location')->nullable();

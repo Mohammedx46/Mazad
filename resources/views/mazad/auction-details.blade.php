@@ -1,37 +1,6 @@
 <x-layout :heading="$heading">
 
-    <?php 
-        if ( isset($_GET['action'], $_GET['product_id']))
-        {
-            $product_id= $_GET['product_id'] ;
-            $product = Products::find($product_id);
-            switch($_GET['action'])
-            {     
-                case 'bid':
-                dd(request());
-                    $formFields = request()->validate([
-                            'user_price' => ['required', 'numeric', 'min:20'],
-                        ]);
-                    $auctions = Auctions::all();
-                    foreach($auctions as $auction)
-                    {
-                        if ( $auction->product_id == $product->id)
-                            $formFields['auction_id'] = $auction->id;
-                    }
-                    $formFields['user_id'] = auth()->id();
-
-                    $auctionUsers =  AuctionUsers::all()->where('user_id' , '=' , auth()->id())
-                        ->where('auction_id' , '=' , $formFields['auction_id'])
-                        ->sum('user_price');
-                    $formFields['user_total_bidding'] = $auctionUsers;
-
-                    
-                    AuctionUsers::create($formFields);
-                    $auctionUsers = AuctionUsers::latest()->where ('auction_id' , '=' , $formFields['auction_id']);
-                break;
-            }
-        }
-    ?>
+    
         
     
     <x-container.section class="auction-details-section  pt-110" >
@@ -147,8 +116,11 @@
                             <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li>
                         </ul>
                     </div>
+                    {{-- @php
+                        dd($is_bid)
+                    @endphp --}}
                     
-                    <livewire:bidding/>
+                    <livewire:bidding :is_bid="$is_bid" :product="$product" />
                     
                     
                 </div>
@@ -207,94 +179,42 @@
                         <div class="bid-list-area">
                             <h6>آخر المزايدات</h6>
                             <ul class="bid-list">
-                                <li>
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-7">
-                                            <div class="bidder-area">
-                                                <div class="bidder-img">
-                                                    <img src="assets/images/bg/bidder1.png" alt="">
+                                @unless($auctionUsers->isEmpty())
+                                    {{-- @php
+                                        dd($auctionUsers)
+                                    @endphp --}}
+                                    @foreach ($auctionUsers as $auctionUser)
+                                        <li>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-7">
+                                                    <div class="bidder-area">
+                                                        <div class="bidder-img">
+                                                            <img src="assets/images/bg/bidder1.png" alt="">
+                                                        </div>
+                                                        <div class="bidder-content">
+                                                            <a href="#">
+                                                                <h6>{{$auctionUser->user->name}} {{$auctionUser->user->last_name}} </h6>
+                                                            </a>
+                                                            <p>{{$auctionUser->user_price}} $</p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="bidder-content">
-                                                    <a href="#">
-                                                        <h6>رشيد الوصابي</h6>
-                                                    </a>
-                                                    <p>24.50 $</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-5 text-end">
-                                            <div class="bid-time">
-                                                <p>4 أربع ساعات</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-7">
-                                            <div class="bidder-area">
-                                                <div class="bidder-img">
-                                                    <img src="assets/images/bg/bidder1.png" alt="">
-                                                </div>
-                                                <div class="bidder-content">
-                                                    <a href="#">
-                                                        <h6>رشيد الوصابي</h6>
-                                                    </a>
-                                                    <p>24.50 $</p>
+                                                <div class="col-5 text-end">
+                                                    <div class="bid-time">
+                                                        {{-- <p>4 أربع ساعات</p> --}}
+                                                        <p> 
+                                                            <span>{{$auctionUser->created_at->format('jS F Y ')}}</span> 
+                                                            <span style="margin-left: 2em">{{$auctionUser->created_at->format('h:i:s A')}}</span> 
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-5 text-end">
-                                            <div class="bid-time">
-                                                <p>4 أربع ساعات</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-7">
-                                            <div class="bidder-area">
-                                                <div class="bidder-img">
-                                                    <img src="assets/images/bg/bidder1.png" alt="">
-                                                </div>
-                                                <div class="bidder-content">
-                                                    <a href="#">
-                                                        <h6>رشيد الوصابي</h6>
-                                                    </a>
-                                                    <p>24.50 $</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-5 text-end">
-                                            <div class="bid-time">
-                                                <p>4 أربع ساعات</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="row d-flex align-items-center">
-                                        <div class="col-7">
-                                            <div class="bidder-area">
-                                                <div class="bidder-img">
-                                                    <img src="assets/images/bg/bidder1.png" alt="">
-                                                </div>
-                                                <div class="bidder-content">
-                                                    <a href="#">
-                                                        <h6>رشيد الوصابي</h6>
-                                                    </a>
-                                                    <p>24.50 $</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-5 text-end">
-                                            <div class="bid-time">
-                                                <p>4 أربع ساعات</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+                                        </li>
+                                    @endforeach
+
+                                @else
+                                        <li>لا يوجد مزايدة حتى الأن</li>
+                                @endunless
 
                             </ul>
                         </div>

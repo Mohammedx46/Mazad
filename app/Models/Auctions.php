@@ -11,7 +11,7 @@ class Auctions extends Model
     protected $fillable =[
         'product_id',
         'auction_current_price',
-        'auction_status'
+        'auction_status',
     ];
 
     // Relationship To auctionUser

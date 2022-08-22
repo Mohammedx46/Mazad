@@ -14,14 +14,19 @@ class AuctionUsers extends Model
         'user_total_bidding',
     ];
 
-    public function scopeYourBidding($query, array $filters)
-    {
-        // dd($filters);
-        if ($filters['yourBidding'] ?? false) {
-            $query->where('user_id', '=',  $filters['yourBidding'] , 'AND' , 'user_price' );
-        }
+    // public function scopeYourBidding($query, array $filters)
+    // {
+    //     // dd($filters);
+    //     if ($filters['yourBidding'] ?? false) {
+    //         $query->where('user_id', '=',  $filters['yourBidding'] , 'AND' , 'user_price' );
+    //     }
 
-    }
+    // }
+
+
+
+
+
 
     // Relationship To Auction
     public function auction (){

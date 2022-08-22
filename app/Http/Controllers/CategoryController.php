@@ -36,7 +36,7 @@ class CategoryController extends Controller
     // Store Product Data
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd($request->category_name);
         $formFields = $request->validate([
         	'category_name'=> ['required', 'alpha'],
         	'category_description'=> ['required'],

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auctions;
+use App\Models\AuctionUsers;
 use App\Models\User;
 use App\Models\Contacts;
 use App\Models\Products;
@@ -41,6 +43,10 @@ class AuctionController extends Controller
         $date =  now()->addDay('-4')->format('Y-m-d h:m:s');
         $liveAuctions = Products::LiveAuctions(['liveAuctions'=> $date])->paginate(3);
 
+        $auctionId = Auctions::where('product_id', $product->id)->value('id');
+
+        $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
+        
         $is_bid = false;
         return view('mazad.auction-details', [
             "heading" => "تفاصيل المزاد",
@@ -54,6 +60,8 @@ class AuctionController extends Controller
 
             "is_bid" => $is_bid ,
             "auction_images" => ProductImages::all(),
+
+            "auctionUsers" => $auctionUsers,
         ]);
     }
 

@@ -29,6 +29,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'subscription_type' => random_int(1,4),
             'insurance_amount'=> random_int(200,300),
+            'joined_auctions' => 0 ,
 		    'is_bidding'=> false,
             'is_confirm_terms' => true,
             'user_image_location' => 'images/bg/social-post4.png',

@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ProductImages extends Model
 {
     protected $fillable=[
-        
         'products_id',
-        'product_image_location'
+        'product_image_location',
     ];
 
     // Relationship To Products 

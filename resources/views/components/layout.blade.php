@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{url('css/style.css')}}">
 
     {{-- javascript Files --}}
-    
+    @livewireStyles
     
 </head>
 
@@ -403,6 +403,7 @@
         </div>
     </footer>
     
+    @livewireScripts
 </body>
 
 <!-- Mirrored from demo.egenslab.com/html/naftrend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 14 Apr 2022 14:23:30 GMT -->

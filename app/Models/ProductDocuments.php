@@ -10,7 +10,7 @@ class ProductDocuments extends Model
 
     protected $fillable =[
         'products_id',
-        'product_document_location'
+        'product_document_location',
     ];
 
     public function product(){
