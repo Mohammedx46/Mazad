@@ -43,7 +43,9 @@
             <x-auction.items :section="1" :products="$products" />
 
             {{-- Show All Button --}}
-            <x-show-all targetPage="live-auctions" class="btn--fill-primary" />
+            @if (!$products->isEmpty())
+                <x-show-all targetPage="live-auctions" class="btn--fill-primary" />
+            @endif
             
     </x-container.section>
 
@@ -63,7 +65,9 @@
         <x-auction.items :section="2" :products="$comingAuctions" />
 
         {{-- Show All Button --}}
-        <x-show-all targetPage="coming-auctions" class="btn--fill-white" />
+        @if (!$comingAuctions->isEmpty())
+            <x-show-all targetPage="coming-auctions" class="btn--fill-white" />
+        @endif
     </x-container.section>
     <!-- End Fourth Section Coming Featured Assets -->
     <!-- ----------------------------------------- -->

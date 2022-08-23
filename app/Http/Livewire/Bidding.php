@@ -13,6 +13,7 @@ class Bidding extends Component
 
     public $is_bid;
     public $product;
+    public $auctionId;
 
     //Form Fields
     public $user_price;
@@ -31,7 +32,8 @@ class Bidding extends Component
 
     public function isBidding(Products $product)
     {
-        $user = User::find($product->user_id);
+        $user = User::find(auth()->id());
+
         // $yourBidding = AuctionUsers::latest()->YourBidding(['yourBidding' => auth()->id()]);
 
         $this->is_bid = false;
@@ -39,6 +41,7 @@ class Bidding extends Component
         if(auth()->user()->insurance_amount > 0 && auth()->user()->is_bidding == 0)
         {
             $this->is_bid = true ;
+            $user->update(['is_bidding'=> 1]);
             $this->render();
         }else
         {
@@ -52,40 +55,32 @@ class Bidding extends Component
     {
         // Fill Auction User Table
         // user_price field
+        $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $this->auctionId )
+            ->max('user_price');
+            
         $auctionUserFields = $this->validate([
-            'user_price' => ['required', 'numeric', 'min:20'],
-        ]);
+            'user_price' => ['required', 'numeric', 'min:' . $maxUserPrice, 'lte:' . auth()->user()->insurance_amount * 3],
+        ]);        
 
         // auction_id field
-        $auctions = Auctions::all();
-        foreach($auctions as $auction)
-        {
-            if ( $auction->product_id == $product->id)
-            {
-                $auctionUserFields['auction_id']= $auction->id;
-                break;
-            }
-        }
+        $auctionUserFields['auction_id'] = $this->auctionId;
 
         // user_id field
         $auctionUserFields['user_id'] = auth()->id();
 
         // user_total_bidding field
         $userTotalBidding =  AuctionUsers::where('user_id' , '=' , auth()->id())
-            ->where('auction_id' , '=' , $auctionUserFields['auction_id'] )
+            ->where('auction_id' , '=' , $this->auctionId )
             ->sum('user_price');
+
         $auctionUserFields['user_total_bidding'] = $userTotalBidding;
 
-        $lastBiddingId =  AuctionUsers::where('user_id' , '=' , auth()->id())
-            ->where('auction_id' , '=' , $auctionUserFields['auction_id'] )
-            ->max('auction_user_id');
-
         // Insert into auctionUser Table
-        
-        AuctionUsers::create($auctionUserFields);
+        $auctionUser = AuctionUsers::create($auctionUserFields);
+        $this->user_price = null ;
 
-        $auctionUsers = AuctionUsers::latest()->where ('auction_id' , '=' , $auctionUserFields['auction_id']);
-        
-        return $auctionUsers;
+        $this->emit('newBid', $auctionUser->id);
+
+        session()->flash('success' , "تم إضافة مزايدتك");
     }
 }

@@ -5,7 +5,7 @@
 @endphp --}}
 
 @auth
-    @unless($is_bid)
+    @unless(auth()->user()->is_bidding)
         <div class="bid-now-area text-lg-end text-center">
             <h4 class="component-title">زايد الأن</h4>
             <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">
@@ -14,7 +14,7 @@
         </div>
     @else
         <div class="bid-now-area text-lg-end text-center">
-            <h4 class="component-title">زايد الأن</h4>
+            <h4 class="component-title" id="bid">زايد الأن</h4>
                 <p class="row "> <span class="col-sm-6">  مزايدتك : 20$</span> <span class="col-sm-6"> أقل مزايدة ممكنة : 20.00$</span></p>
             <form wire:submit.prevent="storeBidding({{$product->id}})"  >
                 @csrf

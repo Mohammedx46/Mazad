@@ -26,7 +26,7 @@ class Products extends Model
     {
         // dd($filters);
         if ($filters['categoryId'] ?? false) {
-            $query->where('ProductCategories_id', 'like', '%' . request('categoryId') . '%');
+            $query->where('Categories_id', 'like', '%' . request('categoryId') . '%');
         }
 
         if ($filters['search'] ?? false) {

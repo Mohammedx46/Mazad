@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :heading="$heading" >
     <x-container.section class="top-author-section pt-110 pb-110">
         <div class="row gy-4 mb-50 d-flex justify-content-center">
             @unless ($authors->isEmpty())

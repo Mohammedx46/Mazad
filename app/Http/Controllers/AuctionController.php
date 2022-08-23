@@ -47,7 +47,7 @@ class AuctionController extends Controller
 
         $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
         
-        $is_bid = false;
+        
         return view('mazad.auction-details', [
             "heading" => "تفاصيل المزاد",
             "product" => $product,
@@ -58,9 +58,9 @@ class AuctionController extends Controller
             "category" => $category,
             "categories" => Categories::latest(),
 
-            "is_bid" => $is_bid ,
             "auction_images" => ProductImages::all(),
 
+            'auctionId' => $auctionId, 
             "auctionUsers" => $auctionUsers,
         ]);
     }
@@ -87,7 +87,7 @@ class AuctionController extends Controller
     public function liveAuctions()
     {
         $date =  now()->addDay('-4')->format('Y-m-d h:m:s');
-        $liveAuctions = Products::latest()->LiveAuctions(['liveAuctions'=> $date])->paginate(6);
+        $liveAuctions = Products::latest()->LiveAuctions(['liveAuctions'=> $date])->paginate(3);
         return view('mazad.live-auctions', [
             "heading" => "مزادات جارية",
             'products' => $liveAuctions,
@@ -108,13 +108,19 @@ class AuctionController extends Controller
     // author Details Page
     public function author()
     {
-        return view('mazad.author-details');
+        return view('mazad.author-details', [
+            "heading" => 'تفاصيل المورد',
+        ]);
     }
 
     public function authors()
     {
-        $authors = User::latest()->paginate(12);
+        $authors = User::latest()->where('join' , 'products' , 'where' , 'user_id' , '=' , 'user_id')
+        
+        ->paginate(5);
+        dd($authors);
         return view('mazad.authors',[
+            "heading" => 'الموردين',
             "authors" => $authors,
         ]);
     }
@@ -122,7 +128,9 @@ class AuctionController extends Controller
     // Contact Page
     public function contact()
     {
-        return view('mazad.contact');
+        return view('mazad.contact', [
+            'heading' => 'للتواصل',
+        ]);
     }
 
     // Contact Send Request Page

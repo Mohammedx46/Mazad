@@ -101,18 +101,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 text-center text-sm-end ">
-                                <div class="price">
-                                    <div class="current-price">السعر الحالي</div>
-                                    <h4><span>$ {{$product->product_start_price}}</span></h4>
-                                </div>
-                            </div>
+                            <livewire:current-price :product="$product" :auctionUsers="$auctionUsers" :auctionId="$auctionId"/>
                         </div>
                     </div>
                     <div class="auction-product-overview text-lg-end text-center">
                         <h4 class="component-title">لمحة مختصرة</h4>
                         <ul class="overview-list">
                             <li><span> تصنيف </span> : <span>{{$category->category_name}}</span> </li>
+                            <li><span> الكمية </span> : <span>{{$product->product_quantity}}</span> </li>
                             <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li>
                         </ul>
                     </div>
@@ -120,7 +116,7 @@
                         dd($is_bid)
                     @endphp --}}
                     
-                    <livewire:bidding :is_bid="$is_bid" :product="$product" />
+                    <livewire:bidding :product="$product" :auctionId="$auctionId" />
                     
                     
                 </div>
@@ -175,50 +171,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="pills-bid" role="tabpanel" aria-labelledby="pills-bid-tab">
-                        <div class="bid-list-area">
-                            <h6>آخر المزايدات</h6>
-                            <ul class="bid-list">
-                                @unless($auctionUsers->isEmpty())
-                                    {{-- @php
-                                        dd($auctionUsers)
-                                    @endphp --}}
-                                    @foreach ($auctionUsers as $auctionUser)
-                                        <li>
-                                            <div class="row d-flex align-items-center">
-                                                <div class="col-7">
-                                                    <div class="bidder-area">
-                                                        <div class="bidder-img">
-                                                            <img src="assets/images/bg/bidder1.png" alt="">
-                                                        </div>
-                                                        <div class="bidder-content">
-                                                            <a href="#">
-                                                                <h6>{{$auctionUser->user->name}} {{$auctionUser->user->last_name}} </h6>
-                                                            </a>
-                                                            <p>{{$auctionUser->user_price}} $</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5 text-end">
-                                                    <div class="bid-time">
-                                                        {{-- <p>4 أربع ساعات</p> --}}
-                                                        <p> 
-                                                            <span>{{$auctionUser->created_at->format('jS F Y ')}}</span> 
-                                                            <span style="margin-left: 2em">{{$auctionUser->created_at->format('h:i:s A')}}</span> 
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                @else
-                                        <li>لا يوجد مزايدة حتى الأن</li>
-                                @endunless
-
-                            </ul>
-                        </div>
-                    </div>
+                    
+                    <livewire:bidding-history  :product="$product"/>
                 </div>
             </div>
         </div>
