@@ -31,7 +31,7 @@
                         <thead>
                             <tr>
                                 {{-- <th width="3%"><input type="checkbox" id="select-all"> </th> --}}
-                                <th width="5%">الاسم الأول</th>
+                                <th width="10%">الاسم الأول</th>
                                 <th width="5%"> اللقب </th>
                                 <th width="5%"> الصلاحية </th>
                                 <th width="10%">البريد الإلكتروني</th>
@@ -49,9 +49,9 @@
                         <tbody>
                             @unless ($users->isEmpty())
                                 @foreach ($users as $user)
-                                    <tr>
+                                    <tr @if($loop->odd) style="background:#18181814;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
-                                        <td>{{$user->first_name}}</td>
+                                        <td>{{$user->name}}</td>
                                         <td>{{$user->last_name}}</td>
                                         <td>{{$user->role->role_name}}</td>
                                         <td>{{$user->email}}</td>
