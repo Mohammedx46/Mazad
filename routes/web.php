@@ -137,6 +137,7 @@ Route::get('/logout', [UserController::class, 'logout']);
 // Route::group(['prefix' =>'/roles', 'middleware' => 'can:Permissions'], function(){
 Route::group(['prefix' =>'/roles'], function(){
 
+    // event(new \App\Events\Playground);
     Route::get('/', [RolesController::class , 'index']);
 
     Route::get('/create', [RolesController::class , 'create']);
@@ -148,15 +149,21 @@ Route::group(['prefix' =>'/roles'], function(){
     Route::put('/update/{role}', [RolesController::class , 'update']);
 
     Route::delete('/{role}', [RolesController::class , 'delete']);
-
-    
 });
 
 // ------------ Bidding -------------------
 // ----------------------------------------
 
 Route::group(['prefix' => '/bidding'], function(){
+    
     Route::get('/{product}', [BiddingController::class, 'isBidding']);
 
     Route::post('/bid/create/{product}', [BiddingController::class, 'storeBidding']);
+});
+
+Route::get('/ws', function(){
+    
+    return view('trySockets' , [
+        'heading' => "Try WebSockets",
+    ]);
 });
