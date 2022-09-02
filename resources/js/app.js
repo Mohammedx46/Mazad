@@ -7,5 +7,6 @@ channel.subscribed(() => {
     console.log('subscribed');
 }).listen('playground', (event)=>{
     console.log(event);
+    console.log("how are you")
 })
 
