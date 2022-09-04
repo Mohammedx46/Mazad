@@ -34,10 +34,13 @@
                                 <p><a href="/categories/categoriesShow"><i class="fa fa-th-large"></i> عرض تصنيفات المنتجات</a></p>
                             @endcan
                             @can('Roles')
-                                <p><a href="/roles"><i class="fa fa-th-large"></i> عرض الصلاحيات</a></p>
+                                <p><a href="/roles"><i class="fa fa-check-circle-o"></i> عرض الصلاحيات</a></p>
                             @endcan
                             @can('Auctions')
                                 <p><a href="/auctoinsShow"><i class="fa fa-gavel"></i> عرض المزادات</a></p>
+                            @endcan
+                            @can('Bills')
+                                <p><a href="/billsShow"><i class="fa fa-list"></i> عرض الفواتير</a></p>
                             @endcan
                         </div>
         

@@ -79,7 +79,7 @@
                             @can('Admin')
                                 <li><a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a></li>
                             @endcan
-                            </ul>
+                        </ul>
                     </li>    
                 @endcan
                 
@@ -89,7 +89,7 @@
                 @can('Roles')
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-th-large" aria-hidden="true"></i> <span>الصلاحيات</span>
+                            <i class="fa fa-check-circle-o" aria-hidden="true"></i> <span>الصلاحيات</span>
                             <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -101,7 +101,7 @@
                             @can('Admin')
                                 <li><a href="/roles/create"><i class="fa fa-plus-circle"> </i>إضافة صلاحية</a></li>
                             @endcan
-                            </ul>
+                        </ul>
                     </li>
                 @endcan
                 
@@ -117,6 +117,22 @@
                         </a>
                         <ul class="treeview-menu">
                             <li><a href="/auctionsShow"><i class="fa fa-eye"></i>عرض المزادات</a></li>
+                        </ul>
+                    </li>
+                @endcan
+
+                <!----------------- The Bills  ------------------->
+                <!------------------------------------------------>
+                @can('Bills')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-list" aria-hidden="true"></i> <span>الفواتير</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/billsShow"><i class="fa fa-eye"></i> عرض الفواتير</a></li>
                         </ul>
                     </li>
                 @endcan

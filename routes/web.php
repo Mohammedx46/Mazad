@@ -167,6 +167,27 @@ Route::get('/ws', function(){
     ]);
 });
 
+// --------------- Bills ------------------
+// ----------------------------------------
+Route::group(['prefix'=> '/bill','middleware' => 'can:Bills'], function(){
+
+    Route::get('/billsShow', [AdminController::class, 'index']);
+    
+    // Create Bill 
+    Route::get('/create', [AdminController::class, 'create'])->middleware('can:Admin');
+    
+    Route::post('/', [AdminController::class, 'store']);
+    
+    // Edit Bill 
+    Route::get('/{bill}/edit', [AdminController::class, 'edit'])->middleware('can:Admin');
+    
+    Route::put('/{bill}', [AdminController::class, 'update']);
+    
+    // Delete Bill
+    Route::delete('/bills/{bill}', [AdminController::class, 'delete']);
+});
+
+
 // Route::post('/chat-message', function(\Illuminate\Http\Request $request){
 //     event(new \App\Events\ChatMessageEvent($request->message));
 //     dd($request->message);
