@@ -10,7 +10,8 @@
             asset('storage/images/auction/cate1.png') }} " alt=""/>
 
         @unless ($section == 2)
-            <x-timer :section="$section" :productId="$product->id" :endDate="$product->auction_end_date" />
+        <livewire:timer :section="$section" :endDate="$product->auction_end_date" :productId="$product->id"/>
+
         @else 
             @php
                 $months = array(

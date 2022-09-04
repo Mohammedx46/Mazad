@@ -1,9 +1,5 @@
 
 
-{{-- @php
-    dd($is_bid)
-@endphp --}}
-
 @auth
     @if ( $productSold == 1 )
 

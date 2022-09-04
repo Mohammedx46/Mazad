@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('auctions', function (Blueprint $table) {
+        Schema::create('bill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')
-                ->constrained("products")
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-            $table->unsignedBigInteger('auction_current_price');
-            $table->boolean('auction_status');
+            $table->foreignId('user_id')
+                ->constrained("users")
+                ->cascadeOnUpdate();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('auction');
+        Schema::dropIfExists('bill');
     }
 };

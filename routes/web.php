@@ -162,14 +162,13 @@ Route::group(['prefix' => '/bidding'], function(){
 });
 
 Route::get('/ws', function(){
-    
     return view('trySockets' , [
         'heading' => "Try WebSockets",
     ]);
 });
 
-Route::post('/chat-message', function(\Illuminate\Http\Request $request){
-    event(new \App\Events\ChatMessageEvent($request->message));
-    dd($request->message);
-    return null;
-});
+// Route::post('/chat-message', function(\Illuminate\Http\Request $request){
+//     event(new \App\Events\ChatMessageEvent($request->message));
+//     dd($request->message);
+//     return null;
+// });

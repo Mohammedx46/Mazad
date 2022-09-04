@@ -2,16 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bill;
 use App\Models\User;
 use App\Models\Roles;
 use App\Models\Auctions;
+use App\Models\BillData;
 use App\Models\Contacts;
 use App\Models\Products;
+use App\Models\Categories;
 use App\Models\AuctionUsers;
 use App\Models\ProductImages;
 use Illuminate\Database\Seeder;
 use App\Models\ProductDocuments;
-use App\Models\Categories;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -218,8 +220,8 @@ class DatabaseSeeder extends Seeder
         	'product_start_price' => 700000,
         	'product_sell_now_price' => 1802795,
 		    'product_quantity' => 1,
-        	'auction_start_date' => today()->format('Y-m-d h:m:s') ,
-        	'auction_end_date' => today()->addDays(4)->format('Y-m-d h:m:s'),
+        	'auction_start_date' => today()->subDays(8)->format('Y-m-d h:m:s') ,
+        	'auction_end_date' => today()->subDays(4)->format('Y-m-d h:m:s'),
         	'product_main_image_location' => 'product_main_image_locations/optima2015.jpg' ,
         	'is_product_sold' => 0,
         ]);
@@ -376,6 +378,16 @@ class DatabaseSeeder extends Seeder
             'product_id' => '5',
             'auction_current_price' => '15000',
             'auction_status' => '0',
+        ]);
+
+        Bill::create([
+            "user_id" => 1,
+            "comment" => "أول عميل لمنصة مزاد"
+        ]);
+
+        BillData::create([
+            "products_id" => "4",
+            "bill_id" => "1",
         ]);
 
         // ----------------- Auction Users -----------

@@ -11,7 +11,7 @@
                 <div class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
                     <div class="tab-pane big-image fade show active" id="gallery-img1">
                         <div class="auction-img auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
-                            <x-timer :section="5" :endDate="$product->auction_end_date" :productId="$product->id"/>
+                            <livewire:timer :section="5" :endDate="$product->auction_end_date" :productId="$product->id"/>
                         </div>
                         <img src=" {{$product->product_main_image_location ? 
                                 asset('storage/'.$product->product_main_image_location) :
@@ -24,7 +24,7 @@
                         </div>
                             <img src=" {{$product->product_main_image_location ? 
                                 asset('storage/'.$product->product_main_image_location) :
-                                asset('storage/images/bg/auction-big1.png') }}" 
+                                asset('storage/images/users/jamal.jpg') }}" 
                                 class="img-fluid" alt=""  width="600px" />   
                     </div>
                     <div class="tab-pane big-image fade" id="gallery-img3">
@@ -119,7 +119,7 @@
                         <button disabled  class="eg-btn btn--fill-primary bid-btn">
                             قريباً
                         </button>
-                    @else 
+                    @else
                         <livewire:bidding :product="$product" :auctionId="$auctionId" />
                     @endif
                     

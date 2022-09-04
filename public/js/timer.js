@@ -28,9 +28,12 @@ const timer = {
         const minutes = document.querySelector(`#minutes-${id}`)
         const seconds = document.querySelector(`#seconds-${id}`)
 
-        setInterval(() => {
+        let timeInterval = setInterval(() => {
 
             if (endTime < Math.floor(Date.now() / 1000)) {
+                console.log("end time")
+                endAuction()
+                clearInterval(timeInterval)
                 return
             }
             let elapsedTime = endTime - Math.floor(Date.now() / 1000)
@@ -53,3 +56,7 @@ document.querySelectorAll('.timer').forEach(node => {
 
     timer.countDown(endDate, productId)
 })
+
+function endAuction(){
+    
+}

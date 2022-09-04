@@ -23,6 +23,17 @@ class Bidding extends Component
 
     public function render()
     {
+        return view('livewire.bidding');
+    }
+
+    public function login()
+    {
+        // echo '<div style="background:red; width:100%; height:200px; color:white">How are you</div>';
+        return redirect('/login');
+    }
+
+    public function endAuction()
+    {
         $winUsers = null;
 
         if (  $this->product->auction_end_date <= now()->format('Y-m-d H:m:s')  )
@@ -37,13 +48,6 @@ class Bidding extends Component
                 "winUsers" => $winUsers,
             ]);
         }
-        return view('livewire.bidding');
-    }
-
-    public function login()
-    {
-        // echo '<div style="background:red; width:100%; height:200px; color:white">How are you</div>';
-        return redirect('/login');
     }
 
     public function isBidding(Products $product)

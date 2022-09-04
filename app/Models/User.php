@@ -72,6 +72,12 @@ class User extends Authenticatable
         return $this->hasMany(Products::class, 'user_id');
     }
 
+    // Relationship To bill
+    public function bill()
+    {   
+        return $this->hasMany(Bill::class,'user_id');
+    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

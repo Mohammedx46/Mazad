@@ -68,7 +68,7 @@ class Products extends Model
     // Relationship To auction
     public function auction()
     {   
-        return $this->hasMany(Auction::class,'product_id');
+        return $this->hasMany(Auction::class,'products_id');
     }
 
     // Relationship To images
@@ -82,6 +82,12 @@ class Products extends Model
     public function documents()
     {
         return $this->hasMany(ProductDocuments::class, 'products_id');
+    }
+
+    // Relationship To bill data
+    public function billData()
+    {   
+        return $this->hasMany(BillData::class,'products_id');
     }
 
     use HasFactory;
