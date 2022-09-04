@@ -1,5 +1,5 @@
 
-<div class="tab-pane fade" id="pills-bid" role="tabpanel" aria-labelledby="pills-bid-tab">
+<div class="tab-pane fade" id="pills-bid" role="tabpanel" aria-labelledby="pills-bid-tab" wire:poll.750ms>
     <div class="bid-list-area">
         <h6>آخر المزايدات</h6>
         <ul class="bid-list">

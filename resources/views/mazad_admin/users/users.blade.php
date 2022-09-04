@@ -49,7 +49,7 @@
                         <tbody>
                             @unless ($users->isEmpty())
                                 @foreach ($users as $user)
-                                    <tr @if($loop->odd) style="background:#18181814;border-radius:20px" @endif>
+                                    <tr @if($loop->odd) style="background:#ae661552;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->last_name}}</td>
@@ -68,14 +68,17 @@
                                         </td>
                                         <td>{{$user->is_bidding == 0 ? "لا" : "نعم"}}</td>
                                         <td>
-                                            <a href="/users/{{$user->id}}/edit"
-                                                class='btn btn-success'><i class="fa-solid fa-pen-to-square"></i> تعديل</a>
-    
-                                            <form method="POST" action="/users/{{$user->id}}" style="display: inline-block">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button href="" class="btn btn-danger" > حذف</button>
-                                            </form>
+                                            @can('Users')
+                                                <a href="/users/{{$user->id}}/edit"
+                                                    class='btn btn-success'><i class="fa-solid fa-pen-to-square"></i> تعديل</a>                                                
+                                            @endcan
+                                            @can('Admin')
+                                                <form method="POST" action="/users/{{$user->id}}" style="display: inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button href="" class="btn btn-danger" > حذف</button>
+                                                </form>                                                
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach

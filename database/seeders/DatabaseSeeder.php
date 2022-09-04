@@ -28,16 +28,51 @@ class DatabaseSeeder extends Seeder
         // ----------------- Roles -------------------
         // -------------------------------------------
 
+        $admin = [
+            "Users",
+            "Products" ,
+            "Categories",
+            "Roles",
+            "Auctions",
+            "Control",
+            "Admin"
+        ];
+        $admin = json_encode($admin);
+
+        $manager = [
+            "Users",
+            "Products" ,
+            "Auctions",
+            "Control",
+        ];
+        $manager = json_encode($manager);
+
+        $user = [
+            "Users",
+            "Products" ,
+            "Control",
+        ];
+        $user = json_encode($user);
+
         Roles::factory(1)->create(
-            ['role_name' => 'admin']
+            [
+                'role_name' => 'admin', 
+                'permissions' =>  $admin,
+            ]
         );
 
         Roles::factory(1)->create(
-            ['role_name' => 'manager']
+            [
+                'role_name' => 'manager',
+                'permissions' =>  $manager,
+            ]
         );
 
         Roles::factory(1)->create(
-            ['role_name' => 'user']
+            [
+                'role_name' => 'user',
+                'permissions' =>  $user,
+            ]
         );
         
         // ----------------- Users -------------------
@@ -45,7 +80,7 @@ class DatabaseSeeder extends Seeder
 
         $password = bcrypt(123);
         User::create([
-            'role_id' => 3,
+            'role_id' => 2,
             'name' => 'جمال عبده حسن',					
             'last_name' => 'القاضي',
             'email' => 'jamal@gmail.com',
@@ -77,7 +112,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'role_id' => 3,
+            'role_id' => 1,
             'name' => 'محمد خالد محمد',					
             'last_name' => 'الحسني',
             'email' => 'mohmmedx46@gmail.com',
@@ -168,8 +203,8 @@ class DatabaseSeeder extends Seeder
         	'product_start_price' => 35000000,
         	'product_sell_now_price' => 55000000,
 		    'product_quantity' => 1,
-        	'auction_start_date' => today()->format('Y-m-d h:m:s') ,
-        	'auction_end_date' => today()->addDays(4)->format('Y-m-d h:m:s'),
+        	'auction_start_date' => now()->addDays(8)->format('Y-m-d h:m:s') ,
+        	'auction_end_date' => now()->addDays(12)->format('Y-m-d h:m:s'),
         	'product_main_image_location' => 'product_main_image_locations/house1.jpg' ,
         	'is_product_sold' => 0,
         ]);
@@ -198,8 +233,8 @@ class DatabaseSeeder extends Seeder
         	'product_start_price' => 15000,
         	'product_sell_now_price' => 35000,
 		    'product_quantity' => 1,
-        	'auction_start_date' => today()->format('Y-m-d h:m:s') ,
-        	'auction_end_date' => today()->addDays(4)->format('Y-m-d h:m:s'),
+        	'auction_start_date' => today()->addDays(15)->format('Y-m-d h:m:s') ,
+        	'auction_end_date' => today()->addDays(18)->format('Y-m-d h:m:s'),
         	'product_main_image_location' => 'product_main_image_locations/watch1.jpg' ,
         	'is_product_sold' => 0,
         ]);

@@ -8,6 +8,14 @@
 </head>
 <body>
     
+    <ul id="list-messages">
+        
+    </ul>
+
+    <form id="form">
+        <label for="input-message">Message</label>
+        <input type="text" id="input-message">
+    </form>
 
     <script src="{{mix('js/app.js')}}"></script>
 </body>

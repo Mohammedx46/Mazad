@@ -99,7 +99,7 @@
 
                         @auth
                             <li class="menu-item">
-                                <a href="#" class="menu-link drop-down"> مرحباً {{auth()->user()->first_name}} <i class='bi bi-person-circle person-icon'></i></a>
+                                <a href="#" class="menu-link drop-down"> مرحباً {{auth()->user()->name}} <i class='bi bi-person-circle person-icon'></i></a>
                             </li>
 
                             <li class="menu-item">
@@ -142,11 +142,9 @@
                     
                 </div>
 
-                <!-- <div class="header-btn d-xl-block d-none">
-                    <a href="#">Connect Wallet</a>
-                </div> -->
+               
                 <div class="header-logo">
-                    <a href="index-2.html"><img src="{{asset('storage/images/icons/auction.png')}}" alt=""></a>
+                    <a href="/" style="color:white;"><img src="{{asset('storage/images/icons/logo.svg')}}" alt=""></a>
                 </div>
             </div>
         </div>
@@ -170,21 +168,20 @@
                                     <p> تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
                                     <h4>حالياً: 1 مزاد</h4>
                                     <h5>$ 200.32</h5>
-                                    <a href="auction-details.html" class="banner-btn">عرض أكثر</a>
+                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 d-lg-block d-none">
                                 <div class="banner-video-area d-flex flex-column justify-content-lg-start justify-content-center">
-                                    <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
-                                        <h5> الوقت المتبقي </h5>
-                                        <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
-                                    </div>
-                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
-                                    <div class="video-play">
+                                    {{-- <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
+                                        <h5 style="color: #ae6615"> الوقت المتبقي </h5>
+                                        <x-timer :section="8"  />
+                                    </div> --}}
+                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
+                                    {{-- <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -211,21 +208,20 @@
                                     <p> 2 تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
                                     <h4>حالياً: 1 مزاد</h4>
                                     <h5>$ 200.32</h5>
-                                    <a href="auction-details.html" class="banner-btn">عرض أكثر</a>
+                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 d-lg-block d-none">
                                 <div class="banner-video-area d-flex flex-column justify-content-lg-start justify-content-center">
-                                    <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
-                                        <h5> الوقت المتبقي </h5>
-                                        <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
-                                    </div>
-                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
-                                    <div class="video-play">
+                                    {{-- <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
+                                        <h5 style="color: #ae6615"> الوقت المتبقي </h5>
+                                        <x-timer :section="8"  />
+                                    </div> --}}
+                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
+                                    {{-- <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 
@@ -252,21 +248,20 @@
                                     <p> 3 تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
                                     <h4>حالياً: 1 مزاد</h4>
                                     <h5>$ 200.32</h5>
-                                    <a href="auction-details.html" class="banner-btn">عرض أكثر</a>
+                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 d-lg-block d-none">
                                 <div class="banner-video-area d-flex flex-column justify-content-lg-start justify-content-center">
-                                    <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
-                                        <h5> الوقت المتبقي </h5>
-                                        <h3 id="countdown-timer-1" style="padding: 0 10px;"></h3>
-                                    </div>
-                                    <img src="{{asset('storage/images/banner/banner-dot.png')}}" class="bg-dot" alt="">
-                                    <img src="{{asset('storage/images/banner/banner-vdobg.png')}}" alt="">
-                                    <div class="video-play">
+                                    {{-- <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
+                                        <h5 style="color: #ae6615"> الوقت المتبقي </h5>
+                                        <x-timer :section="8"  />
+                                    </div> --}}
+                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
+                                    {{-- <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
 

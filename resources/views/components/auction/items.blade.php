@@ -10,7 +10,7 @@
                 <div data-wow-duration="0.5s" data-wow-delay="0.2s" class="eg-card auction-card1 hover-shine wow fadeInDown">
                     <x-auction.head :section="$section" :product="$product"/>
                     {{-- Second Part --}}
-                    <x-auction.content :product="$product"/>
+                    <x-auction.content  :product="$product"/>
                 </div>
             </div>
         @endforeach

@@ -25,86 +25,102 @@
 
                 <!------------------ The Users  ------------------>
                 <!------------------------------------------------>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-users"></i> <span>المستخدمين</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/usersShow"><i class="fa fa-eye"></i>عرض المستخدمين</a></li>
-                        <li><a href="/users/create"><i class="fa fa-plus-circle"></i>إضافة مستخدم</a></li>
-                    </ul>
-                </li>
+                @can('Users')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i> <span>المستخدمين</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/usersShow"><i class="fa fa-eye"></i>عرض المستخدمين</a></li>
+                            @can('Admin')
+                                <li><a href="/users/create"><i class="fa fa-plus-circle"></i>إضافة مستخدم</a></li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
+                
 
                 <!----------------- The Products  ---------------->
                 <!------------------------------------------------>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-shopping-cart"></i> <span>المنتجات</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="products/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
-                        <li><a href="/products/create"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
-                        
-                    </ul>
-                </li>
-
+                @can('Products')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-shopping-cart"></i> <span>المنتجات</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="products/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
+                            @can('Admin')
+                                <li><a href="/products/create"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
+                            @endcan
+                        </ul>
+                    </li>    
+                @endcan
+                
                 <!----------------- The Categories  -------------->
                 <!------------------------------------------------>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-th-large" aria-hidden="true"></i> <span>تصنيفات</span>
-                        <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="categories/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
-                        </li>
-                        <li>
-                            <a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('Categories')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-th-large" aria-hidden="true"></i> <span>تصنيفات</span>
+                            <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="categories/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
+                            </li>
+                            @can('Admin')
+                                <li><a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a></li>
+                            @endcan
+                            </ul>
+                    </li>    
+                @endcan
+                
 
                 <!----------------- The Roles  ------------------->
                 <!------------------------------------------------>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-th-large" aria-hidden="true"></i> <span>الصلاحيات</span>
-                        <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li>
-                            <a href="/roles"><i class="fa fa-eye"></i>عرض الصلاحيات</a>
-                        </li>
-                        <li>
-                            <a href="/roles/create"><i class="fa fa-plus-circle"> </i>إضافة صلاحية</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('Roles')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-th-large" aria-hidden="true"></i> <span>الصلاحيات</span>
+                            <span class="pull-right-container" style="padding-right:5px ; padding-left:5px">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="/roles"><i class="fa fa-eye"></i>عرض الصلاحيات</a>
+                            </li>
+                            @can('Admin')
+                                <li><a href="/roles/create"><i class="fa fa-plus-circle"> </i>إضافة صلاحية</a></li>
+                            @endcan
+                            </ul>
+                    </li>
+                @endcan
+                
                 <!----------------- The Auctions  ---------------->
                 <!------------------------------------------------>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-gavel" aria-hidden="true"></i> <span>المزادات</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/auctionsShow"><i class="fa fa-eye"></i>عرض المزادات</a></li>
-                    </ul>
-                </li>
-
+                @can('Auctions')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gavel" aria-hidden="true"></i> <span>المزادات</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/auctionsShow"><i class="fa fa-eye"></i>عرض المزادات</a></li>
+                        </ul>
+                    </li>
+                @endcan
+                
                 <!--------------- The Active User  --------------->
                 <!------------------------------------------------>
                 <li class="treeview">
@@ -115,7 +131,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <!-- <li><a href="#"><i class="fa fa-edit"></i>Edit Profile</a></li> -->
+                        <li style="text-align:center;color:white;font-size:1.2em;">{{auth()->user()->name}}</li>
                         <li><a href="/logout"><i class="fa fa-power-off"></i>تسجيل الخروج</a></li>
                     </ul>
                 </li>

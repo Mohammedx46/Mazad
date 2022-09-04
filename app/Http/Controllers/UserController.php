@@ -164,7 +164,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('danger', 'تم تسجيل خروجك!');
+        return redirect('/login')->with('danger', 'تم تسجيل خروجك!');
     }
 
     // Show products of specific user

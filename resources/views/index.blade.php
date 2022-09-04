@@ -44,7 +44,7 @@
 
             {{-- Show All Button --}}
             @if (!$products->isEmpty())
-                <x-show-all targetPage="live-auctions" class="btn--fill-primary" />
+                <x-show-all targetPage="/live-auctions" class="btn--fill-primary" />
             @endif
             
     </x-container.section>
@@ -66,7 +66,7 @@
 
         {{-- Show All Button --}}
         @if (!$comingAuctions->isEmpty())
-            <x-show-all targetPage="coming-auctions" class="btn--fill-white" />
+            <x-show-all targetPage="/coming-auctions" class="btn--fill-white" />
         @endif
     </x-container.section>
     <!-- End Fourth Section Coming Featured Assets -->
@@ -86,7 +86,7 @@
 
         <x-author.authors :authors="$authors"/>
 
-        <x-show-all targetPage="authors" class="btn--fill-primary" />
+        <x-show-all targetPage="/authors" class="btn--fill-primary" />
     </x-container.section>
     <!--  End Fifth Section Hot Collection  -->
     <!-- ---------------------------------------- -->

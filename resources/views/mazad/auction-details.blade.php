@@ -109,14 +109,19 @@
                         <ul class="overview-list">
                             <li><span> تصنيف </span> : <span>{{$category->category_name}}</span> </li>
                             <li><span> الكمية </span> : <span>{{$product->product_quantity}}</span> </li>
-                            <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li>
+                            {{-- <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li> --}}
                         </ul>
                     </div>
                     {{-- @php
                         dd($is_bid)
                     @endphp --}}
-                    
-                    <livewire:bidding :product="$product" :auctionId="$auctionId" />
+                    @if ($product->auction_start_date >=  now()->addDays(3) )
+                        <button disabled  class="eg-btn btn--fill-primary bid-btn">
+                            قريباً
+                        </button>
+                    @else 
+                        <livewire:bidding :product="$product" :auctionId="$auctionId" />
+                    @endif
                     
                     
                 </div>

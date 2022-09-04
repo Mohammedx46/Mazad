@@ -53,22 +53,22 @@ Route::post('/contacts/create' , [AuctionController::class, 'store']);
 // ----------------------------------------
 // ----------------------------------------
 
-Route::get('/admin', [AdminController::class, 'admin']);
+Route::get('/admin', [AdminController::class, 'admin'])->middleware('can:Control');
 
 
 // ------------ Products ------------------
 // ----------------------------------------
-Route::group(['prefix'=> '/products'], function(){
+Route::group(['prefix'=> '/products','middleware' => 'can:Products'], function(){
 
     Route::get('/productsShow', [ProductsController::class, 'index']);
     
     // Create Product 
-    Route::get('/create', [ProductsController::class, 'create']);
+    Route::get('/create', [ProductsController::class, 'create'])->middleware('can:Admin');
     
     Route::post('/', [ProductsController::class, 'store']);
     
     // Edit Product 
-    Route::get('/{product}/edit', [ProductsController::class, 'edit']);
+    Route::get('/{product}/edit', [ProductsController::class, 'edit'])->middleware('can:Admin');
     
     Route::put('/{product}', [ProductsController::class, 'update']);
     
@@ -81,17 +81,17 @@ Route::group(['prefix'=> '/products'], function(){
 // ----------------------------------------
 
 
-Route::group(['prefix' => '/categories'], function(){
+Route::group(['prefix' => '/categories','middleware' => 'can:Categories'], function(){
 
     Route::get('/categoriesShow', [CategoryController::class, 'index']);
     
     // Create category 
-    Route::get('/create', [CategoryController::class, 'create']);
+    Route::get('/create', [CategoryController::class, 'create'])->middleware('can:Admin');
     
     Route::post('/', [CategoryController::class, 'store']);
     
     // Edit category 
-    Route::get('/{category}/edit', [CategoryController::class, 'edit']);
+    Route::get('/{category}/edit', [CategoryController::class, 'edit'])->middleware('can:Admin');
     
     Route::put('/{category}', [CategoryController::class, 'update']);
     
@@ -108,7 +108,7 @@ Route::get('/usersShow', [UserController::class, 'index']);
 Route::get('/users/create', [UserController::class, 'create']);
 
 // Edit User 
-Route::get('/users/{user}/edit', [UserController::class, 'edit']);
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('can:Admin');
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 
@@ -135,7 +135,7 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 // Roles 
 // Route::group(['prefix' =>'/roles', 'middleware' => 'can:Permissions'], function(){
-Route::group(['prefix' =>'/roles'], function(){
+Route::group(['prefix' =>'/roles','middleware' => 'can:Roles'], function(){
 
     // event(new \App\Events\Playground);
     Route::get('/', [RolesController::class , 'index']);
@@ -166,4 +166,10 @@ Route::get('/ws', function(){
     return view('trySockets' , [
         'heading' => "Try WebSockets",
     ]);
+});
+
+Route::post('/chat-message', function(\Illuminate\Http\Request $request){
+    event(new \App\Events\ChatMessageEvent($request->message));
+    dd($request->message);
+    return null;
 });

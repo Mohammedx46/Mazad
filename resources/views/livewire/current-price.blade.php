@@ -1,6 +1,6 @@
 
 
-<div class="col-sm-6 text-center text-sm-end ">
+<div class="col-sm-6 text-center text-sm-end " wire:poll.750ms>
     <div class="price">
         <div class="current-price">السعر الحالي</div>
         @unless(!$currentPrice)

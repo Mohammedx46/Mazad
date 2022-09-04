@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use DateInterval;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Auctions;
@@ -14,6 +15,7 @@ class Bidding extends Component
     public $is_bid;
     public $product;
     public $auctionId;
+    public $productSold = 0 ;
 
     //Form Fields
     public $user_price;
@@ -21,6 +23,20 @@ class Bidding extends Component
 
     public function render()
     {
+        $winUsers = null;
+
+        if (  $this->product->auction_end_date <= now()->format('Y-m-d H:m:s')  )
+        {
+            $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $this->auctionId ) -> max('user_price');
+            $winUsers = AuctionUsers::where('user_price' , '=' , $maxUserPrice )->get();
+            
+            $this->product()->update(['is_product_sold' => 1]) ;
+            
+            $this->productSold = 1 ;
+            return view('livewire.bidding', [
+                "winUsers" => $winUsers,
+            ]);
+        }
         return view('livewire.bidding');
     }
 
@@ -38,7 +54,7 @@ class Bidding extends Component
 
         $this->is_bid = false;
         
-        if(auth()->user()->insurance_amount > 0 && auth()->user()->is_bidding == 0)
+        if(auth()->user()->insurance_amount > 0 && auth()->user()->is_bidding == 0 && $product->is_product_sold == 0)
         {
             $this->is_bid = true ;
             $user->update(['is_bidding'=> 1]);
@@ -59,8 +75,9 @@ class Bidding extends Component
             ->max('user_price');
             
         $auctionUserFields = $this->validate([
-            'user_price' => ['required', 'numeric', 'min:' . $maxUserPrice, 'lte:' . auth()->user()->insurance_amount * 3],
+            'user_price' => ['required', 'numeric',  'gt:' . $product->product_start_price],
         ]);        
+        // , 'lte:' . auth()->user()->insurance_amount * 3  less or equal to 3 * insurance 
 
         // auction_id field
         $auctionUserFields['auction_id'] = $this->auctionId;
