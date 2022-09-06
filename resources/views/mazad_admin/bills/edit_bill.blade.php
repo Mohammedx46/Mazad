@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-10 title">
-                <h1><i class="fa fa-bars"></i> تعديل بيانات المكون</h1>
+                <h1><i class="fa fa-bars"></i> تعديل بيانات الفاتورة</h1>
             </div>
 
             <div class="col-sm-12">
@@ -22,15 +22,15 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <form role="form" method="POST" action="/users/{{$user->id}}" enctype="multipart/form-data" >
+                                        <form role="form" method="POST" action="/bill/{{$bill->id}}" enctype="multipart/form-data" >
                                             @csrf
                                             @method('PUT')
                                             <!-------------- Left Side --------------->
                                             <div class="col-md-6 form-group">
 
                                                 <!-------------- First Name Field --------------->                                    
-                                                <label class="labelAdd col-md-12" id="m">الاسم الأول
-                                                    <input type="text" placeholder="أكتب اسمك الأول"
+                                                <label class="labelAdd col-md-12" id="m"> هل دفع المبلغ المستحق للمزاد
+                                                    <input type=""
                                                         class="form-control" name="first_name" required
                                                         value="{{$user->first_name}}"/> 
 
@@ -38,6 +38,13 @@
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label> 
+
+                                                <div class="col-md-12">
+                                                    <div class="form-inner">
+                                                        <label style="font-size:1.2em;">تأكيد كلمة السر</label>
+                                                        <input type="password" name="password_confirmation" id="passwordConfirmation" placeholder="تأكيد كلمة سر" required />
+                                                        <i class="bi bi-eye-slash" id="togglePasswordConfirmation"></i>
+                                                    </div>
                                                 
                                                 <!-------------- Privilege Field ---------------> 
                                                 <label class="labelAdd col-md-4"> نوع الإشتراك

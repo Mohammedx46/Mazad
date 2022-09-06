@@ -381,13 +381,21 @@ class DatabaseSeeder extends Seeder
             'auction_status' => '0',
         ]);
 
+
+        AuctionUsers::create([
+            'auction_id' => "4",
+            'user_id' => "1",
+            'user_price' => "704000",
+            'user_total_bidding' => "705000",
+        ]);
+
         AuctionUsers::create([
             'auction_id' => "4",
             'user_id' => "1",
             'user_price' => "705000",
             'user_total_bidding' => "705000",
         ]);
-
+        
         Bill::create([
             "user_id" => 1,
             "comment" => "أول عميل لمنصة مزاد",

@@ -534,3 +534,14 @@ td {
     text-align: center;
     font-size: 1em;
 }
+
+.btn-success {
+    background-color: #ae6615;
+    border-color: #854d0f;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.hover {
+  background-color: #854d0f !important;
+}

@@ -8,7 +8,7 @@
             </div>
 
             <div class="search-div">
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <a href="#"> الكل( {{$allBillsCount}} )</a>
                 </div>
 
@@ -27,11 +27,11 @@
                             <tr>
                                 {{-- <th width="3%"><input type="checkbox" id="select-all"> </th> --}}
                                 <th width="10%">اسم العميل</th>
-                                <th width="5%">المنتج</th>
+                                <th width="10%">المنتج</th>
                                 <th width="5%">سعر المنتج</th>
                                 <th width="10%">هل دفعت</th>
-                                <th width="5%">ملاحظات</th>
-                                <th width="5%">تاريخ الفاتورة</th>
+                                <th width="20%">ملاحظات</th>
+                                <th width="10%">تاريخ الفاتورة</th>
                                 <th width="10%">عملية </th>
                             </tr>
                         </thead>
@@ -42,16 +42,16 @@
                                 @foreach ($bills as $bill)
                                     <tr @if($loop->odd) style="background:#ae661552;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
-                                        <td>{{$bill->bill->user->name}}</td>
+                                        <td>{{$bill->bill->user->name}} {{$bill->bill->user->last_name}}</td>
                                         <td>{{$bill->products->product_name}}</td>
-                                        <td>{{$bill->auction_users->user_price}}</td>
-                                        <td>{{$bill->bill->is_bill_payed}}</td>
+                                        <td>{{$bill->auction_users->user_total_bidding}}</td>
+                                        <td>{{$bill->bill->is_bill_payed ? "مدفوع" : "لم تدفع"}}</td>
                                         <td>{{$bill->bill->comment}}</td>
-                                        <td>{{$bill->bill->created_at}}</td>
+                                        <td>{{$bill->bill->created_at->format("d-m-Y")}}</td>
                                         <td>
                                             @can('Bills')
-                                                <a href="/bills/{{$bill->id}}/edit"
-                                                    class='btn btn-success'><i class="fa-solid fa-pen-to-square" style="background-color: #"></i> تعديل</a>                                                
+                                                <a href="/bill/{{$bill->id}}/edit"
+                                                    class='btn btn-success' ><i class="fa-solid fa-pen-to-square"></i>تعديل حالة الدفع</a>                                                
                                             @endcan
                                         </td>
                                     </tr>
