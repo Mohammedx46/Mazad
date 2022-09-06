@@ -6,15 +6,13 @@
             </div>
 
             <div class="col-sm-12">
-                <div class="col-sm-9 search-div">
+                <div class="col-sm-8 search-div">
                     الكل( 
                         {{$allRolesCount}}
                     )</a>
                 </div>
-                
-                <div class="col-sm-3">
-                <input type="text" id="search" name="search" class="form-control" placeholder="ابحث عن الصلاحية بالاسم">
-                </div>
+
+                <x-admin.search target="/roles" placeholder="ابحث عن الصلاحية بالاسم" />
             </div>
 
             <!------------- Right Side Content -------------->

@@ -13,11 +13,12 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Categories::latest() ;
         $count = Categories::count();
+        $categories = Categories::latest()->filter(request(['search']))->paginate(4);
+
         return view('mazad_admin.products.product_category.categories', [
             "heading" => "All Categories",
-            "categories" => $categories->paginate(4),
+            "categories" => $categories,
             "allCategoriesCount" => $count,
         ]);
     }

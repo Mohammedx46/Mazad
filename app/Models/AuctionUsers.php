@@ -22,20 +22,22 @@ class AuctionUsers extends Model
     //     }
 
     // }
-
-
-
-
-
-
+    
+    
     // Relationship To Auction
     public function auction (){
         return $this->belongsTo(Auctions::class,'auction_id');
     }
-
+    
     // Relationship To User
     public function user (){
         return $this->belongsTo(User::class, 'user_id');
+    }
+    
+    // Relationship To bill data
+    public function billData()
+    {   
+        return $this->hasMany(BillData::class,'auction_users_id');
     }
 
     use HasFactory;

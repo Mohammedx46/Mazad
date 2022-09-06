@@ -14,11 +14,13 @@ class UserController extends Controller
     // Show All Users
     public function index()
     {
-        $users  = User::latest() ;
+        // $users  = User::latest() ;
         $count = User::count();
+        $users = User::latest()->filter(request(['search']))->paginate(9);
+
         return view('mazad_admin.users.users', [
             "heading" => "كل المستخدمين",
-            "users" => $users->paginate(9),
+            "users" => $users,
             "allUsersCount" => $count,
         ]);
     }

@@ -10,9 +10,9 @@
             <div class="col-lg-6 d-flex justify-content-center flex-column">
                 <div class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
                     <div class="tab-pane big-image fade show active" id="gallery-img1">
-                        <div class="auction-img auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
+                        {{-- <div class="auction-img auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap" style="width: 100%;">
                             <livewire:timer  :endDate="$product->auction_end_date" :product="$product" />
-                        </div>
+                        </div> --}}
                         <img src=" {{$product->product_main_image_location ? 
                                 asset('storage/'.$product->product_main_image_location) :
                                 asset('storage/images/bg/auction-big1.png') }}" 
@@ -76,18 +76,18 @@
                             {{-- <li><span> رقم المزاد </span> : <span> #12159EDT23 </span> </li> --}}
                         </ul>
                     </div>
-                    {{-- @php
-                        dd($is_bid)
-                    @endphp --}}
-                    @if ($product->auction_start_date >=  now()->addDays(3) )
-                        <button disabled  class="eg-btn btn--fill-primary bid-btn">
-                            قريباً
-                        </button>
-                    @else
-                        <livewire:bidding :product="$product" :auctionId="$auctionId"  />
-                    @endif
-                    
-                    
+
+                    @foreach ($winUsers as $winUser)
+                        @if( auth()->id() == $winUser->id)
+                            <p  style="text-align: center; font-size:2em; color:#181818;margin:2em 0;background:#e3e3e3">
+                                مبروك عليك
+                            </p>
+                        @else
+                            <p   style="text-align: center; font-size:2em; color:#181818;margin:2em 0;background:#e3e3e3">
+                                اغلق المزاد مبروك للفائز
+                            </p>
+                        @endif
+                    @endforeach                
                 </div>
             </div>
         </div>

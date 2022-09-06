@@ -40,9 +40,9 @@
     </div>
 
     <!-- ---------------------------------------- -->
-    <!-- ٍSearch -->
+    <!-- Search -->
     <!-- ---------------------------------------- -->
-    {{-- <x-search/> --}}
+    {{-- <x-search :heading="$heading"/> --}}
 
 
     <!-- ---------------------------------------- -->
@@ -59,9 +59,11 @@
                     <div class="sidebar-menu-icon d-lg-block d-none">
                         <i class='bx bx-menu'></i>
                     </div> 
-                    <div class="search-icon search-btn d-lg-block d-none">
-                        <i class='bx bx-search-alt-2'></i>
-                    </div>
+                    {{-- @if ($heading == "الصفحة الرائيسية للمزاد")
+                        <div class="search-icon search-btn d-lg-block d-none">
+                            <i class='bx bx-search-alt-2'></i>
+                        </div>
+                    @endif --}}
                     <div class="mobile-menu-btn d-lg-none d-block">
                         <i class='bx bx-menu'></i>
                     </div> 

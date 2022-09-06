@@ -16,6 +16,15 @@ class Roles extends Model
         'permissions',
     ];
 
+    // Search
+    public function scopeFilter($query, array $filters)
+    {
+
+        if ($filters['search'] ?? false) {
+            $query->where('role_name', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function users()
     {
         return $this->hasMany(User::class, 'role_id');

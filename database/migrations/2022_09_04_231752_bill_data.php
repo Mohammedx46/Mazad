@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('products_id')
                 ->constrained("products");
+            $table->foreignId('auction_users_id')
+                ->constrained("auction_users");
             $table->foreignId('bill_id')
                 ->constrained("bill")
                 ->cascadeOnUpdate()

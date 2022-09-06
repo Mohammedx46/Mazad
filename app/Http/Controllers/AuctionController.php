@@ -37,17 +37,19 @@ class AuctionController extends Controller
     // Main Auction Details
     public function auction(Products $product)
     {
+        if ( $product->is_product_sold == 1 || $product->auction_end_date <= now() )
+        {
+            return redirect('/');
+        }
         $user = User::find($product->user_id);
         $category = Categories::find($product->categories_id);
 
-        $date =  now()->addDay('-4')->format('Y-m-d h:m:s');
-        $liveAuctions = Products::LiveAuctions(['liveAuctions'=> $date])->paginate(3);
+        $liveAuctions = Products::latest()->paginate(3);
 
         $auctionId = Auctions::where('product_id', $product->id)->value('id');
 
         $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
-        
-        
+
         return view('mazad.auction-details', [
             "heading" => "تفاصيل المزاد",
             "product" => $product,
@@ -56,10 +58,39 @@ class AuctionController extends Controller
             "user" => $user,
 
             "category" => $category,
-            "categories" => Categories::latest(),
 
-            "auction_images" => ProductImages::all(),
+            'auctionId' => $auctionId, 
+            "auctionUsers" => $auctionUsers,
+        ]);
+    }
 
+    public function endAuction(Products $product)
+    {
+        $user = User::find($product->user_id);
+        $category = Categories::find($product->categories_id);
+
+        $liveAuctions = Products::latest()->paginate(3);
+
+        $auctionId = Auctions::where('product_id', $product->id)->value('id');
+        $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
+        // End Auction Code 
+        // ----------------
+        
+        // Get Winner in Auction who has the max Price
+        $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $this->auctionId ) -> max('user_price');
+        $winUsers = AuctionUsers::where('user_price' , '=' , $maxUserPrice )->get();
+        
+        //Find product 
+        Products::find($this->product->id)->update(['is_product_sold' => 1]);
+        
+        return view('mazad.end-auction', [
+            "heading" => "تفاصيل المزاد",
+            "product" => $product,
+            "products" => $liveAuctions,
+
+            "user" => $user,
+            "winUsers"=> $winUsers,
+            "category" => $category,
             'auctionId' => $auctionId, 
             "auctionUsers" => $auctionUsers,
         ]);
@@ -88,9 +119,11 @@ class AuctionController extends Controller
     {
         $date =  now()->addDay('-4')->format('Y-m-d h:m:s');
         $liveAuctions = Products::latest()->LiveAuctions(['liveAuctions'=> $date])->paginate(3);
+        $categories = Categories::all();
         return view('mazad.live-auctions', [
             "heading" => "مزادات جارية",
-            'products' => $liveAuctions,
+            "products" => $liveAuctions,
+            "categories" => $categories,
         ]);
     }
 

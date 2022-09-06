@@ -9,15 +9,13 @@
 
             <div class="search-div">
                 
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <a href="#"> الكل( 
                         {{$allUsersCount}}
                     )</a>
                 </div>
 
-                <div class="col-sm-3">
-                    <input type="text" id="search" name="search" class="form-control" placeholder="ابحث عن مستخدم ب الاسم أو البريد الإلكتروني">
-                </div>
+                <x-admin.search target="/usersShow" placeholder="ابحث عن مستخدم ب الاسم أو البريد الإلكتروني" />
             </div>
             <!------------------ End Header ------------------>
             <!------------------------------------------------>

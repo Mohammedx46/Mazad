@@ -6,15 +6,11 @@
             </div>
 
             <div class="col-sm-12">
-                <div class="col-sm-9 search-div">
-                    الكل( 
-                        {{$allCategoriesCount}}
-                    )</a>
+                <div class="col-sm-8 search-div">
+                    الكل( {{$allCategoriesCount}} )</a>
                 </div>
                 
-                <div class="col-sm-3">
-                <input type="text" id="search" name="search" class="form-control" placeholder="ابحث عن التصنيف بالاسم">
-                </div>
+                <x-admin.search target="/categories/categoriesShow" placeholder="ابحث عن التصنيف بالاسم أو الوصف" />
             </div>
 
             <!------------- Right Side Content -------------->

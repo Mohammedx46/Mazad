@@ -74,7 +74,7 @@
                         </a>
                         <ul class="treeview-menu">
                             <li>
-                                <a href="categories/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
+                                <a href="/categories/categoriesShow"><i class="fa fa-eye"></i>عرض التصنيفات</a>
                             </li>
                             @can('Admin')
                                 <li><a href="/categories/create"><i class="fa fa-plus-circle"> </i>إضافة تصنيف</a></li>
@@ -107,7 +107,7 @@
                 
                 <!----------------- The Auctions  ---------------->
                 <!------------------------------------------------>
-                @can('Auctions')
+                {{-- @can('Auctions')
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-gavel" aria-hidden="true"></i> <span>المزادات</span>
@@ -119,7 +119,7 @@
                             <li><a href="/auctionsShow"><i class="fa fa-eye"></i>عرض المزادات</a></li>
                         </ul>
                     </li>
-                @endcan
+                @endcan --}}
 
                 <!----------------- The Bills  ------------------->
                 <!------------------------------------------------>
@@ -132,7 +132,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/billsShow"><i class="fa fa-eye"></i> عرض الفواتير</a></li>
+                            <li><a href="/bill/billsShow"><i class="fa fa-eye"></i> عرض الفواتير</a></li>
                         </ul>
                     </li>
                 @endcan

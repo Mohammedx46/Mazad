@@ -19,6 +19,7 @@ return new class extends Migration
                 ->constrained("users")
                 ->cascadeOnUpdate();
             $table->text('comment')->nullable();
+            $table->boolean('is_bill_payed');
             $table->timestamps();
         });
     }

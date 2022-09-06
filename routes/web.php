@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
 use App\Http\Controllers\BiddingController;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RolesController;
@@ -30,6 +31,8 @@ Route::get('/', [AuctionController::class, 'index']);
 
 Route::get('/auction-details/{product}', [AuctionController::class, 'auction']);
 
+Route::get('/endAuction/{product}', [AuctionController::class, 'endAuction']);
+
 // Show Auctions by Category
 Route::get('/auction-category', [AuctionController::class, 'auctionCategory']);
 
@@ -45,7 +48,7 @@ Route::get('/authors', [AuctionController::class, 'authors']);
 
 
 // Contact us
-Route::get('/contact', [AuctionController::class, 'contact']);
+Route::get('/contact', [AuctionController::class, 'contact'])->middleware("auth");
 
 Route::post('/contacts/create' , [AuctionController::class, 'store']);
 
@@ -102,10 +105,10 @@ Route::group(['prefix' => '/categories','middleware' => 'can:Categories'], funct
 
 // ------------ Users ---------------------
 // ----------------------------------------
-Route::get('/usersShow', [UserController::class, 'index']);
+Route::get('/usersShow', [UserController::class, 'index'])->middleware('auth');
 
 // Create User 
-Route::get('/users/create', [UserController::class, 'create']);
+Route::get('/users/create', [UserController::class, 'create'])->middleware('cad:Admin');
 
 // Edit User 
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('can:Admin');
@@ -140,15 +143,15 @@ Route::group(['prefix' =>'/roles','middleware' => 'can:Roles'], function(){
     // event(new \App\Events\Playground);
     Route::get('/', [RolesController::class , 'index']);
 
-    Route::get('/create', [RolesController::class , 'create']);
+    Route::get('/create', [RolesController::class , 'create'])->middleware('can:Admin');
 
     Route::post('/store', [RolesController::class , 'store']);
 
-    Route::get('/{role}/edit', [RolesController::class , 'edit']);
+    Route::get('/{role}/edit', [RolesController::class , 'edit'])->middleware('can:Admin');
 
     Route::put('/update/{role}', [RolesController::class , 'update']);
 
-    Route::delete('/{role}', [RolesController::class , 'delete']);
+    Route::delete('/{role}', [RolesController::class , 'delete'])->middleware('can:Admin');
 });
 
 // ------------ Bidding -------------------
@@ -171,17 +174,17 @@ Route::get('/ws', function(){
 // ----------------------------------------
 Route::group(['prefix'=> '/bill','middleware' => 'can:Bills'], function(){
 
-    Route::get('/billsShow', [AdminController::class, 'index']);
+    Route::get('/billsShow', [BillController::class, 'index']);
     
     // Create Bill 
-    Route::get('/create', [AdminController::class, 'create'])->middleware('can:Admin');
+    Route::get('/create', [BillController::class, 'create'])->middleware('can:Admin');
     
-    Route::post('/', [AdminController::class, 'store']);
+    Route::post('/', [BillController::class, 'store']);
     
     // Edit Bill 
-    Route::get('/{bill}/edit', [AdminController::class, 'edit'])->middleware('can:Admin');
+    Route::get('/{bill}/edit', [BillController::class, 'edit'])->middleware('can:Admin');
     
-    Route::put('/{bill}', [AdminController::class, 'update']);
+    Route::put('/{bill}', [BillController::class, 'update']);
     
     // Delete Bill
     Route::delete('/bills/{bill}', [AdminController::class, 'delete']);

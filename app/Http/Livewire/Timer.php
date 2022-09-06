@@ -6,17 +6,15 @@ use Carbon\Carbon;
 use Livewire\Component;
 
 class Timer extends Component
-{
-    public $productId ;
-    
+{    
     public $endDate ;
-    
-    public $section ;
+    public $product;
 
     public $days;
     public $hours;
     public $minutes;
     public $seconds;
+
 
     public function render()
     {
@@ -28,7 +26,7 @@ class Timer extends Component
     {
         $endTime = floor( Carbon::createFromFormat('Y-m-d H:i:s', $this->endDate)->valueOf() / 1000);
         if ($endTime < floor(now()->valueOf() / 1000)) {
-            return;
+            return redirect("/endAuction/{{$this->product->id}}");
         }
         
         $elapsedTime = $endTime - floor(now()->valueOf() / 1000);

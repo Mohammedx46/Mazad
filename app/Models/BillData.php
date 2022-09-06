@@ -11,7 +11,7 @@ class BillData extends Model
     protected $fillable = [
         "products_id",
         "bill_id",
-        
+        "auction_users_id",
     ];
 
     public function products(){
@@ -22,4 +22,7 @@ class BillData extends Model
         return $this->belongsTo(Bill::class,'bill_id');
     }
 
+    public function auction_users(){
+        return $this->belongsTo(auctionUsers::class,'auction_users_id');
+    }
 }

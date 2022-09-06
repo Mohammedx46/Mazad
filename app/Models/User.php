@@ -48,6 +48,16 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    // Search 
+    public function scopeFilter($query, array $filters)
+    {
+
+        if ($filters['search'] ?? false) {
+            $query->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('last_name', 'like', '%' . request('search') . '%')
+                ->orWhere('email', 'like', '%' . request('search') . '%');
+        }
+    }
 
     public function role()
     {

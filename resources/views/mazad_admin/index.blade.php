@@ -40,7 +40,7 @@
                                 <p><a href="/auctoinsShow"><i class="fa fa-gavel"></i> عرض المزادات</a></p>
                             @endcan
                             @can('Bills')
-                                <p><a href="/billsShow"><i class="fa fa-list"></i> عرض الفواتير</a></p>
+                                <p><a href="/bill/billsShow"><i class="fa fa-list"></i> عرض الفواتير</a></p>
                             @endcan
                         </div>
         

@@ -1,23 +1,7 @@
 
 
 @auth
-    @if ( $productSold == 1 )
-
-        @foreach ($winUsers as $winUser)
-            
-            @if( auth()->id() == $winUser->id)
-                <p   style="text-align: center; font-size:2em; color:#181818;margin:2em 0;background:#e3e3e3">
-                    مبروك عليك
-                </p>
-
-            @else
-                <p   style="text-align: center; font-size:2em; color:#181818;margin:2em 0;background:#e3e3e3">
-                    اغلق المزاد مبروك للفائز
-                </p>
-            @endif
-        @endforeach
-            
-    @elseif(!auth()->user()->is_bidding)
+    @if(!auth()->user()->is_bidding)
         <div class="bid-now-area text-lg-end text-center">
             <h4 class="component-title">زايد الأن</h4>
             <div class="form-inner d-flex justify-content-lg-start justify-content-center align-items-center flex-sm-nowrap flex-wrap gap-4">

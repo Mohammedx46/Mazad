@@ -10,7 +10,7 @@
             asset('storage/images/auction/cate1.png') }} " alt=""/>
 
         @unless ($section == 2)
-        <livewire:timer :section="$section" :endDate="$product->auction_end_date" :productId="$product->id"/>
+        <livewire:timer  :endDate="$product->auction_end_date" :product="$product" />
 
         @else 
             @php

@@ -6,15 +6,11 @@
             </div>
 
             <div class="col-sm-12">
-                <div class="col-sm-9 search-div">
-                    الكل( 
-                        {{$allProductsCount}}
-                    )</a>
+                <div class="col-sm-8 search-div">
+                    الكل( {{$allProductsCount}} )</a>
                 </div>
 
-                <div class="col-sm-3">
-                    <input type="text" id="search" name="search" class="form-control" placeholder="ابحث عن المنتج بالاسم">
-                </div>
+                <x-admin.search target="/products/productsShow" placeholder="ابحث عن المنتج بالاسم أو الوصف" />
             </div>
             
             <!------------------ End Header ------------------>

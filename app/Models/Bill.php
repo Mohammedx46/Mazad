@@ -13,6 +13,7 @@ class Bill extends Model
     protected $fillable = [
         "user_id",
         "comment",
+        "is_bill_payed",
     ];
 
 

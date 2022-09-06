@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
             "Roles",
             "Auctions",
             "Control",
-            "Admin"
+            "Admin",
+            "Bills",
         ];
         $admin = json_encode($admin);
 
@@ -223,7 +224,7 @@ class DatabaseSeeder extends Seeder
         	'auction_start_date' => today()->subDays(8)->format('Y-m-d h:m:s') ,
         	'auction_end_date' => today()->subDays(4)->format('Y-m-d h:m:s'),
         	'product_main_image_location' => 'product_main_image_locations/optima2015.jpg' ,
-        	'is_product_sold' => 0,
+        	'is_product_sold' => 1,
         ]);
 
         Products::create([
@@ -380,14 +381,23 @@ class DatabaseSeeder extends Seeder
             'auction_status' => '0',
         ]);
 
+        AuctionUsers::create([
+            'auction_id' => "4",
+            'user_id' => "1",
+            'user_price' => "705000",
+            'user_total_bidding' => "705000",
+        ]);
+
         Bill::create([
             "user_id" => 1,
-            "comment" => "أول عميل لمنصة مزاد"
+            "comment" => "أول عميل لمنصة مزاد",
+            "is_bill_payed" => 0,
         ]);
 
         BillData::create([
             "products_id" => "4",
             "bill_id" => "1",
+            "auction_users_id"=> "1",
         ]);
 
         // ----------------- Auction Users -----------

@@ -32,7 +32,8 @@ class Products extends Model
         if ($filters['search'] ?? false) {
             $query->where('product_name', 'like', '%' . request('search') . '%')
                 ->orWhere('product_short_description', 'like', '%' . request('search') . '%')
-                ->orWhere('product_description', 'like', '%' . request('search') . '%');
+                ->orWhere('product_description', 'like', '%' . request('search') . '%')
+                ->where("is_product_sold" , "!=" , "1");
         }
     }
 

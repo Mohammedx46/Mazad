@@ -12,20 +12,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProductsController extends Controller
 {
-    //
-
-
     // Show all Products
     public function index()
     {
         // dd($request);
-        $products = Products::latest() ;
         $count = Products::where('is_product_sold','=','0')->count();
+        $products = Products::latest()->filter(request(['search']))->paginate(5);
+
         return view('mazad_admin.products.products', [
             "heading" => "All Products",
-            "products" => $products->paginate(5),
+            "products" => $products,
             "allProductsCount" => $count,
-            
         ]);
     }
 
@@ -68,12 +65,11 @@ class ProductsController extends Controller
             $formFields['product_main_image_location'] = $request->file('product_main_image_location')->store('product_main_image_locations', 'public');
         }
 
-
         $product = Products::create($formFields);
         $auctionFields['product_id'] = $product->id;
         $auctionFields['auction_current_price'] = $formFields['product_start_price'];
         $auctionFields['auction_status'] = 0 ;
-        
+
         Auctions::create($auctionFields);
         return redirect('/')->with('success', 'تم إضافة المنتج بنجاح');
     }

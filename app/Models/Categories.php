@@ -13,6 +13,16 @@ class Categories extends Model
         'category_image_location',
     ];
 
+    // Search
+    public function scopeFilter($query, array $filters)
+    {
+
+        if ($filters['search'] ?? false) {
+            $query->where('category_name', 'like', '%' . request('search') . '%')
+                ->orWhere('category_description', 'like', '%' . request('search') . '%');
+        }
+    }
+
     // Relationship To Products
     public function products()
     {
