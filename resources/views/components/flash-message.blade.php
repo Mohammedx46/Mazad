@@ -1,7 +1,7 @@
 
 
 @if (session()->has('success'))
-    <div  class="processMessage alert alert-success" role="alert">
+    <div  class="processMessage alert alert-success" role="alert" style="background-color: #ae6615 !important;color:ae661508;">
         {{session('success')}}
     </div>
 @endif

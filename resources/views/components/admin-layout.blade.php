@@ -54,7 +54,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="products/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
+                            <li><a href="/products/productsShow"><i class="fa fa-eye"></i>عرض المنتجات</a></li>
                             @can('Admin')
                                 <li><a href="/products/create"><i class="fa fa-plus-circle"></i>إضافة منتج</a></li>
                             @endcan

@@ -7295,5 +7295,6 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
     width: 30%;
     text-align: center;
     font-size: 1em;
+    border: 1.5px solid #854d0f;
 }
 

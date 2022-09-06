@@ -43,7 +43,7 @@
                         <tbody>
                             
                             @foreach ($products as $product)
-                                <tr>
+                                <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                 
                                     {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                     <td>{{$product->product_name}} </td>

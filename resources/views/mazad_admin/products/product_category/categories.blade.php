@@ -32,7 +32,7 @@
                         <!------------- Body of Table -------------->
                         <tbody>
                             @foreach ($categories as $category)
-                                <tr>
+                                <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                     {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                     <td>{{$category->category_name}}</td>
                                     <td>{{$category->category_description}}</td>

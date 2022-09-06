@@ -12,7 +12,7 @@
                     <a href="#"> الكل( {{$allBillsCount}} )</a>
                 </div>
 
-                <x-admin.search target="/bill/billsShow" placeholder="ابحث عن فاتورة ب اسم العميل أو رقم الفاتورة" />
+                {{-- <x-admin.search target="/bill/billsShow" placeholder="ابحث عن فاتورة ب اسم العميل أو رقم الفاتورة" /> --}}
             </div>
             <!------------------ End Header ------------------>
             <!------------------------------------------------>
@@ -40,7 +40,7 @@
                         <tbody>
                             @unless ($bills->isEmpty())
                                 @foreach ($bills as $bill)
-                                    <tr @if($loop->odd) style="background:#ae661552;border-radius:20px" @endif>
+                                    <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$bill->bill->user->name}} {{$bill->bill->user->last_name}}</td>
                                         <td>{{$bill->products->product_name}}</td>

@@ -17,7 +17,7 @@ class RolesController extends Controller
         $count = Roles::all()->count();
         $roles = Roles::latest()->filter(request(['search']))->paginate(10);
 
-        return view('mazad_admin.roles.rolesShow', [
+        return view('mazad_admin.roles.roles', [
             'roles' => $roles,
             'allRolesCount' => $count,
         ]);

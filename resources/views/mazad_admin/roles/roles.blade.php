@@ -34,7 +34,7 @@
                         <tbody>
                             @isset($roles)
                                 @foreach ($roles  as $role)
-                                    <tr>
+                                    <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$role->role_name}}</td>
                                         <td>
