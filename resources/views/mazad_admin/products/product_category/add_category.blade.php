@@ -15,7 +15,7 @@
         <div class="col-sm-4 cat-form">
             <!-- Form Elements -->
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading" style="background:#ae66150f;">
                     <i class="fa fa-plus-circle"></i> إضافة تصنيف
                 </div>
                 <div class="panel-body">
@@ -95,7 +95,7 @@
                     <!------------- Body of Table -------------->
                     <tbody>
                         @foreach ($categories as $category)
-                            <tr>
+                            <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                 {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                 <td>{{$category->category_name}}</td>
                                 <td>{{$category->category_description}}</td>

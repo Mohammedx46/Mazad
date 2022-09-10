@@ -25,6 +25,8 @@ class AuctionController extends Controller
         $liveAuctions = Products::latest()->LiveAuctions(['liveAuctions'=> $date])->paginate(3);
         // dd($liveAuctions);
         $authors = User::latest()->paginate(3);
+
+        $count = $liveAuctions->count();
         
         return view('index' , [
             "heading" => "الصفحة الرائيسية للمزاد",
@@ -32,6 +34,7 @@ class AuctionController extends Controller
             "categories" => Categories::all(),
             "comingAuctions" => $comingAuctions,
             "authors" => $authors,
+            "count" => $count,
         ]);
     }
 

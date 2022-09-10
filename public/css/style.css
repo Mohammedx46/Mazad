@@ -7312,3 +7312,11 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
     border: 1.5px solid #854d0f;
 }
 
+.svgActive{
+    filter: invert(39%) sepia(27%) saturate(6068%) hue-rotate(23deg) brightness(92%) contrast(84%);
+}
+
+svg{
+    filter: invert(91%) sepia(5%) saturate(6298%) hue-rotate(317deg) brightness(83%) contrast(79%);
+}
+

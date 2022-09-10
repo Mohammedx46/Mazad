@@ -166,91 +166,11 @@
                         <div class="row d-flex align-items-center">
                             <div class="col-lg-6 bg--primary">
                                 <div class="banner-content">
-                                    <h1>أكتشف, أكبر مزاد</h1>
-                                    <p> تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
-                                    <h4>حالياً: 1 مزاد</h4>
-                                    <h5>$ 200.32</h5>
-                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 d-lg-block d-none">
-                                <div class="banner-video-area d-flex flex-column justify-content-lg-start justify-content-center">
-                                    {{-- <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
-                                        <h5 style="color: #ae6615"> الوقت المتبقي </h5>
-                                        <x-timer :section="8"  />
-                                    </div> --}}
-                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
-                                    {{-- <div class="video-play">
-                                        <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
-                                    </div> --}}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- <ul class="banner-social-icon">
-                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                    </ul> -->
-                    <!-- <img src="{{asset('images/banner/left-bttm.vctr.svg')}}" class="left-bttm-vctr" alt="">
-                    <img src="{{asset('images/banner/bannr-bottm-right.png')}}" class="right-bttn-vctr" alt=""> -->
-                </div>
-                <!-- Second Header  -->
-                <!-- ---------------------------------------- -->
-                <div class="swiper-slide position-relative">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-lg-6 bg--primary">
-                                <div class="banner-content">
-                                    <h1>أكتشف, أكبر مزاد</h1>
-                                    <p> 2 تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
-                                    <h4>حالياً: 1 مزاد</h4>
-                                    <h5>$ 200.32</h5>
-                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 d-lg-block d-none">
-                                <div class="banner-video-area d-flex flex-column justify-content-lg-start justify-content-center">
-                                    {{-- <div class="banner-timer d-flex flex-row align-items-center justify-content-center">
-                                        <h5 style="color: #ae6615"> الوقت المتبقي </h5>
-                                        <x-timer :section="8"  />
-                                    </div> --}}
-                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
-                                    {{-- <div class="video-play">
-                                        <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
-                                    </div> --}}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- <ul class="banner-social-icon">
-                        <li><a href="#"><i class="bx bxl-facebook"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-twitter"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-pinterest"></i></a></li>
-                        <li><a href="#"><i class="bx bxl-instagram"></i></a></li>
-                    </ul> -->
-                    <!-- <img src="{{asset('storage/images/banner/left-bttm.vctr.svg')}}" class="left-bttm-vctr" alt="">
-                    <img src="{{asset('storage/images/banner/bannr-bottm-right.png')}}" class="right-bttn-vctr" alt=""> -->
-                </div>
-                <!-- Third Header  -->
-                <!-- ---------------------------------------- -->
-                <div class="swiper-slide position-relative">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-lg-6 bg--primary">
-                                <div class="banner-content">
-                                    <h1>أكتشف, أكبر مزاد</h1>
-                                    <p> 3 تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p>
-                                    <h4>حالياً: 1 مزاد</h4>
-                                    <h5>$ 200.32</h5>
-                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a>
+                                    <h1>أكتشف, أكبر منصة مزادات</h1>
+                                    {{-- <p> تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p> --}}
+                                    <h4>حالياً: {{$count}} مزاد</h4>
+                                    {{-- <h5>$ 200.32</h5>
+                                    <a href="/live-auctions" class="banner-btn">عرض أكثر</a> --}}
                                 </div>
                             </div>
 

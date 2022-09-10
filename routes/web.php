@@ -71,7 +71,7 @@ Route::group(['prefix'=> '/products','middleware' => 'can:Products'], function()
     Route::post('/', [ProductsController::class, 'store']);
     
     // Edit Product 
-    Route::get('/{product}/edit', [ProductsController::class, 'edit'])->middleware('can:Admin');
+    Route::get('/{product}/edit', [ProductsController::class, 'edit'])->middleware(['can:Admin']);
     
     Route::put('/{product}', [ProductsController::class, 'update']);
     

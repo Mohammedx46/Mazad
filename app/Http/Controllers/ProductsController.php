@@ -16,8 +16,14 @@ class ProductsController extends Controller
     public function index()
     {
         // dd($request);
-        $count = Products::where('is_product_sold','=','0')->count();
+       
+        auth()->user()->role->role_name == "user" ?
+        $products = Products::where('user_id' , auth()->id())->paginate(5):
         $products = Products::latest()->filter(request(['search']))->paginate(5);
+
+        auth()->user()->role->role_name == "user" ?
+            $count = Products::where('is_product_sold','=','0')->where('user_id', auth()->id() )->count():
+            $count = Products::where('is_product_sold','=','0')->count();
 
         return view('mazad_admin.products.products', [
             "heading" => "All Products",
@@ -71,7 +77,7 @@ class ProductsController extends Controller
         $auctionFields['auction_status'] = 0 ;
 
         Auctions::create($auctionFields);
-        return redirect('/')->with('success', 'تم إضافة المنتج بنجاح');
+        return redirect('/products/productsShow')->with('success', 'تم إضافة المنتج بنجاح');
     }
 
 

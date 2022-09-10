@@ -36,9 +36,9 @@
                             @can('Roles')
                                 <p><a href="/roles"><i class="fa fa-check-circle-o"></i> عرض الصلاحيات</a></p>
                             @endcan
-                            @can('Auctions')
+                            {{-- @can('Auctions')
                                 <p><a href="/auctoinsShow"><i class="fa fa-gavel"></i> عرض المزادات</a></p>
-                            @endcan
+                            @endcan --}}
                             @can('Bills')
                                 <p><a href="/bill/billsShow"><i class="fa fa-list"></i> عرض الفواتير</a></p>
                             @endcan
