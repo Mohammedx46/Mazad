@@ -11,7 +11,8 @@
                     <div class="author-img">
                         <img src=" {{$author->user_image_location ? 
                             asset('storage/'.$author->user_image_location) :
-                            asset('storage/images/author/t-author2.png') }} " alt="">
+                            asset('storage/images/author/t-author2.png') }} " alt="" 
+                            height="200" style="object-fit: contain;">
                     </div>
 
                     <div class="author-content">
@@ -19,8 +20,8 @@
                         <div class="t-author">
                             <img src=" {{$author->user_image_location ? 
                                 asset('storage/'.$author->user_image_location) :
-                                asset('storage/images/auction/cate1.png') }} " alt="">
-                            <h5><a href="/authors">{{$author->first_name . ' ' . $author->last_name}}</a></h5>
+                                asset('storage/images/auction/cate1.png') }} " alt=""  style="object-fit: cover;">
+                            <h5><a href="/authors">{{$author->name . ' ' . $author->last_name}}</a></h5>
                             {{-- <h5><a href="author/{{$author->id}}">{{$author->first_name . ' ' . $author->last_name}}</a></h5> --}}
                             <span>@ٌrush</span>
                         </div>

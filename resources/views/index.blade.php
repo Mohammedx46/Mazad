@@ -1,6 +1,4 @@
-
-
-<x-layout :heading="$heading" :count="$count">
+<x-layout :heading="$heading" >
 
     
     <!-- ---------------------------------------- -->

@@ -8,7 +8,8 @@
                             <div class="author-img">
                                 <img src=" {{$author->user_image_location ? 
                                     asset('storage/'.$author->user_image_location) :
-                                    asset('storage/images/author/t-author2.png') }} " alt=""> 
+                                    asset('storage/images/author/t-author2.png') }} " alt="" 
+                                    height="200" style="object-fit: contain;" /> 
                             </div>
                             <div class="author-content">
                                 <div class="t-author">
@@ -16,12 +17,12 @@
                                         asset('storage/'.$author->user_image_location) :
                                         asset('storage/images/auction/cate1.png') }} " alt="">
                                         
-                                    <h5><a href="#">Cameron Williamson</a></h5>
-                                    <span>@cameron20</span>
+                                    <h5><a href="#">{{$author->name}} {{$author->last_name}}</a></h5>
+                                    {{-- <span>@cameron20</span> --}}
                                 </div>
                                 <div class="t-author-buttons">
-                                    <a href="#" class="top-author-btn">Details</a>
-                                    <a href="#" class="follow-btn">Follow</a>
+                                    <a href="#" class="top-author-btn">تفاصيل</a>
+                                    <a href="#" class="follow-btn">متابعة</a>
                                 </div>
                             </div>
                         </div>

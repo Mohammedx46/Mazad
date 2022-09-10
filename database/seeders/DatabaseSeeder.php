@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             'joined_auctions' => '0',
             'is_bidding' => '0',
             'is_confirm_terms' => '1',
-            'user_image_location' => 'storage/users/jamal.jpg',
+            'user_image_location' => 'user_image_locations/jamal.jpg',
         ]);
 
         User::create([
@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'joined_auctions' => '0',
             'is_bidding' => '0',
             'is_confirm_terms' => '1',
-            'user_image_location' => 'storage/users/rashid.jpg',
+            'user_image_location' => 'user_image_locations/rashid.jpg',
         ]);
 
         User::create([
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             'joined_auctions' => '0',
             'is_bidding' => '0',
             'is_confirm_terms' => '1',
-            'user_image_location' => 'storage/users/mohmmed.jpg',
+            'user_image_location' => 'user_image_locations/mohmmed.jpg',
         ]);
         // Contacts::factory(5)->create();
 

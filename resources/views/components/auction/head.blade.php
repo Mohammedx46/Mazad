@@ -7,7 +7,7 @@
     @endphp --}}
         <img src=" {{$product->product_main_image_location ? 
             asset('storage/'.$product->product_main_image_location) :
-            asset('storage/images/auction/cate1.png') }} " alt=""/>
+            asset('storage/images/auction/cate1.png') }} " alt=""  height="300" style="object-fit: cover;"/>
 
         @unless ($section == 2)
         <livewire:timer  :endDate="$product->auction_end_date" :product="$product" />

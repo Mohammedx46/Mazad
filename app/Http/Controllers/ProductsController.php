@@ -67,8 +67,7 @@ class ProductsController extends Controller
 
         // Store Image
         if ($request->hasFile('product_main_image_location')) {
-
-            $formFields['product_main_image_location'] = $request->file('product_main_image_location')->store('product_main_image_locations', 'public');
+            $formFields['product_main_image_location'] = $request->file('product_main_image_location')->store('product_main_image_locations', 'local');
         }
 
         $product = Products::create($formFields);

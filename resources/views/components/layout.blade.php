@@ -1,3 +1,4 @@
+@props(['heading'])
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,7 +169,7 @@
                                 <div class="banner-content">
                                     <h1>أكتشف, أكبر منصة مزادات</h1>
                                     {{-- <p> تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد تفاصيل عن المزاد </p> --}}
-                                    <h4>حالياً: {{$count}} مزاد</h4>
+                                    <h4>حالياً أكثر من 3  مزادت</h4>
                                     {{-- <h5>$ 200.32</h5>
                                     <a href="/live-auctions" class="banner-btn">عرض أكثر</a> --}}
                                 </div>
@@ -180,7 +181,7 @@
                                         <h5 style="color: #ae6615"> الوقت المتبقي </h5>
                                         <x-timer :section="8"  />
                                     </div> --}}
-                                    <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt="">
+                                    {{-- <img src="{{asset('storage/images/users/jamal.jpg')}}" class="bg-dot" alt=""> --}}
                                     {{-- <div class="video-play">
                                         <a href="https://www.youtube.com/watch?v=u31qwQUeGuM" class="video-open video-icon"><i class="bx bx-play"></i></a>
                                     </div> --}}

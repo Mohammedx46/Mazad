@@ -2352,7 +2352,7 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
 }
 
 .auction-card1 .auction-img {
-    position: relative
+    position: relative;
 }
 
 .auction-card1 .auction-img img {
@@ -3539,7 +3539,7 @@ header.sticky .main-menu .menu-list .menu-item .submenu {
 
 .author-card1 .author-img img {
     width: 100%;
-    height: auto
+    /* height: auto */
 }
 
 .author-card1 .author-content {
