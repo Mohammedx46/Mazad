@@ -10,9 +10,11 @@
             <div class="col-lg-6 d-flex justify-content-center flex-column">
                 <div class="tab-content mb-4 d-flex justify-content-lg-start justify-content-center">
                     <div class="tab-pane big-image fade show active" id="gallery-img1">
-                        <div class="auction-img auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
-                            <livewire:timer  :endDate="$product->auction_end_date" :product="$product" />
-                        </div>
+                        @if ($product->is_product_sold == 0)
+                            <div class="auction-img auction-gallery-timer d-flex align-items-center justify-content-center flex-wrap">
+                                <livewire:timer  :endDate="$product->auction_end_date" :product="$product" />
+                            </div>
+                        @endif
                         <img src=" {{$product->product_main_image_location ? 
                                 asset('storage/'.$product->product_main_image_location) :
                                 asset('storage/images/bg/auction-big1.png') }}" 
@@ -64,6 +66,7 @@
                                         </a>
                                     </div>
                                 </div>
+                                
                             </div>
                             <livewire:current-price :product="$product" :auctionUsers="$auctionUsers" :auctionId="$auctionId"/>
                         </div>
@@ -84,7 +87,7 @@
                             قريباً
                         </button>
                     @else
-                        <livewire:bidding :product="$product" :auctionId="$auctionId"  />
+                        <livewire:bidding :product="$product" :auctionId="$auctionId" :winUser="$winUser" />
                     @endif
                     
                     
@@ -152,9 +155,9 @@
     <!-- ---------------------------------------- -->
     <!-- Third Section Live Auction  -->
     <!-- ---------------------------------------- -->
-    <x-container.section class=" best-work-section pt-110 pb-110" >
+    {{-- <x-container.section class=" best-work-section pt-110 pb-110" >
         <x-auction.items :section="1"  :products="$products" />
-    </x-container.section>
+    </x-container.section> --}}
     <!-- End Third Section Live Auction  -->
     <!-- ---------------------------------------- -->
 

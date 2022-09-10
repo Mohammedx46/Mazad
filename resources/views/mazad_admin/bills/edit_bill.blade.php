@@ -155,7 +155,7 @@
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">
-                                                        <button type="submit" name ="submit" class="btn btn-primary">تعديل المستخدم</button>
+                                                        <button type="submit" name ="submit" class="btn btn-success">تعديل المستخدم</button>
                                                         <button type="reset" class="btn btn-danger">إلغاء</button>
                                                     </div>
                                             </div>                                

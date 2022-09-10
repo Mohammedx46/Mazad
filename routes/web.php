@@ -66,7 +66,7 @@ Route::group(['prefix'=> '/products','middleware' => 'can:Products'], function()
     Route::get('/productsShow', [ProductsController::class, 'index']);
     
     // Create Product 
-    Route::get('/create', [ProductsController::class, 'create'])->middleware('can:Admin');
+    Route::get('/create', [ProductsController::class, 'create']);
     
     Route::post('/', [ProductsController::class, 'store']);
     
@@ -108,10 +108,10 @@ Route::group(['prefix' => '/categories','middleware' => 'can:Categories'], funct
 Route::get('/usersShow', [UserController::class, 'index'])->middleware('auth');
 
 // Create User 
-Route::get('/users/create', [UserController::class, 'create'])->middleware('cad:Admin');
+Route::get('/users/create', [UserController::class, 'create'])->middleware('can:Admin');
 
 // Edit User 
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('can:Admin');
+Route::get('/users/{user}/edit', [UserController::class, 'edit']);
 
 Route::put('/users/{user}', [UserController::class, 'update']);
 

@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\StoppedTimer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -12,9 +13,11 @@ class EndAuction
      *
      * @return void
      */
+
+    public $stoppedTimer;
+    
     public function __construct()
     {
-        //
     }
 
     /**
@@ -23,8 +26,14 @@ class EndAuction
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(StoppedTimer $event )
     {
-        //
+        $this->endAuction($event->product);
+    }
+
+    public function endAuction($product)
+    {
+        $product->is_product_sold = 1;
+        $product->save();
     }
 }

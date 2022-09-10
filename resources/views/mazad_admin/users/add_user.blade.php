@@ -27,10 +27,10 @@
                                                 <!-------------- First Name Field --------------->                                    
                                                 <label class="labelAdd col-md-12" id="m">الاسم الأول
                                                     <input type="text" placeholder="أكتب اسمك الأول"
-                                                        class="form-control" name="first_name" required
-                                                        value="{{old('first_name')}}"/> 
+                                                        class="form-control" name="name" required
+                                                        value="{{old('name')}}"/> 
 
-                                                    @error('first_name')
+                                                    @error('name')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label> 
@@ -138,7 +138,7 @@
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">
-                                                        <button type="submit" name ="submit" class="btn btn-primary">إضافة المستخدم</button>
+                                                        <button type="submit" name ="submit" class="btn btn-success">إضافة المستخدم</button>
                                                         <button type="reset" class="btn btn-danger">إلغاء</button>
                                                     </div>
                                             </div>                                

@@ -16,10 +16,10 @@
                                 <div class="col-md-6">
                                     <div class="form-inner">
                                         <label style="font-size:1.2em;">الاسم الأول</label>
-                                        <input type="text" name="first_name" placeholder="الاسم الأول" required
-                                            value="{{old('first_name')}}"/>
+                                        <input type="text" name="name" placeholder="الاسم الأول" required
+                                            value="{{old('name')}}"/>
                                     </div>
-                                    @error('first_name')
+                                    @error('name')
                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                     @enderror
                                 </div>

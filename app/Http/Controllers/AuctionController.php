@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StoppedTimer;
 use App\Models\Auctions;
 use App\Models\AuctionUsers;
 use App\Models\User;
@@ -37,19 +38,21 @@ class AuctionController extends Controller
     // Main Auction Details
     public function auction(Products $product)
     {
-        if ( $product->is_product_sold == 1 || $product->auction_end_date <= now() )
-        {
-            return redirect('/');
-        }
         $user = User::find($product->user_id);
         $category = Categories::find($product->categories_id);
 
         $liveAuctions = Products::latest()->paginate(3);
 
         $auctionId = Auctions::where('product_id', $product->id)->value('id');
-
         $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
 
+        $winUser = '';
+        if ($product->is_product_sold){
+              // Get Winner in Auction who has the max Price
+            $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $auctionId ) -> max('user_price');
+            $winUser = AuctionUsers::where('user_price' , '=' , $maxUserPrice )->get();
+            
+        }
         return view('mazad.auction-details', [
             "heading" => "تفاصيل المزاد",
             "product" => $product,
@@ -61,39 +64,14 @@ class AuctionController extends Controller
 
             'auctionId' => $auctionId, 
             "auctionUsers" => $auctionUsers,
+            "winUser" => $winUser,
         ]);
     }
 
     public function endAuction(Products $product)
     {
-        $user = User::find($product->user_id);
-        $category = Categories::find($product->categories_id);
-
-        $liveAuctions = Products::latest()->paginate(3);
-
-        $auctionId = Auctions::where('product_id', $product->id)->value('id');
-        $auctionUsers = AuctionUsers::where('auction_id' , $auctionId)->get();
-        // End Auction Code 
-        // ----------------
-        
-        // Get Winner in Auction who has the max Price
-        $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $this->auctionId ) -> max('user_price');
-        $winUsers = AuctionUsers::where('user_price' , '=' , $maxUserPrice )->get();
-        
-        //Find product 
-        Products::find($this->product->id)->update(['is_product_sold' => 1]);
-        
-        return view('mazad.end-auction', [
-            "heading" => "تفاصيل المزاد",
-            "product" => $product,
-            "products" => $liveAuctions,
-
-            "user" => $user,
-            "winUsers"=> $winUsers,
-            "category" => $category,
-            'auctionId' => $auctionId, 
-            "auctionUsers" => $auctionUsers,
-        ]);
+        event(new StoppedTimer($product));
+        return redirect("/auction-details/{$product->id}" );
     }
 
 

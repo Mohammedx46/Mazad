@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Products;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,7 +11,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class EndAuction
+class StoppedTimer
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,9 +20,11 @@ class EndAuction
      *
      * @return void
      */
-    public function __construct()
+
+    public $product;
+    public function __construct(Products $product )
     {
-        //
+        $this->product = $product;
     }
 
     /**

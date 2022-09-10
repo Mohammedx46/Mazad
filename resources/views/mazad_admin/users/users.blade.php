@@ -11,7 +11,7 @@
                 
                 <div class="col-sm-8">
                     <a href="#"> الكل( 
-                        {{$allUsersCount}}
+                        {{auth()->user()->role->role_name == "user" ? 1 : $allUsersCount}}
                     )</a>
                 </div>
 
@@ -46,7 +46,7 @@
                         <!----------------- Body of Table ----------------->
                         <tbody>
                             @unless ($users->isEmpty())
-                                @foreach ($users as $user)
+                                @foreach ($users as $user) 
                                     <tr @if($loop->odd) style="background:#ae66150f;border-radius:20px" @endif>
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$user->name}}</td>
@@ -70,13 +70,13 @@
                                                 <a href="/users/{{$user->id}}/edit"
                                                     class='btn btn-success'><i class="fa-solid fa-pen-to-square"></i> تعديل</a>                                                
                                             @endcan
-                                            @can('Admin')
+                                            {{-- @can('Admin')
                                                 <form method="POST" action="/users/{{$user->id}}" style="display: inline-block">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button href="" class="btn btn-danger" > حذف</button>
                                                 </form>                                                
-                                            @endcan
+                                            @endcan --}}
                                         </td>
                                     </tr>
                                 @endforeach

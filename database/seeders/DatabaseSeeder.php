@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             "Auctions",
             "Control",
             "Admin",
-            "Bills",
+            "Bills"
         ];
         $admin = json_encode($admin);
 
@@ -46,14 +46,14 @@ class DatabaseSeeder extends Seeder
             "Users",
             "Products" ,
             "Auctions",
-            "Control",
+            "Control"
         ];
         $manager = json_encode($manager);
 
         $user = [
             "Users",
             "Products" ,
-            "Control",
+            "Control"
         ];
         $user = json_encode($user);
 
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'password' => $password,
             'user_status' => '1',
             'subscription_type' => '1',
-            'insurance_amount' => '0',
+            'insurance_amount' => '500',
             'joined_auctions' => '0',
             'is_bidding' => '0',
             'is_confirm_terms' => '1',
@@ -123,7 +123,7 @@ class DatabaseSeeder extends Seeder
             'password' => $password,
             'user_status' => '1',
             'subscription_type' => '1',
-            'insurance_amount' => '1',
+            'insurance_amount' => '500',
             'joined_auctions' => '0',
             'is_bidding' => '0',
             'is_confirm_terms' => '1',

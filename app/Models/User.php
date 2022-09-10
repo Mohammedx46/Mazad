@@ -28,6 +28,7 @@ class User extends Authenticatable
         'user_status',
         'subscription_type',
         'insurance_amount',
+        'joined_auctions',
 		'is_bidding',
         'is_confirm_terms',
         'user_image_location',

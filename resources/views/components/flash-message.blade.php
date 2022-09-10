@@ -1,7 +1,7 @@
 
 
 @if (session()->has('success'))
-    <div  class="processMessage alert alert-success" role="alert" style="background-color: #ae6615 !important;color:ae661508;">
+    <div  class="successMessage alert alert-success" role="alert" style="background-color: #ae6615 !important;color:ae661508;">
         {{session('success')}}
     </div>
 @endif
@@ -19,7 +19,7 @@
 @endif
 
 @if (session()->has('danger'))
-    <div class="processMessage alert alert-danger" role="alert">
+    <div class="dangerMessage alert alert-danger" role="alert">
         {{session('danger')}}
     </div>
 @endif

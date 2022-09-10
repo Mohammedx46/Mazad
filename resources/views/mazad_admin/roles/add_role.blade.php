@@ -48,7 +48,7 @@
 
 
                                 <div class="col-md-12 form-group">
-                                    <button class="btn btn-primary" name="submit_category">إضافة صلاحية</button>
+                                    <button class="btn btn-success" name="submit_category">إضافة صلاحية</button>
                                 </div>
                             </form>
                         </div>

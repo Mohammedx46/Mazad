@@ -31,10 +31,10 @@
                                                 <!-------------- First Name Field --------------->                                    
                                                 <label class="labelAdd col-md-12" id="m">الاسم الأول
                                                     <input type="text" placeholder="أكتب اسمك الأول"
-                                                        class="form-control" name="first_name" required
-                                                        value="{{$user->first_name}}"/> 
+                                                        class="form-control" name="name" required
+                                                        value="{{$user->name}}"/> 
 
-                                                    @error('first_name')
+                                                    @error('name')
                                                         <div class="error-alert" role="alert"> {{$message}} </div>
                                                     @enderror
                                                 </label> 
@@ -79,14 +79,16 @@
                                                     @enderror                                          
                                                 </label>  
 
-                                                <label  class="labelAdd col-md-8"> مبلغ التأمين
-                                                    <input type="number" class="form-control"
-                                                        placeholder="مبلغ التأمين" name="insurance_amount" required
-                                                        value="{{$user->insurance_amount}}"/>
-                                                    @error('insurance_amount')
-                                                        <div class="error-alert" role="alert"> {{$message}} </div>
-                                                    @enderror
-                                                </label>
+                                                @can(['Admin', "Bills"])
+                                                    <label  class="labelAdd col-md-8"> مبلغ التأمين
+                                                        <input type="number" class="form-control"
+                                                            placeholder="مبلغ التأمين" name="insurance_amount" required
+                                                            value="{{$user->insurance_amount}}"/>
+                                                        @error('insurance_amount')
+                                                            <div class="error-alert" role="alert"> {{$message}} </div>
+                                                        @enderror
+                                                    </label>
+                                                @endcan
                                             </div>
                                         
                                             <!----------------------------------------->
@@ -148,7 +150,7 @@
                                                 <label class='col-md-12'></label>
                                                     <!-------------- Buttons Field ------------>
                                                     <div style="float:right;">
-                                                        <button type="submit" name ="submit" class="btn btn-primary">تعديل المستخدم</button>
+                                                        <button type="submit" name ="submit" class="btn btn-success">تعديل المستخدم</button>
                                                         <button type="reset" class="btn btn-danger">إلغاء</button>
                                                     </div>
                                             </div>                                

@@ -15,7 +15,7 @@ class Bidding extends Component
     public $is_bid;
     public $product;
     public $auctionId;
-    public $winUsers ;
+    public $winUser ;
 
     //Form Fields
     public $user_price;
@@ -39,7 +39,7 @@ class Bidding extends Component
 
         $this->is_bid = false;
         
-        if(auth()->user()->insurance_amount > 0 && auth()->user()->is_bidding == 0 && $product->is_product_sold == 0)
+        if(auth()->user()->insurance_amount >= 500 && auth()->user()->is_bidding == 0 && $product->is_product_sold == 0)
         {
             $this->is_bid = true ;
             $user->update(['is_bidding'=> 1]);

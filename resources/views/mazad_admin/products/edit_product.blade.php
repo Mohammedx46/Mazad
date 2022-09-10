@@ -152,7 +152,7 @@
                                             <div class="form-group col-md-12"></div>
 
                                             <div style="float:right;">
-                                                <button type="submit" name="submit" class="btn btn-primary"
+                                                <button type="submit" name="submit" class="btn btn-success"
                                                     style="font-size:1em; width:6em">تعديل</button>
 
                                                 <button type="reset" name="reset" class="btn btn-danger"

@@ -15,8 +15,12 @@ class UserController extends Controller
     public function index()
     {
         // $users  = User::latest() ;
+        auth()->user()->role->role_name == "user" ?
+            $users = User::where('id' , auth()->id())->paginate(1):
+            $users = User::latest()->filter(request(['search']))->paginate(9);
+
         $count = User::count();
-        $users = User::latest()->filter(request(['search']))->paginate(9);
+
 
         return view('mazad_admin.users.users', [
             "heading" => "كل المستخدمين",
@@ -46,12 +50,13 @@ class UserController extends Controller
     public function store(Request $request)
     {        
         // dd($request);
+        $isLogin = false ;
         $formFields = $request;
         if ( $formFields['is_confirm_terms'])
         {
-            $formFields['is_confirm_terms'] = 1 ;
+            // $formFields['is_confirm_terms'] = 1 ;
             $formFields = $request->validate([
-                'first_name'=> ['required'],
+                'name'=> ['required'],
                 'last_name'=>['required'],
                 'email'=>['required','email', Rule::unique('users', 'email')],
                 'phone_number'=>['required', 'numeric','digits:9'],
@@ -62,35 +67,40 @@ class UserController extends Controller
             $formFields['subscription_type']= 0 ;
             $formFields['insurance_amount'] = 0;
             $formFields['role_id'] = 3;
+            $formFields['is_confirm_terms'] = 1 ;
+            $isLogin = true;
         }
         else{
-            
             $formFields = $request->validate([
-                'first_name'=> ['required'],
+                'role_id' => ['required'], 
+                'name'=> ['required'],
                 'last_name'=>['required'],
                 'email'=>['required','email', Rule::unique('users', 'email')],
                 'phone_number'=>['required', 'numeric','digits:9'],
                 'password'=>['required','confirmed', 'min:3'],    
                 'user_status'=> ['required'] ,  
                 'subscription_type' => ['required', 'numeric'],
-                'role_id' => ['required'], 
             ]);
             $formFields['is_confirm_terms'] = 1;
         }
         $formFields['password'] = bcrypt($formFields['password']);
         $formFields['insurance_amount'] = 0;
         $formFields['is_bidding'] = false;  
+        $formFields['joined_auctions'] = 0;  
 
         // Store Image
         if ($request->hasFile('user_image_location')) {
 
             $formFields['user_image_location'] = $request->file('user_image_location')->store('user_image_locations', 'public');
         }      
-
         $user = User::create($formFields);
-        auth()->login($user);
+        if ($isLogin)
+        {
+            auth()->login($user);
+        }
+        
 
-        return redirect('/')->with('success', "تم إضافة المستخدم وتسجيل الدخول"); 
+        return redirect($isLogin == true ? '/' : '/usersShow')->with('success', $isLogin == true ? "تم إضافة المستخدم وتسجيل الدخول" : "تم إضافة المستخدم"); 
     
     }
 
@@ -108,22 +118,21 @@ class UserController extends Controller
     {
         // dd($formFields);
         $formFields = $request->validate([
-            'first_name'=> ['required'],
+            'name'=> ['required'],
         	'last_name'=>['required'],
         	'email'=>['required','email'],
         	'phone_number'=>['required', 'numeric','digits:9'],
         	'password'=>['required','confirmed', 'min:3'],    
             'user_status'=> ['required'] ,  
             'subscription_type' => ['required', 'numeric'],  
-            'insurance_amount' =>['required'], 
+            'insurance_amount' =>auth()->user()->role->role_name == "user" ? '' : ['required'], 
             'role_id' => ['required'],  
         ]);
         $formFields['password'] = bcrypt($formFields['password']);
         $formFields['is_bidding'] = false;
+        $formFields['insurance_amount'] = $user->insurance_amount;
         
         $user->update($formFields);
-
-
         return redirect('/usersShow')->with('success', 'تم تعديل  المستخدم بنجاح');
     }
 

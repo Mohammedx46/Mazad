@@ -56,7 +56,7 @@
                                 </div>
 
                                 <div class="col-md-12 form-group">
-                                    <button class="btn btn-primary" name="submit_category">إضافة التصنيف</button>
+                                    <button class="btn btn-success" name="submit_category">إضافة التصنيف</button>
                                 </div>
                             </form>
                         </div>

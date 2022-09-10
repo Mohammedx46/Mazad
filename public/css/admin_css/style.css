@@ -524,7 +524,19 @@ td {
     text-align: center;
 }
 
-.processMessage {
+.successMessage {
+    position: fixed;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1000;
+    width: 30%;
+    text-align: center;
+    font-size: 1em;
+    border: 1.5px solid #854d0f;
+}
+
+.dangerMessage {
     position: fixed;
     bottom: 1%;
     left: 50%;

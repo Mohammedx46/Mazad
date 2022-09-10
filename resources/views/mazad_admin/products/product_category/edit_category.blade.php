@@ -58,7 +58,7 @@
                                                 </label>
                                             </div>
                                             <div class="form-group">
-                                                <button class="btn btn-primary" name="submit_category">تعديل التصنيف</button>
+                                                <button class="btn btn-success" name="submit_category">تعديل التصنيف</button>
                                             </div>
                                         </form>
                                     </div>

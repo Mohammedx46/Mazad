@@ -10,15 +10,17 @@ class Timer extends Component
     public $endDate ;
     public $product;
 
-    public $days;
-    public $hours;
-    public $minutes;
-    public $seconds;
+    public $days = 0;
+    public $hours = 0;
+    public $minutes = 0;
+    public $seconds = 0;
 
 
     public function render()
     {
         $this->countDown();
+        if ($this->days == 0 && $this->hours == 0 && $this->minutes == 0 && $this->seconds == 1)
+            redirect("/endAuction/{$this->product->id}");
         return view('livewire.timer');
     }
     
