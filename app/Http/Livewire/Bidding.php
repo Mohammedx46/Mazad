@@ -44,9 +44,6 @@ class Bidding extends Component
             $this->is_bid = true ;
             $user->update(['is_bidding'=> 1]);
             $this->render();
-        }else
-        {
-            return back();
         }
     }
 
@@ -59,8 +56,9 @@ class Bidding extends Component
         $maxUserPrice =  AuctionUsers::where('auction_id' , '=' , $this->auctionId )
             ->max('user_price');
             
+        $maxUserPrice == null ? $maxUserPrice = 0 : '';
         $auctionUserFields = $this->validate([
-            'user_price' => ['required', 'numeric',  'gt:' . $product->product_start_price],
+            'user_price' => ['required', 'numeric', 'gt:'. $maxUserPrice ,  'gt:' . $product->product_start_price ],
         ]);        
         // , 'lte:' . auth()->user()->insurance_amount * 3  less or equal to 3 * insurance 
 
@@ -75,7 +73,7 @@ class Bidding extends Component
             ->where('auction_id' , '=' , $this->auctionId )
             ->sum('user_price');
 
-        $auctionUserFields['user_total_bidding'] = $userTotalBidding;
+        $auctionUserFields['user_total_bidding'] = $userTotalBidding + $auctionUserFields['user_price'] ;
 
         // Insert into auctionUser Table
         $auctionUser = AuctionUsers::create($auctionUserFields);

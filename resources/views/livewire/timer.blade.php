@@ -1,6 +1,6 @@
 
 
-<div   class="auction-timer2 gap-3 timer" id="timer" @if($days == 0 && $hours == 0 && $minutes == 0 && $seconds == 0)  @else wire:poll.750ms @endif>
+<div   class="auction-timer2 gap-3 timer" id="timer" @if($days <= 0 && $hours <= 0 && $minutes <= 0 && $seconds <= 0)  @else wire:poll.2750ms @endif>
     <div class="countdown-single">
         <h5 id="days">{{$days}}</h5>
         <span>أيام</span>

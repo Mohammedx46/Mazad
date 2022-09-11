@@ -44,7 +44,8 @@
                                         {{-- <td><input type="checkbox" name="select-cat"> </td> --}}
                                         <td>{{$bill->bill->user->name}} {{$bill->bill->user->last_name}}</td>
                                         <td>{{$bill->products->product_name}}</td>
-                                        <td>{{$bill->auction_users->user_total_bidding}}</td>
+                                        <td>{{$bill->auction_users->user_id}}</td>
+
                                         <td>{{$bill->bill->is_bill_payed ? "مدفوع" : "لم تدفع"}}</td>
                                         <td>{{$bill->bill->comment}}</td>
                                         <td>{{$bill->bill->created_at->format("d-m-Y")}}</td>

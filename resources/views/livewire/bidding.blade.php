@@ -3,10 +3,9 @@
 @auth
     @if ($product->is_product_sold == 1)
         @foreach ($winUser as $winner)
-                
-            @if( auth()->id() == $winner->id)
+            @if( auth()->id() == $winner->user_id)
                 <p  style="text-align: center; font-size:2em; color:#854d0f;margin:2em 0;background:#ae661552">
-                    مبروك عليك
+                    مبروك عليك الـ <span style="font-size: 1.2em"> {{$product->product_name}} </span>
                 </p>
             @else
                 <p   style="text-align: center; font-size:2em; color:#854d0f;margin:2em 0;background:#ae661552">

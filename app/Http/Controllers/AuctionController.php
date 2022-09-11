@@ -70,8 +70,19 @@ class AuctionController extends Controller
 
     public function endAuction(Products $product)
     {
-        event(new StoppedTimer($product));
-        return redirect("/auction-details/{$product->id}" );
+        $auctionId = Auctions::where('product_id', $product->id)->value('id');
+        $auctionUser =  AuctionUsers::where('auction_id' , '=' , $auctionId );
+        if(!$auctionUser->value('id'))
+        {
+            $product->auction_end_date = now()->addDay(1)->format('Y-m-d h:m:s') ;
+            $product->save();
+            return redirect("/auction-details/{$product->id}");
+        }
+        else 
+        {
+            event(new StoppedTimer($product));
+            return redirect("/auction-details/{$product->id}" );
+        }
     }
 
 

@@ -14,8 +14,6 @@ class BillController extends Controller
     {
         $count = BillData::count();
         $bills = BillData::latest()->paginate(9);
-        // dd($bills);
-
         return view('mazad_admin.bills.bills', [
             "heading" => "فواتير",
             "bills" => $bills,

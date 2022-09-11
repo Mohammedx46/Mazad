@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
+        "paypal/rest-api-sdk-php": "1.0",
         "pusher/pusher-php-server": "^7.0"
     },
     "require-dev": {

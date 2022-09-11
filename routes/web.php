@@ -9,6 +9,7 @@ use App\Http\Controllers\BillController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -196,3 +197,9 @@ Route::group(['prefix'=> '/bill','middleware' => 'can:Bills'], function(){
 //     dd($request->message);
 //     return null;
 // });
+
+// route for processing payment
+Route::post('/paypal', [PaymentController::class, 'payWithpaypal']);
+
+// route for check status of the payment
+Route::get('/status', [PaymentController::class, 'getPaymentStatus']);
